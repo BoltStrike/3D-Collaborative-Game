@@ -10,12 +10,7 @@
 #include "graphics.hpp"
 #include "geometry.hpp"
 // the GLUT and OpenGL libraries have to be linked correctly
-#ifdef __APPLE__
-#include <OpenGL/OpenGL.h>
-#include <GLUT/glut.h>
-#else
-#include <GL/freeglut.h>
-#endif
+#include "freeglut-3.2.1/include/GL/freeglut.h"
 #include <cmath>
 #include <fstream>
 #include <iostream>

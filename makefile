@@ -1,5 +1,5 @@
 CC = g++ -std=c++11
-exe_file = collada_exporter
+exe_file = 3dcollaborativegame
 
 
 # Handle debug case
@@ -18,6 +18,8 @@ OGLFLAGS := -lglut -lGL -lGLU
 
 #Special flag to get the math library to work
 MATHFLAG := -lm
+
+#all: $(exe_file)
 
 $(exe_file): main.o graphics.o geometry.o
 	$(CC) main.o graphics.o geometry.o -o $(exe_file) $(CFLAGS) $(MATHFLAG) $(OGLFLAGS)
