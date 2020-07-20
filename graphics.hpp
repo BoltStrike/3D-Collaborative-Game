@@ -35,7 +35,7 @@ class Graphics {
 		static void initalization();
 		static void drawTriangle();
 		static void handleResize(int, int);
-		static void updateWindow(int);
+		static void updateWindow();
 		static void keyboard(unsigned char, int, int);
 		static void keyboard_up(unsigned char, int, int);
 		static void special_keyboard(int, int, int);

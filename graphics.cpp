@@ -9,11 +9,20 @@
 
 #include "graphics.hpp"
 #include "geometry.hpp"
+
 // the GLUT and OpenGL libraries have to be linked correctly
-#include "freeglut-3.2.1/include/GL/freeglut.h"
+#include <windows.h>
+#include "glad/glad.h"
+
+//#include "glut-3.7.6/glut.h"
+//#include "freeglut-3.2.1/include/GL/freeglut.h"
+#include "GLUT-MinGW-3.7.6-6/include/glut.h"
+
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef PI
 #define PI 3.14159265
@@ -24,8 +33,8 @@
 Graphics graphics;
 
 Graphics::Graphics () {
-	window_width = 1600;
-	window_height = 900;
+	window_width = 1280;
+	window_height = 720;
 	loaded = false;
 }
 
@@ -36,16 +45,27 @@ Graphics::~Graphics () {
 
 
 void Graphics::create (int argc, char **argv) {
+	
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(graphics.window_width, graphics.window_height);
     glutInitWindowPosition(100, 100);
     graphics.window_id = glutCreateWindow("OpenGL - Creating a triangle");
+    
+	if (!gladLoadGL()) {
+        std::cout << "Failed to initialize OpenGL context" << std::endl;
+        system("pause");
+        return;
+    }
+    std::cout << "Initialized OpenGL context" << std::endl;
+    
 	initalization();
+	
 	glutDisplayFunc(drawTriangle);
 	glutReshapeFunc(handleResize);
+	glutIdleFunc(updateWindow);
 	// Update the window every 25 milliseconds
-	glutTimerFunc(25, updateWindow, 0);
+	//glutTimerFunc(25, updateWindow, 0);
 	glutKeyboardFunc(keyboard);
 	glutKeyboardUpFunc(keyboard_up);
 	glutSpecialFunc(special_keyboard);
@@ -53,6 +73,7 @@ void Graphics::create (int argc, char **argv) {
 	glutMotionFunc(mouse_movement);
 	glutPassiveMotionFunc(mouse_movement);
 	glutSetCursor(GLUT_CURSOR_NONE);
+	std::cout << "Initalization complete, starting glutMainLoop()" << std::endl;
     glutMainLoop();
 }
 
@@ -66,6 +87,7 @@ void Graphics::initalization () {
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_NORMALIZE);
+	
 }
 
 
@@ -79,7 +101,6 @@ void Graphics::drawTriangle () {
 	double offset_x = offset[0];
 	double offset_y = offset[1];
 	double offset_z = offset[2];
-	
 	
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
  	// Reset transformations
@@ -105,6 +126,8 @@ void Graphics::drawTriangle () {
     		  0.0, 0.0, 1.0);
     glTranslatef(-cos(yaw)*cos(pitch), sin(yaw)*cos(pitch), -sin(pitch));
 
+	glTranslatef(-5.0, 0.0, -1.0);
+	
 	// Ground
 	glBegin(GL_TRIANGLES);
 	glColor3f(1.0, 0.0, 1.0);
@@ -178,6 +201,7 @@ void Graphics::drawTriangle () {
 
     glFlush();
     glutSwapBuffers();
+    std::cout << "Draw complete" << std::endl;
 }
 
 
@@ -191,7 +215,7 @@ void Graphics::handleResize (int width, int height) {
 }
 
 
-void Graphics::updateWindow (int value) {
+void Graphics::updateWindow () {
 	double *offset = graphics.geometry.get_offset();
 	if (graphics.geometry.get_keyboard_state('w')) {
 		graphics.geometry.set_offset(offset[0], offset[1]+0.1, offset[2]);
@@ -212,7 +236,8 @@ void Graphics::updateWindow (int value) {
 		graphics.geometry.set_offset(offset[0], offset[1], offset[2]-0.1);
 	}
 	if (graphics.geometry.get_keyboard_state(ESC)) {
-		glutLeaveMainLoop();
+		//glutLeaveMainLoop();
+		exit(0);
 	}
 	
 	if (graphics.geometry.get_special_keyboard_state(GLUT_KEY_UP)) {
@@ -235,7 +260,7 @@ void Graphics::updateWindow (int value) {
 	gluLookAt(x, y, z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	
 	glutPostRedisplay();
-	glutTimerFunc(25, updateWindow, 0);
+	//glutTimerFunc(25, updateWindow, 0);
 }
 
 
@@ -243,24 +268,31 @@ void Graphics::keyboard (unsigned char key, int x, int y) {
 	double *offset = graphics.geometry.get_offset();
 	if (key == 'w' || key == 'W') {
 		graphics.geometry.set_keyboard_state('w', true);
+		glutPostRedisplay();
 	}
 	else if (key == 'a' || key == 'A') {
 		graphics.geometry.set_keyboard_state('a', true);
+		glutPostRedisplay();
 	}
 	else if (key == 's' || key == 'S') {
 		graphics.geometry.set_keyboard_state('s', true);
+		glutPostRedisplay();
 	}
 	else if (key == 'd' || key == 'D') {
 		graphics.geometry.set_keyboard_state('d', true);
+		glutPostRedisplay();
 	}
 	else if (key == 'q' || key == 'Q') {
 		graphics.geometry.set_keyboard_state('q', true);
+		glutPostRedisplay();
 	}
 	else if (key == 'e' || key == 'E') {
 		graphics.geometry.set_keyboard_state('e', true);
+		glutPostRedisplay();
 	}
 	else if (key == ESC) {
 		graphics.geometry.set_keyboard_state(ESC, true);
+		glutPostRedisplay();
 	}
 }
 
@@ -268,24 +300,31 @@ void Graphics::keyboard_up (unsigned char key, int x, int y) {
 	double *offset = graphics.geometry.get_offset();
 	if (key == 'w' || key == 'W') {
 		graphics.geometry.set_keyboard_state('w', false);
+		glutPostRedisplay();
 	}
 	else if (key == 'a' || key == 'A') {
 		graphics.geometry.set_keyboard_state('a', false);
+		glutPostRedisplay();
 	}
 	else if (key == 's' || key == 'S') {
 		graphics.geometry.set_keyboard_state('s', false);
+		glutPostRedisplay();
 	}
 	else if (key == 'd' || key == 'D') {
 		graphics.geometry.set_keyboard_state('d', false);
+		glutPostRedisplay();
 	}
 	else if (key == 'q' || key == 'Q') {
 		graphics.geometry.set_keyboard_state('q', false);
+		glutPostRedisplay();
 	}
 	else if (key == 'e' || key == 'E') {
 		graphics.geometry.set_keyboard_state('e', false);
+		glutPostRedisplay();
 	}
 	else if (key == ESC) {
 		graphics.geometry.set_keyboard_state(ESC, false);
+		glutPostRedisplay();
 	}
 }
 
@@ -323,7 +362,6 @@ void Graphics::special_keyboard_up (int key, int x, int y) {
 
 
 void Graphics::mouse_movement (int x, int y) {
-
 	graphics.geometry.adjust_view(x, y, graphics.window_width, graphics.window_height);
 	if (x <= graphics.window_width/4 || x >= graphics.window_width*3/4) {
 		glutWarpPointer(graphics.window_width/2, y);
@@ -331,6 +369,7 @@ void Graphics::mouse_movement (int x, int y) {
 	if (y <= graphics.window_height/4 || y >= graphics.window_height*3/4) {
 		glutWarpPointer(x, graphics.window_height/2);
 	}
+
 }
 
 void Graphics::load_image (const char * imagepath) {

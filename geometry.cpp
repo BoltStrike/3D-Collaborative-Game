@@ -19,6 +19,10 @@ Geometry::Geometry () {
 	offset = new double[3];
 	keyboard_state = new bool[128];
 	special_keyboard_state = new bool[128];
+	for (int i=0; i < 128; i++) {
+		keyboard_state[i] = false;
+		special_keyboard_state[i] = false;
+	}
 	mouse_x = 0;
 	mouse_y = 0;
 	pos[0] = 0.3;
