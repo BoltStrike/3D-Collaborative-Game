@@ -11,8 +11,6 @@
 #include <cmath>
 
 Geometry::Geometry () {
-	pos = new double[3];
-	offset = new double[3];
 	keyboard_state = new bool[128];
 	special_keyboard_state = new bool[128];
 	for (int i=0; i < 128; i++) {
@@ -21,12 +19,8 @@ Geometry::Geometry () {
 	}
 	mouse_x = 0;
 	mouse_y = 0;
-	pos[0] = 0.3;
-	pos[1] = 0.6;
-	pos[2] = 0.9;
-	offset[0] = 0.0;
-	offset[1] = 0.0;
-	offset[2] = 0.0;
+	pos=Vector3D(0.3,0.6,0.9);
+	offset=Vector3D(0.0,0.0,0.0);
 	angle = 0.0;
 	pitch = 0.0; // up and down
 	yaw = 0.0; // side to side
@@ -34,22 +28,18 @@ Geometry::Geometry () {
 
 
 Geometry::~Geometry () {
-	delete [] pos;
-	delete [] offset;
 	delete [] keyboard_state;
 	delete [] special_keyboard_state;
 }
 
 
-double* Geometry::get_position () const {
+Vector3D Geometry::get_position () const {
 	return pos;
 }
 
 
-void Geometry::set_position (double x, double y, double z) {
-	pos[0] = x;
-	pos[1] = y;
-	pos[2] = z;
+void Geometry::set_position (Vector3D pos) {
+	this->pos=pos;
 }
 
 
@@ -63,15 +53,13 @@ void Geometry::set_angle (double new_angle) {
 }
 
 
-double* Geometry::get_offset () const {
+Vector3D Geometry::get_offset () const {
 	return offset;
 }
 
 
-void Geometry::set_offset (double x, double y, double z) {
-	offset[0] = x;
-	offset[1] = y;
-	offset[2] = z;
+void Geometry::set_offset (Vector3D offset) {
+	this->offset=offset;
 }
 
 

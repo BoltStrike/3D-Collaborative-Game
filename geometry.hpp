@@ -9,14 +9,14 @@
 
 #ifndef GEOMETRY_HPP
 #define GEOMETRY_HPP
-
+#include "Vector3D.h"
 class Geometry {
 	private:
-	double *pos;
+	Vector3D pos;
 	double angle;
 	double pitch;
 	double yaw;
-	double *offset;
+	Vector3D offset;
 	int mouse_x;
 	int mouse_y;
 	bool* keyboard_state;
@@ -25,12 +25,12 @@ class Geometry {
 	public:
 	Geometry();
 	~Geometry();
-	double* get_position()const;
-	void set_position(double, double, double);
+	Vector3D get_position()const;
+	void set_position(Vector3D);
 	double get_angle()const;
 	void set_angle(double);
-	double* get_offset()const;
-	void set_offset(double, double, double);
+	Vector3D get_offset()const;
+	void set_offset(Vector3D);
 	bool get_keyboard_state(int)const;
 	void set_keyboard_state(int, bool);
 	bool get_special_keyboard_state(int)const;

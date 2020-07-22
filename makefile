@@ -20,14 +20,16 @@ MATHFLAG := -lm
 
 #all: $(exe_file)
 
-$(exe_file): main.o graphics.o geometry.o glad.o
-	$(CC) main.o graphics.o geometry.o glad.o -o $(exe_file) $(CFLAGS) $(MATHFLAG) $(OGLFLAGS)
+$(exe_file): main.o graphics.o geometry.o glad.o Vector3D.o
+	$(CC) main.o graphics.o geometry.o glad.o Vector3D.o -o $(exe_file) $(CFLAGS) $(MATHFLAG) $(OGLFLAGS)
 main.o: main.cpp
 	$(CC) -c main.cpp $(CFLAGS)
 graphics.o: graphics.cpp
 	$(CC) -c graphics.cpp $(CFLAGS)
 geometry.o: geometry.cpp
 	$(CC) -c geometry.cpp $(CFLAGS)
+Vector3D.o: Vector3D.cpp
+	$(CC) -c Vector3D.cpp $(CFLAGS)
 glad.o: glad/glad.c
 	$(CC) -c glad/glad.c $(CFLAGS)
 

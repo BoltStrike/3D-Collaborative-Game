@@ -3,6 +3,21 @@
 #include "Vector3D.h"
 using namespace std;
 
+	Vector3D::Vector3D(double x,double y,double z){
+		this->x=x;
+		this->y=y;
+		this->z=z;
+	}
+	Vector3D::Vector3D(){
+		this->x=0.0;
+		this->y=0.0;
+		this->z=0.0;
+	}
+	Vector3D::Vector3D(double* val){
+		this->x=val[0];
+		this->y=val[1];
+		this->z=val[2];
+	}
 
 	//returns the magnatude of the vector
 double Vector3D::mag(void){
@@ -27,7 +42,7 @@ double Vector3D::mag(void){
 	}
 	
 	//adds a value to it's self
-	Vector3D scale(Vector3D ammount){
+	Vector3D Vector3D::add(Vector3D ammount){
 		return Vector3D(x+ammount.x,y+ammount.y,z+ammount.z);
 	}
 	

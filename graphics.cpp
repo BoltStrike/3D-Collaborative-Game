@@ -8,7 +8,7 @@
 
 
 #include "graphics.hpp"
-#include "geometry.hpp"
+//#include "geometry.hpp"
 
 // the GLUT and OpenGL libraries have to be linked correctly
 #include <windows.h>
@@ -90,15 +90,9 @@ void Graphics::initalization () {
 
 
 void Graphics::drawTriangle () {
-	double *position = graphics.geometry.get_position();
+	Vector3D position=graphics.geometry.get_position();
+	Vector3D offset=graphics.geometry.get_offset();
 	double angle = graphics.geometry.get_angle();
-	double *offset = graphics.geometry.get_offset();
-	double x = position[0];
-	double y = position[1];
-	double z = position[2];
-	double offset_x = offset[0];
-	double offset_y = offset[1];
-	double offset_z = offset[2];
 	double pitch = graphics.geometry.get_pitch();
     double yaw = graphics.geometry.get_yaw();
 	
@@ -122,7 +116,7 @@ void Graphics::drawTriangle () {
 	// Camera motion
 	glRotatef(pitch, 1.0, 0.0, 0.0);
 	glRotatef(yaw, 0.0, 1.0, 0.0);
-	glTranslatef(offset_x, offset_y, offset_z);
+	glTranslatef(offset.x, offset.y, offset.z);
 	glTranslatef(0.0, -1.0, -5.0);
 	
 	// Ground
@@ -143,57 +137,57 @@ void Graphics::drawTriangle () {
     // BACK
     glBegin(GL_POLYGON);
     glColor3f(0.5, 0.3, 0.2);
-    glVertex3f(x, -y, z);
-    glVertex3f(x, y, z);
-    glVertex3f(-x, y, z);
-    glVertex3f(-x, -y, z);
+    glVertex3f(position.x, -position.y, position.z);
+    glVertex3f(position.x, position.y, position.z);
+    glVertex3f(-position.x, position.y, position.z);
+    glVertex3f(-position.x, -position.y, position.z);
     glEnd();
 
     // FRONT
     glBegin(GL_POLYGON);
     glColor3f(0.0, 0.5, 0.0);
-    glVertex3f(-x, y, -z);
-    glVertex3f(-x, -y, -z);
-    glVertex3f(x, -y, -z);
-    glVertex3f(x, y, -z);
+    glVertex3f(-position.x, position.y, -position.z);
+    glVertex3f(-position.x, -position.y, -position.z);
+    glVertex3f(position.x, -position.y, -position.z);
+    glVertex3f(position.x, position.y, -position.z);
     glEnd();
 
     // LEFT
     glBegin(GL_POLYGON);
     glColor3f(0.5, 0.5, 0.5);
-    glVertex3f(-x, -y, -z);
-    glVertex3f(-x, -y, z);
-    glVertex3f(-x, y, z);
-    glVertex3f(-x, y, -z);
+    glVertex3f(-position.x, -position.y, -position.z);
+    glVertex3f(-position.x, -position.y, position.z);
+    glVertex3f(-position.x, position.y, position.z);
+    glVertex3f(-position.x, position.y, -position.z);
     glEnd();
 
 
     // RIGHT
     glBegin(GL_POLYGON);
     glColor3f(0.0, 0.0, 0.0);
-    glVertex3f(x, -y, -z);
-    glVertex3f(x, -y, z);
-    glVertex3f(x, y, z);
-    glVertex3f(x, y, -z);
+    glVertex3f(position.x, -position.y, -position.z);
+    glVertex3f(position.x, -position.y, position.z);
+    glVertex3f(position.x, position.y, position.z);
+    glVertex3f(position.x, position.y, -position.z);
     glEnd();
 
     // TOP
     glBegin(GL_POLYGON);
     glColor3f(0.6, 0.0, 0.0);
-    glVertex3f(x, y, z);
-    glVertex3f(-x, y, z);
-    glVertex3f(-x, y, -z);
-    glVertex3f(x, y, -z);
+    glVertex3f(position.x, position.y, position.z);
+    glVertex3f(-position.x, position.y, position.z);
+    glVertex3f(-position.x, position.y, -position.z);
+    glVertex3f(position.x, position.y, -position.z);
     glEnd();
 
 
     // BOTTOM
     glBegin(GL_POLYGON);
     glColor3f(0.3, 0.0, 0.3);
-    glVertex3f(-x, -y, -z);
-    glVertex3f(-x, -y, z);
-    glVertex3f(x, -y, z);
-    glVertex3f(x, -y, -z);
+    glVertex3f(-position.x, -position.y, -position.z);
+    glVertex3f(-position.x, -position.y, position.z);
+    glVertex3f(position.x, -position.y, position.z);
+    glVertex3f(position.x, -position.y, -position.z);
     glEnd();
 
 
@@ -230,24 +224,24 @@ void Graphics::handleResize (int width, int height) {
 
 void Graphics::updateWindow () {
 	double sens_key = graphics.get_key_sensitivity();
-	double *offset = graphics.geometry.get_offset();
+	Vector3D offset = graphics.geometry.get_offset();
 	if (graphics.geometry.get_keyboard_state('w')) {
-		graphics.geometry.set_offset(offset[0], offset[1], offset[2]+sens_key);
+		graphics.geometry.set_offset(offset.add(Vector3D(0.0,0.0,-sens_key)));
 	}
 	if (graphics.geometry.get_keyboard_state('a')) {
-		graphics.geometry.set_offset(offset[0]-sens_key, offset[1], offset[2]);
+		graphics.geometry.set_offset(offset.add(Vector3D(-sens_key,0.0,0.0)));
 	}
 	if (graphics.geometry.get_keyboard_state('s')) {
-		graphics.geometry.set_offset(offset[0], offset[1], offset[2]-sens_key);
+		graphics.geometry.set_offset(offset.add(Vector3D(0.0,0.0,sens_key)));
 	}
 	if (graphics.geometry.get_keyboard_state('d')) {
-		graphics.geometry.set_offset(offset[0]+sens_key, offset[1], offset[2]);
+		graphics.geometry.set_offset(offset.add(Vector3D(sens_key,0.0,0.0)));
 	}
 	if (graphics.geometry.get_keyboard_state('q')) {
-		graphics.geometry.set_offset(offset[0], offset[1]+sens_key, offset[2]);
+		graphics.geometry.set_offset(offset.add(Vector3D(0.0,sens_key,0.0)));
 	}
 	if (graphics.geometry.get_keyboard_state('e')) {
-		graphics.geometry.set_offset(offset[0], offset[1]-sens_key, offset[2]);
+		graphics.geometry.set_offset(offset.add(Vector3D(0.0,-sens_key,0.0)));
 	}
 	// ESCAPE key is ASCII code 27
 	if (graphics.geometry.get_keyboard_state(27)) {
@@ -274,7 +268,6 @@ void Graphics::updateWindow () {
 
 
 void Graphics::keyboard (unsigned char key, int x, int y) {
-	double *offset = graphics.geometry.get_offset();
 	if (key == 'w' || key == 'W') {
 		graphics.geometry.set_keyboard_state('w', true);
 		glutPostRedisplay();
@@ -307,7 +300,6 @@ void Graphics::keyboard (unsigned char key, int x, int y) {
 }
 
 void Graphics::keyboard_up (unsigned char key, int x, int y) {
-	double *offset = graphics.geometry.get_offset();
 	if (key == 'w' || key == 'W') {
 		graphics.geometry.set_keyboard_state('w', false);
 		glutPostRedisplay();
@@ -340,7 +332,6 @@ void Graphics::keyboard_up (unsigned char key, int x, int y) {
 }
 
 void Graphics::special_keyboard (int key, int x, int y) {
-	double *offset = graphics.geometry.get_offset();
 	if (key == GLUT_KEY_UP) {
 		graphics.geometry.set_special_keyboard_state(GLUT_KEY_UP, true);
 	}
@@ -356,7 +347,6 @@ void Graphics::special_keyboard (int key, int x, int y) {
 }
 
 void Graphics::special_keyboard_up (int key, int x, int y) {
-	double *offset = graphics.geometry.get_offset();
 	if (key == GLUT_KEY_UP) {
 		graphics.geometry.set_special_keyboard_state(GLUT_KEY_UP, false);
 	}
