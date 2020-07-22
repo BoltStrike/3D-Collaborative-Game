@@ -8,7 +8,7 @@
 
 
 #include "graphics.hpp"
-//#include "geometry.hpp"
+#include "geometry.hpp"
 
 // the GLUT and OpenGL libraries have to be linked correctly
 #include <windows.h>
