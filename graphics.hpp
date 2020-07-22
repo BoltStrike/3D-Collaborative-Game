@@ -16,18 +16,19 @@
 
 class Graphics {
 	private:
-		constexpr static int ESC = 27;
 		Geometry geometry;
 		int window_id;
 		int window_width;
 		int window_height;
+		double key_sensitivity;
+		double mouse_sensitivity;
 		
-		bool loaded;
 		unsigned char header[54];
 		unsigned int dataPos;
 		unsigned int width, height;
 		unsigned int imageSize;
 		unsigned char * data;
+		unsigned int texture;
 	public:
 		Graphics();
 		~Graphics();
@@ -42,6 +43,12 @@ class Graphics {
 		static void special_keyboard_up(int, int, int);
 		static void mouse_movement(int, int);
 		void load_image(const char*);
+		static void perspective_gl(double, double, double, double);
+		static void util_compat_gluLookAt(float, float, float, float, float, float, float, float, float);
+		double get_key_sensitivity()const;
+		void set_key_sensitivity(double);
+		double get_mouse_sensitivity()const;
+		void set_mouse_sensitivity(double);
 };
 
 

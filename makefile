@@ -13,9 +13,7 @@ endif
 #Compile it as a Position Independent Executable (PIE)
 CFLAGS := -no-pie
 #Special flags to get FreeGLUT and OpenGL to work 
-OGLFLAGS := GLUT-MinGW-3.7.6-6/lib/libglut32.a -lglu32 -lopengl32
-OGLFLAGS := GLUT-MinGW-3.7.6-6/lib/libglut32.a -lglu32 -lopengl32
-#OGLFLAGS := freeglut-MinGW-3.0.0-1/lib/libfreeglut.a -lglu32 -lopengl32
+OGLFLAGS := GLUT-MinGW-3.7.6-6/lib/libglut32.a -lopengl32
 
 #Special flag to get the math library to work
 MATHFLAG := -lm

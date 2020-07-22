@@ -41,7 +41,7 @@ class Geometry {
 	void set_pitch(double);
 	double get_yaw()const;
 	void set_yaw(double);
-	void adjust_view(int, int, int, int);
+	void adjust_view(int, int, int, int, double);
 };
 
 #endif

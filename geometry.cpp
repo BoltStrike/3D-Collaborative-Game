@@ -10,10 +10,6 @@
 #include "geometry.hpp"
 #include <cmath>
 
-#ifndef PI
-#define PI 3.14159265
-#endif
-
 Geometry::Geometry () {
 	pos = new double[3];
 	offset = new double[3];
@@ -123,7 +119,7 @@ void Geometry::set_yaw (double new_yaw) {
 	yaw = new_yaw;
 }
 
-void Geometry::adjust_view (int x, int y, int width, int height) {
+void Geometry::adjust_view (int x, int y, int width, int height, double sens) {
 	if (x <= width/4 || x >= width*3/4) {
 		x = width/2;
 		mouse_x = width/2;
@@ -132,8 +128,8 @@ void Geometry::adjust_view (int x, int y, int width, int height) {
 		y = height/2;
 		mouse_y = height/2;
 	}
-	yaw += 0.01*(x-mouse_x);
-	pitch += 0.01*(y-mouse_y);
+	yaw += sens*(x-mouse_x);
+	pitch += sens*(y-mouse_y);
 	mouse_x = x;
 	mouse_y = y;
 }
