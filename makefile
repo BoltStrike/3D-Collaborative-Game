@@ -21,23 +21,40 @@ OGLFLAGS := GLUT-MinGW-3.7.6-6/lib/libglut32.a -lopengl32
 #Special flag to get the math library to work
 MATHFLAG := -lm
 
-#all: $(exe_file)
+#Get all .cpp files in the source directory
+SRC_DIR := source
+OBJ_DIR := objects
+SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
-$(exe_file): main.o graphics.o geometry.o glad.o Vector3D.o
-	$(CC) main.o graphics.o geometry.o glad.o Vector3D.o -o $(exe_file) $(STDFLAGS) $(CFLAGS) $(MATHFLAG) $(OGLFLAGS)
-main.o: main.cpp
-	$(CC) -c main.cpp $(CFLAGS)
-graphics.o: graphics.cpp
-	$(CC) -c graphics.cpp $(CFLAGS)
-geometry.o: geometry.cpp
-	$(CC) -c geometry.cpp $(CFLAGS)
-Vector3D.o: Vector3D.cpp
-	$(CC) -c Vector3D.cpp $(CFLAGS)
-glad.o: glad/glad.c
-	$(CC) -c glad/glad.c $(CFLAGS)
+#Compile all .cpp files in the source directory and glad in the glad directory
+$(exe_file): $(OBJ_FILES) $(OBJ_DIR)/glad.o
+	$(CC) -o $@ $^ $(STDFLAGS) $(CFLAGS) $(MATHFLAG) $(OGLFLAGS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CC) $(CFLAGS) -c -o $@ $<
+$(OBJ_DIR)/glad.o: glad/glad.c
+	$(CC) -c glad/glad.c -o $(OBJ_DIR)/glad.o $(CFLAGS)
 
 clean:
-	rm -f *.o $(exe_file).exe
+	rm -rf $(exe_file) *.o
 
 .PHONY: clean
+
+#$(exe_file): main.o graphics.o geometry.o glad.o Vector3D.o
+#	$(CC) main.o graphics.o geometry.o glad.o Vector3D.o -o $(exe_file) $(STDFLAGS) $(CFLAGS) $(MATHFLAG) $(OGLFLAGS)
+#main.o: main.cpp
+#	$(CC) -c main.cpp $(CFLAGS)
+#graphics.o: graphics.cpp
+#	$(CC) -c graphics.cpp $(CFLAGS)
+#geometry.o: geometry.cpp
+#	$(CC) -c geometry.cpp $(CFLAGS)
+#Vector3D.o: Vector3D.cpp
+#	$(CC) -c Vector3D.cpp $(CFLAGS)
+#glad.o: glad/glad.c
+#	$(CC) -c glad/glad.c $(CFLAGS)
+
+#clean:
+#	rm -f *.o $(exe_file).exe
+
+#.PHONY: clean
 

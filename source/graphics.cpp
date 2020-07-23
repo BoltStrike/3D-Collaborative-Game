@@ -12,11 +12,11 @@
 
 // the GLUT and OpenGL libraries have to be linked correctly
 #include <windows.h>
-#include "glad/glad.h"
+#include "../glad/glad.h"
 
 //#include "glut-3.7.6/glut.h"
 //#include "freeglut-3.2.1/include/GL/freeglut.h"
-#include "GLUT-MinGW-3.7.6-6/include/glut.h"
+#include "../GLUT-MinGW-3.7.6-6/include/glut.h"
 
 #include <cmath>
 #include <fstream>

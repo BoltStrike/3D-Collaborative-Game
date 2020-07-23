@@ -1,2 +1,2 @@
-del /f *o
+del /f objects\*o
 del /f *exe

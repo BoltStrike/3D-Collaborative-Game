@@ -14,4 +14,6 @@ class Input {
 	private:
 	public:
 		static void keyboard(int, int, int);
-}
+};
+
+#endif
