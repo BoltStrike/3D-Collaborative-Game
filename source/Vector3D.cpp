@@ -1,5 +1,5 @@
 //libray for vertor stuff
-#include <math.h>
+#include <cmath>
 #include "Vector3D.h"
 using namespace std;
 
@@ -72,15 +72,15 @@ double Vector3D::mag(void){
 	//v: x y z
 	//rotate arround
 	static Vector3D V3Drotate(Vector3D v,Vector3D angle){
-		double[2][3] a;
-		a[0][0]=Math.sin(angle.x);
-		a[0][1]=Math.sin(angle.y);
-		a[0][2]=Math.sin(angle.z);
-		a[1][0]=Math.cos(angle.x);
-		a[1][1]=Math.cos(angle.y);
-		a[1][2]=Math.cos(angle.z);
-		Math.cos(angle.x),Math.cos(angle.y),Math.cos(angle.z);
-		double[3][3] t;
+		double a[2][3];
+		a[0][0]=sin(angle.x);
+		a[0][1]=sin(angle.y);
+		a[0][2]=sin(angle.z);
+		a[1][0]=cos(angle.x);
+		a[1][1]=cos(angle.y);
+		a[1][2]=cos(angle.z);
+		cos(angle.x),cos(angle.y),cos(angle.z);
+		double t[3][3];
 		t[0][0]=a[1][0]*a[1][1];
 		t[0][1]=a[1][0]*a[0][1]*a[0][2]-a[0][0]*a[1][2];
 		t[0][2]=a[1][0]*a[0][1]*a[1][2]+a[0][0]*a[0][2];
