@@ -13,10 +13,7 @@
 // the GLUT and OpenGL libraries have to be linked correctly
 #include <windows.h>
 #include "../glad/glad.h"
-
-//#include "glut-3.7.6/glut.h"
-//#include "freeglut-3.2.1/include/GL/freeglut.h"
-#include "../GLUT-MinGW-3.7.6-6/include/glut.h"
+#include "../freeglut-MinGW-3.0.0-1/include/GL/freeglut.h"
 
 #include <cmath>
 #include <fstream>
@@ -245,8 +242,7 @@ void Graphics::updateWindow () {
 	}
 	// ESCAPE key is ASCII code 27
 	if (graphics.geometry.get_keyboard_state(27)) {
-		//glutLeaveMainLoop();
-		exit(0);
+		glutLeaveMainLoop();
 	}
 	
 	if (graphics.geometry.get_special_keyboard_state(GLUT_KEY_UP)) {
