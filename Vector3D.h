@@ -23,6 +23,10 @@ class Vector3D{
 	
 	//adds a value to it's self
 	Vector3D add(Vector3D ammount);
+	
+	//switching cordinate systems
+	Vector3D fromRectToSpherical();
+	Vector3D fromSphericalToRect();
 };
 	//dot product
 	static double V3Ddot(Vector3D a,Vector3D b);
@@ -35,5 +39,7 @@ class Vector3D{
 	
 	//angle
 	static double V3Dangle(Vector3D a,Vector3D b);
+	
+	static Vector3D V3Drotate(Vector3D v,Vector3D angle);
 	
 #endif

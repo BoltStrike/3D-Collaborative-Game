@@ -21,13 +21,13 @@ using namespace std;
 
 	//returns the magnatude of the vector
 double Vector3D::mag(void){
-		return sqrt(pow(x,2)+pow(y,2)+pow(z,2));
+		return sqrt((x*x)+(y*y)+(z*z));
 	}
 
 	//returns the magnatude squared of the vector
 	//this is computaionaly easer than mag(), but does the same job
 	double Vector3D::magSqu(void){
-		return pow(x,2)+pow(y,2)+pow(z,2);
+		return (x*x)+(y*y)+(z*z);
 	}
 	
 	//scales each value by a certian amount
@@ -46,6 +46,10 @@ double Vector3D::mag(void){
 		return Vector3D(x+ammount.x,y+ammount.y,z+ammount.z);
 	}
 	
+	
+	
+	
+	
 	///dot product
 	static double V3Ddot(Vector3D a,Vector3D b){
 		return (a.x*b.x)+(a.y*b.y)+(a.z*b.z);
@@ -62,6 +66,32 @@ double Vector3D::mag(void){
 	//angle
 	static double V3Dangle(Vector3D a,Vector3D b){
 		return acos(V3Ddot(a,b)/(sqrt(a.magSqu()*b.magSqu())));
+	}
+	
+	//vector rotation
+	//v: x y z
+	//rotate arround
+	static Vector3D V3Drotate(Vector3D v,Vector3D angle){
+		double[2][3] a;
+		a[0][0]=Math.sin(angle.x);
+		a[0][1]=Math.sin(angle.y);
+		a[0][2]=Math.sin(angle.z);
+		a[1][0]=Math.cos(angle.x);
+		a[1][1]=Math.cos(angle.y);
+		a[1][2]=Math.cos(angle.z);
+		Math.cos(angle.x),Math.cos(angle.y),Math.cos(angle.z);
+		double[3][3] t;
+		t[0][0]=a[1][0]*a[1][1];
+		t[0][1]=a[1][0]*a[0][1]*a[0][2]-a[0][0]*a[1][2];
+		t[0][2]=a[1][0]*a[0][1]*a[1][2]+a[0][0]*a[0][2];
+		t[1][1]=a[0][0]*a[0][1]*a[0][2]+a[1][0]*a[1][2];
+		t[1][2]=a[0][0]*a[0][1]*a[1][2]-a[1][0]*a[0][2];
+		t[1][0]=a[0][0]*a[1][1];
+		t[2][1]=a[1][1]*a[0][2];
+		t[2][2]=a[1][1]*a[1][2];
+		return Vector3D(v.x*t[0][0]+v.y*t[0][1]+v.z*t[0][2],
+						v.x*t[1][0]+v.y*t[1][1]+v.z*t[1][2],
+						v.x*t[2][0]+v.y*t[2][1]+v.z*t[2][2]);
 	}
 
 
