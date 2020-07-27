@@ -45,10 +45,16 @@ double Vector3D::mag(void){
 	Vector3D Vector3D::add(Vector3D ammount){
 		return Vector3D(x+ammount.x,y+ammount.y,z+ammount.z);
 	}
-
-
-
-
+	
+	Vector3D Vector3D::opperator+(const &Vector3D b){
+		return Vector3D(this->x+b->x,this->y+b->y,this->z+b->z);
+	}
+	Vector3D Vector3D::opperator-(const &Vector3D b){
+		return Vector3D(this->x-b->x,this->y-b->y,this->z-b->z);
+	}
+	Vector3D Vector3D::opperator-(){
+		return Vector3D(-x,-y,-z);
+	}
 
 	///dot product
 	static double V3Ddot(Vector3D a,Vector3D b){

@@ -23,6 +23,10 @@ class Vector3D{
 
 	//adds a value to it's self
 	Vector3D add(Vector3D ammount);
+	
+	Vector3D opperator+(const &Vector3D);
+	Vector3D opperator-(const &Vector3D);
+	Vector3D opperator-();
 
 	//switching cordinate systems
 	Vector3D fromRectToSpherical();
