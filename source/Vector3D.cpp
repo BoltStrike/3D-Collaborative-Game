@@ -55,6 +55,10 @@ double Vector3D::mag(void){
 	Vector3D Vector3D::opperator-(){
 		return Vector3D(-x,-y,-z);
 	}
+	
+	bool Vector3D::isZero(){
+		return (x==0)&&(y==0)&&(z==0);
+	}
 
 	///dot product
 	static double V3Ddot(Vector3D a,Vector3D b){
