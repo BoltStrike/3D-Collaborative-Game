@@ -21,16 +21,16 @@ DynamicPhysicsObj::DynamicPhysicsObj(Vector3D position, Vector3D velocity, Vecto
 	this->angularVelocity=angularVelocity;
 }
 
-void update(PhysicsObj* collisionList,long collisionListSize,double deltaT){
+void DynamicPhysicsObj::update(PhysicsObj* collisionList,long collisionListSize,long currentNum,double deltaT){
 	//update all the values;
 	velocity=velocity+acceleration.scale(deltaT);
 	position=position+velocity.scale(deltaT);
-	rotation=rotation+angularVelocity.scale(deltatT);
-	if(!velocity.isZero() || !rotation.isZero()){
+	rotation=rotation+angularVelocity.scale(deltaT);
+	if(!velocity.isZero() || !angularVelocity.isZero()){
 		//check for collision
-		for(int i=0;i<collisionListSize;i++){
-			if(collisionList[i]!=PhysicsObj){
-				if(PhysicsObj.checkCollision(position,rotation,collisionList[i])){
+		for(long i=0;i<collisionListSize;i++){
+			if(i!=currentNum){
+				if(checkCollision(collisionList[i].getCollider(),collisionList[i].getPosition(),collisionList[i].getRotation())!=0){
 					//a collision has occured
 				}
 			}

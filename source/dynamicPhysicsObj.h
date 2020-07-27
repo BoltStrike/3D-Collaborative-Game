@@ -1,7 +1,7 @@
 #ifndef DYNAMIC_PHYSICS_OBJ_H
 #define DYNAMIC_PHYSICS_OBJ_H
 
-#include "physics.h"
+#include "physicsObj.h"
 class DynamicPhysicsObj: public PhysicsObj{
 	protected:
 	Vector3D velocity;
@@ -13,6 +13,6 @@ class DynamicPhysicsObj: public PhysicsObj{
 	DynamicPhysicsObj(Vector3D,Vector3D,Vector3D,Vector3D,Vector3D,Collider);
 	
 	public:
-	void update(PhysicsObj*,long,double);
+	void update(PhysicsObj*,long,long,double);
 };
 #endif

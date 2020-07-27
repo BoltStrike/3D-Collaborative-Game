@@ -1,14 +1,16 @@
 #ifndef PHYSICS_OBJ_H
 #define PHYSICS_OBJ_H
 
-#include "physics.h"
+#include "Vector3D.h"
 #include "collider.h"
+#include "collisionType.h"
+#include "BoxCollider.h"
 class PhysicsObj{
 	protected:
 	Vector3D position;
-	Vector3D rotattion;
+	Vector3D rotation;
 	Collider collider;
-	
+	public:
 	PhysicsObj();
 	PhysicsObj(Vector3D,Vector3D,Collider);
 	
@@ -17,6 +19,6 @@ class PhysicsObj{
 	Vector3D getRotation();
 	Collider* getCollider();
 	bool checkCollision(Collider*,Vector3D,Vector3D);
-	virtual CollisionTypes uponCollision();
+	virtual CollisionType uponCollision();
 };
 #endif

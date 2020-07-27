@@ -61,7 +61,7 @@ double Vector3D::mag(void){
 	}
 
 	///dot product
-	static double V3Ddot(Vector3D a,Vector3D b){
+	double V3Ddot(Vector3D a,Vector3D b){
 		return (a.x*b.x)+(a.y*b.y)+(a.z*b.z);
 	}
 
@@ -69,19 +69,19 @@ double Vector3D::mag(void){
 	//|  X   Y   Z  |
 	//| a.x a.y a.z |
 	//| b.x b.y b.z |
-	static Vector3D V3Dcross(Vector3D a,Vector3D b){
+	Vector3D V3Dcross(Vector3D a,Vector3D b){
 		return Vector3D((a.y*b.z)-(a.z*b.y),(a.z*b.x)-(a.x*b.z),(a.x*b.y)-(a.y*b.x));
 	}
 
 	//angle
-	static double V3Dangle(Vector3D a,Vector3D b){
+	double V3Dangle(Vector3D a,Vector3D b){
 		return acos(V3Ddot(a,b)/(sqrt(a.magSqu()*b.magSqu())));
 	}
 
 	//vector rotation
 	//v: x y z
 	//rotate arround
-	static Vector3D V3Drotate(Vector3D v,Vector3D angle){
+	Vector3D V3Drotate(Vector3D v,Vector3D angle){
 		double a[2][3];
 		a[0][0]=sin(angle.x);
 		a[0][1]=sin(angle.y);

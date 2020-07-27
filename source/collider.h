@@ -1,23 +1,17 @@
 #ifndef COLLIDER_H
 #define	COLLIDER_H
 
-#include "colliderType.h"
-#include "boxCollider.h"
 #include "Vector3D.h"
-#include "physicsObj.h"
+#include "colliderType.h"
 
 class Collider{
 	protected:
 	ColliderType type;
-	Collider();
 	Collider(ColliderType);
 	public:
+	Collider();
 	ColliderType getColliderType();
-	virtual bool checkCollision(Vector3D,Vector3D,PhysicsObj*);
-	protected:
-	static bool checkCollision(BoxCollider*,Vector3D,Vector3D,BoxCollider*,Vector3D,Vector3D);
-	private:
-	static bool lineVsBox(Vector3D,Vector3D,Vector3D,Vector3D*,Vector3D);
+	virtual int checkCollision(Vector3D,Vector3D,Collider*,Vector3D,Vector3D);
 };
 
 #endif

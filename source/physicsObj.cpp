@@ -1,15 +1,15 @@
 #include "physicsObj.h"
 
-PhysicsObj(){
+PhysicsObj::PhysicsObj(){
 	this->position=Vector3D(0.0,0.0,0.0);
 	this->rotation=Vector3D(0.0,0.0,0.0);
-	this->collider=Collider();
+	this->collider=BoxCollider(1.0,1.0,1.0);
 }
 
-PhysicsObj::PhysicsObj(Vector3D position, Vector3D rotation, Collider collider){
-	this->position=position;
-	this->rotation=rotation;
-	this->collider=collider;
+PhysicsObj::PhysicsObj(Vector3D pos, Vector3D rot, Collider col){
+	this->position=pos;
+	this->rotation=rot;
+	this->collider=col;
 }
 
 Vector3D PhysicsObj::getPosition(){

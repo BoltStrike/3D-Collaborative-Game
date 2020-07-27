@@ -32,17 +32,17 @@ class Vector3D{
 	
 };
 	//dot product
-	static double V3Ddot(Vector3D a,Vector3D b);
+	double V3Ddot(Vector3D,Vector3D);
 
 	//cross prduct
 	//|  X   Y   Z  |
 	//| a.x a.y a.z |
 	//| b.x b.y b.z |
-	static Vector3D V3Dcross(Vector3D a,Vector3D b);
+	Vector3D V3Dcross(Vector3D,Vector3D);
 
 	//angle
-	static double V3Dangle(Vector3D a,Vector3D b);
+	double V3Dangle(Vector3D,Vector3D);
 
-	static Vector3D V3Drotate(Vector3D v,Vector3D angle);
+	Vector3D V3Drotate(Vector3D,Vector3D);
 
 #endif

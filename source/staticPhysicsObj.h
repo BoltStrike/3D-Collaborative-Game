@@ -1,9 +1,11 @@
 #ifndef STATIC_PHYSICS_OBJ_H
 #define STATIC_PHYSICS_OBJ_H
 
-#include "Vector3D.h"
-#include "collider.h"
+#include "physicsObj.h"
 class StaticPhysicsObj: public PhysicsObj{
-	virtual CollisionTypes uponCollision();
+	public:
+	StaticPhysicsObj();
+	StaticPhysicsObj(Vector3D pos,Vector3D rot,Collider col);
+	virtual CollisionType uponCollision();
 };
 #endif
