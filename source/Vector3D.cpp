@@ -46,13 +46,13 @@ double Vector3D::mag(void){
 		return Vector3D(x+ammount.x,y+ammount.y,z+ammount.z);
 	}
 	
-	Vector3D Vector3D::opperator+(const &Vector3D b){
-		return Vector3D(this->x+b->x,this->y+b->y,this->z+b->z);
+	Vector3D Vector3D::operator+(const Vector3D& b){
+		return Vector3D(this->x+b.x,this->y+b.y,this->z+b.z);
 	}
-	Vector3D Vector3D::opperator-(const &Vector3D b){
-		return Vector3D(this->x-b->x,this->y-b->y,this->z-b->z);
+	Vector3D Vector3D::operator-(const Vector3D& b){
+		return Vector3D(this->x-b.x,this->y-b.y,this->z-b.z);
 	}
-	Vector3D Vector3D::opperator-(){
+	Vector3D Vector3D::operator-(){
 		return Vector3D(-x,-y,-z);
 	}
 	
