@@ -27,10 +27,9 @@ class Vector3D{
 	Vector3D opperator+(const &Vector3D);
 	Vector3D opperator-(const &Vector3D);
 	Vector3D opperator-();
-
-	//switching cordinate systems
-	Vector3D fromRectToSpherical();
-	Vector3D fromSphericalToRect();
+	
+	bool isZero();
+	
 };
 	//dot product
 	static double V3Ddot(Vector3D a,Vector3D b);
