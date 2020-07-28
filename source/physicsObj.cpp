@@ -25,3 +25,10 @@ Collider* PhysicsObj::getCollider(){
 bool PhysicsObj::checkCollision(Collider* otherCollider,Vector3D otherPos,Vector3D otherAng){
 	return this->collider.checkCollision(position,rotation,otherCollider,otherPos,otherAng);
 }
+
+
+CollisionType PhysicsObj::uponCollision() {
+	CollisionType stop;
+	return stop;
+}
+

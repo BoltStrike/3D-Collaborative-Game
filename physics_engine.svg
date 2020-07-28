@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="physics_engine.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 210 297"
+   height="297mm"
+   width="210mm">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:window-maximized="0"
+     inkscape:window-y="54"
+     inkscape:window-x="731"
+     inkscape:window-height="1030"
+     inkscape:window-width="1541"
+     inkscape:snap-text-baseline="false"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="622.54046"
+     inkscape:cx="416.53546"
+     inkscape:zoom="0.98994949"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <text
+       id="text12"
+       y="50.14534"
+       x="25.434151"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.264583"
+         y="50.14534"
+         x="25.434151"
+         id="tspan10"
+         sodipodi:role="line">&quot;physics.h&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="60.476185"
+       y="15.875"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan14"
+         x="60.476185"
+         y="15.875"
+         style="stroke-width:0.264583">Physics Engine</tspan></text>
+    <text
+       transform="translate(21.381562,-26.726952)"
+       id="text20"
+       y="86.367554"
+       x="9.0714283"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:54.1768;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         x="9.0714283"
+         y="86.367554"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">This only holds include </tspan></tspan><tspan
+         x="9.0714283"
+         y="90.77728"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">statements for all the physics </tspan></tspan><tspan
+         x="9.0714283"
+         y="95.187009"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">engine header files</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       x="125.54166"
+       y="31.161392"
+       id="text24"><tspan
+         rotate="0 0 0 0 0 0 0 0 0"
+         sodipodi:role="line"
+         id="tspan22"
+         x="125.54166"
+         y="31.161392"
+         style="stroke-width:0.174786">&quot;Vector3D.h&quot;</tspan></text>
+    <text
+       id="text28"
+       y="40.5191"
+       x="125.3651"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.174786"
+         y="40.5191"
+         x="125.3651"
+         id="tspan26"
+         sodipodi:role="line"
+         rotate="0">&quot;colliderType.h&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       x="125.54166"
+       y="50.406487"
+       id="text32"><tspan
+         rotate="0"
+         sodipodi:role="line"
+         id="tspan30"
+         x="125.54166"
+         y="50.406487"
+         style="stroke-width:0.174786">&quot;collisionTypes.h&quot;</tspan></text>
+    <text
+       id="text36"
+       y="58.351715"
+       x="125.54166"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.174786"
+         y="58.351715"
+         x="125.54166"
+         id="tspan34"
+         sodipodi:role="line"
+         rotate="0">&quot;collider.h&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       x="125.54166"
+       y="65.767258"
+       id="text40"><tspan
+         rotate="0"
+         sodipodi:role="line"
+         id="tspan38"
+         x="125.54166"
+         y="65.767258"
+         style="stroke-width:0.174786">&quot;boxCollider.h&quot;</tspan></text>
+    <text
+       id="text44"
+       y="73.006233"
+       x="125.54166"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.174786"
+         y="73.006233"
+         x="125.54166"
+         id="tspan42"
+         sodipodi:role="line">&quot;physicsObj.h&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       x="125.54166"
+       y="81.657692"
+       id="text48"><tspan
+         sodipodi:role="line"
+         id="tspan46"
+         x="125.54166"
+         y="81.657692"
+         style="stroke-width:0.174786">&quot;staticPhysicsObj.h&quot;</tspan></text>
+    <text
+       id="text52"
+       y="90.132607"
+       x="125.54166"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.174786"
+         y="90.132607"
+         x="125.54166"
+         id="tspan50"
+         sodipodi:role="line">&quot;dynamicPhysicsObj.h&quot;</tspan></text>
+    <path
+       id="path60"
+       d="M 118.49553,26.458333 C 99.9747,26.080357 106.58928,56.696427 92.793155,57.263392 111.125,57.074405 99.785714,90.525298 120.95238,89.769345"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       id="text64"
+       y="112.38985"
+       x="9.8623066"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.174786"
+         y="112.38985"
+         x="9.8623066"
+         id="tspan62"
+         sodipodi:role="line">Vector3D</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:54.1768;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="9.0714283"
+       y="86.367554"
+       id="text68"
+       transform="translate(1.0690779,31.805075)"><tspan
+         x="9.0714283"
+         y="86.367554"><tspan
+           style="font-weight:bold">Class</tspan><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">
+</tspan></tspan><tspan
+         x="9.0714283"
+         y="90.77728"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">Defines a 3 dimensional </tspan></tspan><tspan
+         x="9.0714283"
+         y="95.187009"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">vector with functions to </tspan></tspan><tspan
+         x="9.0714283"
+         y="99.596738"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">handle mathematical </tspan></tspan><tspan
+         x="9.0714283"
+         y="104.00647"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">operations with them
+</tspan></tspan><tspan
+         x="9.0714283"
+         y="108.4162"><tspan
+           style="font-weight:bold">Dependencies:</tspan><tspan
+           style="font-size:3.52778px;stroke-width:0.264583"> none</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       x="70.799759"
+       y="111.32077"
+       id="text78"><tspan
+         sodipodi:role="line"
+         id="tspan76"
+         x="70.799759"
+         y="111.32077"
+         style="stroke-width:0.174786">ColliderType</tspan></text>
+    <text
+       transform="translate(62.00653,30.735997)"
+       id="text86"
+       y="86.367554"
+       x="9.0714283"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:54.1768;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         x="9.0714283"
+         y="86.367554"><tspan
+           style="font-weight:bold">Enumeration Class</tspan><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">
+</tspan></tspan><tspan
+         x="9.0714283"
+         y="90.77728"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">Defines but does not initalize </tspan></tspan><tspan
+         x="9.0714283"
+         y="95.187009"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">all the names for all the types </tspan></tspan><tspan
+         x="9.0714283"
+         y="99.596738"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">of collider geometric shapes </tspan></tspan><tspan
+         x="9.0714283"
+         y="104.00647"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">in the game. For example, a </tspan></tspan><tspan
+         x="9.0714283"
+         y="108.4162"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">box is a colliderType.
+</tspan></tspan><tspan
+         x="9.0714283"
+         y="112.82592"><tspan
+           style="font-weight:bold">Dependencies:</tspan><tspan
+           style="font-size:3.52778px;stroke-width:0.264583"> none</tspan></tspan></text>
+    <text
+       id="text92"
+       y="110.25169"
+       x="130.66814"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.174786"
+         y="110.25169"
+         x="130.66814"
+         id="tspan90"
+         sodipodi:role="line">CollisionTypes</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:54.1768;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="9.0714283"
+       y="86.367554"
+       id="text100"
+       transform="translate(121.8749,29.666919)"><tspan
+         x="9.0714283"
+         y="86.367554"><tspan
+           style="font-weight:bold">Enumeration Class</tspan><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">
+</tspan></tspan><tspan
+         x="9.0714283"
+         y="90.77728"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">Defines but does not initalize </tspan></tspan><tspan
+         x="9.0714283"
+         y="95.187009"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">all the names for all the </tspan></tspan><tspan
+         x="9.0714283"
+         y="99.596738"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">different effects that will occur </tspan></tspan><tspan
+         x="9.0714283"
+         y="104.00647"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">when two shapes collide. For </tspan></tspan><tspan
+         x="9.0714283"
+         y="108.4162"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">example, &quot;bounce&quot; is a </tspan></tspan><tspan
+         x="9.0714283"
+         y="112.82592"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">collisionType that will let the </tspan></tspan><tspan
+         x="9.0714283"
+         y="117.23565"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">shape bounce when colliding </tspan></tspan><tspan
+         x="9.0714283"
+         y="121.64538"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">with another shape.
+</tspan></tspan><tspan
+         x="9.0714283"
+         y="126.05511"><tspan
+           style="font-weight:bold">Dependencies:</tspan><tspan
+           style="font-size:3.52778px;stroke-width:0.264583"> none</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.99142px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.174786"
+       x="9.8623066"
+       y="188.29439"
+       id="text104"><tspan
+         sodipodi:role="line"
+         id="tspan102"
+         x="9.8623066"
+         y="188.29439"
+         style="stroke-width:0.174786">Collider</tspan></text>
+    <text
+       transform="translate(1.0690779,107.70962)"
+       id="text112"
+       y="86.367554"
+       x="9.0714283"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:54.1768;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         x="9.0714283"
+         y="86.367554"><tspan
+           style="font-weight:bold">Class</tspan><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">
+</tspan></tspan><tspan
+         x="9.0714283"
+         y="90.77728"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">Holds information on the </tspan></tspan><tspan
+         x="9.0714283"
+         y="95.187009"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">colliderType. It defines a </tspan></tspan><tspan
+         x="9.0714283"
+         y="99.596738"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">function that checks if two </tspan></tspan><tspan
+         x="9.0714283"
+         y="104.00647"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">box colliders collide (given </tspan></tspan><tspan
+         x="9.0714283"
+         y="108.4162"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">two boxColliders). It also </tspan></tspan><tspan
+         x="9.0714283"
+         y="112.82592"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">defines a function that checks </tspan></tspan><tspan
+         x="9.0714283"
+         y="117.23565"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">if a physicsObj collides with </tspan></tspan><tspan
+         x="9.0714283"
+         y="121.64538"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">something.
+</tspan></tspan><tspan
+         x="9.0714283"
+         y="126.05511"><tspan
+           style="font-weight:bold">Dependencies:</tspan><tspan
+           style="font-size:3.52778px;stroke-width:0.264583"> Vector3D, </tspan></tspan><tspan
+         x="9.0714283"
+         y="130.46484"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">ColliderType, boxCollider, </tspan></tspan><tspan
+         x="9.0714283"
+         y="134.87457"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">physicsObj</tspan></tspan></text>
+  </g>
+</svg>

@@ -31,7 +31,7 @@ int BoxCollider::checkCollision(Vector3D posA,Vector3D angA,Collider* b,Vector3D
 	}
 }
 
-static int checkCollision(BoxCollider* a,Vector3D posA,Vector3D angA,BoxCollider* b,Vector3D posB,Vector3D angB){
+int BoxCollider::checkCollision(BoxCollider* a,Vector3D posA,Vector3D angA,BoxCollider* b,Vector3D posB,Vector3D angB){
 	//checking colision between two boxes
 	//check collision between all the faces
 	Vector3D* boxA=new Vector3D[3];

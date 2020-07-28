@@ -29,6 +29,10 @@ class Graphics {
 		unsigned int imageSize;
 		unsigned char * data;
 		unsigned int texture;
+
+		unsigned int *buffer_ids;
+		unsigned int num_buffers;
+		
 	public:
 		Graphics();
 		~Graphics();
@@ -49,6 +53,7 @@ class Graphics {
 		void set_key_sensitivity(double);
 		double get_mouse_sensitivity()const;
 		void set_mouse_sensitivity(double);
+		void buffer();
 };
 
 

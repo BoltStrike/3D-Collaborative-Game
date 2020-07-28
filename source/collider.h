@@ -10,6 +10,7 @@ class Collider{
 	Collider(ColliderType);
 	public:
 	Collider();
+	virtual ~Collider();
 	ColliderType getColliderType();
 	virtual int checkCollision(Vector3D,Vector3D,Collider*,Vector3D,Vector3D);
 };

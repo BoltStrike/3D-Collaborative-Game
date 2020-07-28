@@ -10,15 +10,12 @@ else
 endif
 
 #Enable the compiler to know where the standard libraries are
-#STDFLAGS := -isystem "MinGW/lib/gcc/mingw32/9.2.0/include/c++" -isystem "MinGW/include" -static-libgcc -static-libstdc++
-
 STDFLAGS := -isystem "mingw64" -isystem "mingw64/include" -isystem "mingw64/include/c++/10.1.0" -isystem "mingw64/lib/gcc/x86_64-w64-mingw32/10.1.0" -static-libgcc -static-libstdc++ -static
 
 #Compile it as a Position Independent Executable (PIE)
 CFLAGS := -no-pie
 
 #Special flags to get FreeGLUT and OpenGL to work 
-#OGLFLAGS := GLUT-MinGW-3.7.6-6/lib/libglut32.a -lopengl32
 OGLFLAGS := freeglut-MinGW-3.0.0-1/lib/x64/libfreeglut.a -lopengl32
 
 #Special flag to get the math library to work

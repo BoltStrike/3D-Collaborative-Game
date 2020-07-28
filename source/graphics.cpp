@@ -30,12 +30,16 @@ Graphics::Graphics () {
 	window_height = 720;
 	key_sensitivity = 0.05;
 	mouse_sensitivity = 0.1;
+
+	num_buffers = 1;
+	//buffer_ids = new unsigned int[num_buffers];
 	
 }
 
 
 Graphics::~Graphics () {
 	delete [] data;
+	//delete [] buffer_ids;
 }
 
 
@@ -54,7 +58,8 @@ void Graphics::create (int argc, char **argv) {
     std::cout << "Initialized OpenGL context" << std::endl;
     
 	initalization();
-	graphics.load_image("texture.bmp");
+	//graphics.load_image("texture.bmp");
+	//graphics.buffer();
 	
 	glutDisplayFunc(drawTriangle);
 	glutReshapeFunc(handleResize);
@@ -115,6 +120,8 @@ void Graphics::drawTriangle () {
 	glRotatef(yaw, 0.0, 1.0, 0.0);
 	glTranslatef(offset.x, offset.y, offset.z);
 	glTranslatef(0.0, -1.0, -5.0);
+
+	//graphics.buffers[0].Draw();
 	
 	// Ground
 	glBegin(GL_TRIANGLES);
@@ -462,5 +469,42 @@ double Graphics::get_mouse_sensitivity () const {
 
 void Graphics::set_mouse_sensitivity (double new_mouse_sensitivity) {
 	mouse_sensitivity = new_mouse_sensitivity;
+}
+
+
+void Graphics::buffer () {
+	glGenBuffers(num_buffers, buffer_ids);
+	glBindBuffer(GL_ARRAY_BUFFER, buffer_ids[0]);
+
+
+	/*
+	unsigned int numVertices = 4;
+	
+
+	glGenBuffers(1, buffers);
+	glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
+
+	buffers[0].glBegin(GL_QUADS);
+	buffers[0].glColor3f(1.0, 0.0, 0.0);
+	buffers[0].glVertex3f(20.0, 5.0, 20.0);
+	
+	buffers[0].glColor3f(0.0, 1.0, 0.0);
+	buffers[0].glVertex3f(-20.0, 5.0, 20.0);
+	
+	buffers[0].glColor3f(0.0, 1.0, 1.0);
+	buffers[0].glVertex3f(-20.0, 5.0, -20.0);
+	
+	buffers[0].glColor3f(1.0, 0.0, 1.0);
+	buffers[0].glVertex3f(20.0, 5.0, -20.0);
+	buffers[0].glEnd();
+	
+	glBindBuffer(GL_ARRAY_BUFFER, bufA);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufB);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, (char*)0);
+	glColorPointer(3, GL_FLOAT, 0, (char*)(3*sizeof(GLfloat)*numVertices));
+	glDrawElements(GL_QUADS, 1, GL_UNSIGNED_INT, (char*)0);
+	*/
 }
 
