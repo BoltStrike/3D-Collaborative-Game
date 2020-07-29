@@ -14,5 +14,6 @@ class DynamicPhysicsObj: public PhysicsObj{
 	
 	public:
 	void update(PhysicsObj*,long,long,double);
+	virtual CollisionType uponCollision();
 };
 #endif

@@ -37,3 +37,8 @@ void DynamicPhysicsObj::update(PhysicsObj* collisionList,long collisionListSize,
 		}
 	}
 }
+
+CollisionType DynamicPhysicsObj::uponCollision() {
+	CollisionType stop;
+	return stop;
+}

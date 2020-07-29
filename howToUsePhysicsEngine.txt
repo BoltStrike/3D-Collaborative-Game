@@ -1,0 +1,31 @@
+Information:
+Vector3D
+	is a 3 dimentional vercor
+	can hold either x,y,z or yaw,pitch,roll information
+Colliders:
+	BoxCollider:
+		creates a box shaped collider values are in x,y,z order when rotation=(0,0,0)
+	Rotation of the base object is accounted for in each collider
+
+
+How to use the physics engin:
+1. import "physics.h"
+2. select a parent class
+	a. use StaticPhysicsObj if the item type is not going to move
+		only has a position, roatation, and collider
+	b. use DynamicPhysicsObj if it is going to move
+		has position, velocity, acceleration, rotation, angular velocity, and collider
+3. use a constructor
+		The default constructor is ill advised, as it puts everything at the origin with a 1x1x1 box collider.
+4. impliment CollisionType uponCollision();
+	use the collisionType enum to decide how this item should interact with others
+	Eventualy the idea is to have an Item ID/name be passed in, so things can collide diffently
+5. keep track of the objects
+	Every PhysicsObj must be stored in one list
+	Every DynamicPhysicsObj must have its update function called once per physics frame
+		the suplied deltaT can be the time between each phisics tick
+		This will handel everything including collisions
+
+Notes on current implimentation:
+	Only a box collider exist - more to come
+	if two objects collide nothing happens - will be fixed
