@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 
-#include "geometry.hpp"
+#include "geometry.h"
 #include <cmath>
 
 Geometry::Geometry () {
@@ -21,7 +21,6 @@ Geometry::Geometry () {
 	mouse_y = 0;
 	pos=Vector3D(0.3,0.6,0.9);
 	offset=Vector3D(0.0,0.0,0.0);
-	angle = 0.0;
 	pitch = 0.0; // up and down
 	yaw = 0.0; // side to side
 }
@@ -40,16 +39,6 @@ Vector3D Geometry::get_position () const {
 
 void Geometry::set_position (Vector3D pos) {
 	this->pos=pos;
-}
-
-
-double Geometry::get_angle () const {
-	return angle;
-}
-
-
-void Geometry::set_angle (double new_angle) {
-	angle = new_angle;
 }
 
 

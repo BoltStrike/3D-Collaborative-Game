@@ -7,13 +7,9 @@
 *****************************************************************************/
 
 
-#include "graphics.hpp"
-#include "geometry.hpp"
-
-// the GLUT and OpenGL libraries have to be linked correctly
-#include <windows.h>
+// the GLFW and OpenGL libraries have to be linked correctly
 #include "../glad/glad.h"
-#include "../freeglut-MinGW-3.0.0-1/include/GL/freeglut.h"
+#include "../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
 
 #include <cmath>
 #include <fstream> 
@@ -21,185 +17,258 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "graphics.h"
+#include "geometry.h"
 
 // The ONLY global object
 Graphics graphics;
 
+
 Graphics::Graphics () {
 	window_width = 1280;
 	window_height = 720;
-	key_sensitivity = 0.05;
+	key_sensitivity = 1;
 	mouse_sensitivity = 0.1;
-
-	num_buffers = 1;
-	//buffer_ids = new unsigned int[num_buffers];
-	
 }
 
 
 Graphics::~Graphics () {
-	delete [] data;
-	//delete [] buffer_ids;
+
 }
 
 
 void Graphics::create (int argc, char **argv) {
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(graphics.window_width, graphics.window_height);
-    glutInitWindowPosition(100, 100);
-    graphics.window_id = glutCreateWindow("OpenGL - Creating a triangle");
-    
-	if (!gladLoadGL()) {
-        std::cout << "Failed to initialize OpenGL context" << std::endl;
-        system("pause");
+	const char *vertexShaderSource = graphics.get_vertex_shader();
+	const char *fragmentShaderSource = graphics.get_fragment_shader();
+	int SCR_WIDTH = graphics.window_width;
+	int SCR_HEIGHT = graphics.window_height;
+
+	// glfw: initialize and configure
+    glfwInit();
+    glfwSetErrorCallback(error_callback);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    // glfw window creation
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+    if (window == NULL)
+    {
+        std::cout << "Failed to create GLFW window" << std::endl;
+        glfwTerminate();
         return;
     }
-    std::cout << "Initialized OpenGL context" << std::endl;
-    
-	initalization();
-	//graphics.load_image("texture.bmp");
-	//graphics.buffer();
-	
-	glutDisplayFunc(drawTriangle);
-	glutReshapeFunc(handleResize);
-	glutIdleFunc(updateWindow);
-	// Update the window every 25 milliseconds
-	//glutTimerFunc(25, updateWindow, 0);
-	glutKeyboardFunc(keyboard);
-	glutKeyboardUpFunc(keyboard_up);
-	glutSpecialFunc(special_keyboard);
-	glutSpecialUpFunc(special_keyboard_up);
-	glutMotionFunc(mouse_movement);
-	glutPassiveMotionFunc(mouse_movement);
-	glutSetCursor(GLUT_CURSOR_NONE);
-	std::cout << "Initalization complete, starting glutMainLoop()" << std::endl;
-    glutMainLoop();
+    glfwMakeContextCurrent(window);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+
+    // glad: load all OpenGL function pointers
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        return;
+    }
+
+
+    // build and compile our shader program
+    // vertex shader
+    int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+    glCompileShader(vertexShader);
+    // check for shader compile errors
+    int success;
+    char infoLog[512];
+    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
+    // fragment shader
+    int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+    glCompileShader(fragmentShader);
+    // check for shader compile errors
+    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
+    // link shaders
+    int shaderProgram = glCreateProgram();
+    glAttachShader(shaderProgram, vertexShader);
+    glAttachShader(shaderProgram, fragmentShader);
+    glLinkProgram(shaderProgram);
+    // check for linking errors
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+    if (!success) {
+        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+    }
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
+
+    // set up vertex data (and buffer(s)) and configure vertex attributes
+    float vertices[] = {
+        -0.5f, -0.5f, 0.0f, // left  
+         0.5f, -0.5f, 0.0f, // right 
+         0.0f,  0.5f, 0.0f  // top   
+    }; 
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+
+    unsigned int VBO, VAO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+    glBindBuffer(GL_ARRAY_BUFFER, 0); 
+
+    // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
+    // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
+    glBindVertexArray(0); 
+
+    //initalization();
+
+
+    // uncomment this call to draw in wireframe polygons.
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+    // render loop
+    while (!glfwWindowShouldClose(window))
+    {
+        draw(window, shaderProgram, VAO);
+    }
+
+    // optional: de-allocate all resources once they've outlived their purpose:
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteProgram(shaderProgram);
+
+    // glfw: terminate, clearing all previously allocated GLFW resources.
+    glfwTerminate();
+    return;
 }
 
 
-void Graphics::initalization () {
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_COLOR_MATERIAL);
-	
-	// Set the background color
-	glClearColor(0.7f, 0.8f, 1.0f, 1.0f);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-	glEnable(GL_NORMALIZE);
-	
-}
+void Graphics::draw (GLFWwindow* window, int shaderProgram, unsigned int VAO) {
+	// input
+    key_callback(window);
 
+    // render
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-void Graphics::drawTriangle () {
-	Vector3D position=graphics.geometry.get_position();
-	Vector3D offset=graphics.geometry.get_offset();
-	double angle = graphics.geometry.get_angle();
+    Vector3D offset=graphics.geometry.get_offset();
 	double pitch = graphics.geometry.get_pitch();
-    double yaw = graphics.geometry.get_yaw();
-	
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	double yaw = graphics.geometry.get_yaw();
 
-	// Reset transformations
-	glMatrixMode(GL_PROJECTION);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-
-    // Add an ambient light
-    GLfloat ambientColor[] = {0.2, 0.2, 0.2, 1.0};
-    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor);
-
-    // Add a positioned light
-    GLfloat lightColor0[] = {0.5, 0.5, 0.5, 1.0};
-    GLfloat lightPos0[] = {4.0, 0.0, 8.0, 1.0};
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
-    glLightfv(GL_LIGHT0, GL_POSITION, lightPos0);
-    
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 	// Camera motion
 	glRotatef(pitch, 1.0, 0.0, 0.0);
 	glRotatef(yaw, 0.0, 1.0, 0.0);
 	glTranslatef(offset.x, offset.y, offset.z);
 	glTranslatef(0.0, -1.0, -5.0);
 
-	//graphics.buffers[0].Draw();
 	
-	// Ground
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.0, 0.0, 1.0);
-	glVertex3f(20, 0, 20);
-	glVertex3f(20, 0, -20);
-	glVertex3f(-20, 0, -20);
 
-	glColor3f(1.0, 1.0, 0.0);
-	glVertex3f(20, 0, 20);
-	glVertex3f(-20, 0, 20);
-	glVertex3f(-20, 0, -20);
-	glEnd();
+    // draw our first triangle
+    glUseProgram(shaderProgram);
+    glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 
-    // Create the 3D cube
-
-    // BACK
-    glBegin(GL_POLYGON);
-    glColor3f(0.5, 0.3, 0.2);
-    glVertex3f(position.x, -position.y, position.z);
-    glVertex3f(position.x, position.y, position.z);
-    glVertex3f(-position.x, position.y, position.z);
-    glVertex3f(-position.x, -position.y, position.z);
-    glEnd();
-
-    // FRONT
-    glBegin(GL_POLYGON);
-    glColor3f(0.0, 0.5, 0.0);
-    glVertex3f(-position.x, position.y, -position.z);
-    glVertex3f(-position.x, -position.y, -position.z);
-    glVertex3f(position.x, -position.y, -position.z);
-    glVertex3f(position.x, position.y, -position.z);
-    glEnd();
-
-    // LEFT
-    glBegin(GL_POLYGON);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex3f(-position.x, -position.y, -position.z);
-    glVertex3f(-position.x, -position.y, position.z);
-    glVertex3f(-position.x, position.y, position.z);
-    glVertex3f(-position.x, position.y, -position.z);
-    glEnd();
-
-
-    // RIGHT
-    glBegin(GL_POLYGON);
-    glColor3f(0.0, 0.0, 0.0);
-    glVertex3f(position.x, -position.y, -position.z);
-    glVertex3f(position.x, -position.y, position.z);
-    glVertex3f(position.x, position.y, position.z);
-    glVertex3f(position.x, position.y, -position.z);
-    glEnd();
-
-    // TOP
-    glBegin(GL_POLYGON);
-    glColor3f(0.6, 0.0, 0.0);
-    glVertex3f(position.x, position.y, position.z);
-    glVertex3f(-position.x, position.y, position.z);
-    glVertex3f(-position.x, position.y, -position.z);
-    glVertex3f(position.x, position.y, -position.z);
-    glEnd();
-
-
-    // BOTTOM
-    glBegin(GL_POLYGON);
-    glColor3f(0.3, 0.0, 0.3);
-    glVertex3f(-position.x, -position.y, -position.z);
-    glVertex3f(-position.x, -position.y, position.z);
-    glVertex3f(position.x, -position.y, position.z);
-    glVertex3f(position.x, -position.y, -position.z);
-    glEnd();
-
-
-	
+	glRotatef(pitch, 1.0, 0.0, 0.0);
+	glRotatef(yaw, 0.0, 1.0, 0.0);
+	glTranslatef(offset.x, offset.y, offset.z);
+	glTranslatef(0.0, -1.0, -5.0);
+    
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    // glBindVertexArray(0); // no need to unbind it every time 
 
     glFlush();
-    glutSwapBuffers();
-    std::cout << "Draw complete" << std::endl;
+
+    // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+}
+
+// glfw: whenever the window size changed (by OS or user resize) this callback function executes
+void Graphics::framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    // make sure the viewport matches the new window dimensions; note that width and 
+    // height will be significantly larger than specified on retina displays.
+    glViewport(0, 0, width, height);
+}
+
+
+const char* Graphics::get_vertex_shader () const {
+	return vertexShaderSource;
+}
+
+const char* Graphics::get_fragment_shader () const {
+	return fragmentShaderSource;
+}
+
+void Graphics::error_callback(int error, const char* description)
+{
+    fprintf(stderr, "Error: %s\n", description);
+}
+
+
+void Graphics::key_callback(GLFWwindow* window) {
+	double sens_key = graphics.get_key_sensitivity();
+	Vector3D offset = graphics.geometry.get_offset();
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+    }
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+    	graphics.geometry.set_offset(offset.add(Vector3D(0.0,0.0,-sens_key)));
+    	std::cout << "w" << std::endl;
+    }
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+		graphics.geometry.set_offset(offset.add(Vector3D(-sens_key,0.0,0.0)));
+		std::cout << "a" << std::endl;
+	}
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+		graphics.geometry.set_offset(offset.add(Vector3D(0.0,0.0,sens_key)));
+		std::cout << "s" << std::endl;
+	}
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+		graphics.geometry.set_offset(offset.add(Vector3D(sens_key,0.0,0.0)));
+		std::cout << "d" << std::endl;
+	}
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+		graphics.geometry.set_offset(offset.add(Vector3D(0.0,sens_key,0.0)));
+		std::cout << "q" << std::endl;
+	}
+	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+		graphics.geometry.set_offset(offset.add(Vector3D(0.0,-sens_key,0.0)));
+		std::cout << "e" << std::endl;
+	}
+}
+
+
+void Graphics::initalization () {
+	
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_COLOR_MATERIAL);
+	perspective_gl(45.0, (double)graphics.window_width / (double)graphics.window_height, 1.0, 200.0);
+
+	// Set the background color
+	glClearColor(0.7f, 0.8f, 1.0f, 1.0f);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_NORMALIZE);
 }
 
 
@@ -226,155 +295,16 @@ void Graphics::handleResize (int width, int height) {
 }
 
 
-void Graphics::updateWindow () {
-	double sens_key = graphics.get_key_sensitivity();
-	Vector3D offset = graphics.geometry.get_offset();
-	if (graphics.geometry.get_keyboard_state('w')) {
-		graphics.geometry.set_offset(offset.add(Vector3D(0.0,0.0,-sens_key)));
-	}
-	if (graphics.geometry.get_keyboard_state('a')) {
-		graphics.geometry.set_offset(offset.add(Vector3D(-sens_key,0.0,0.0)));
-	}
-	if (graphics.geometry.get_keyboard_state('s')) {
-		graphics.geometry.set_offset(offset.add(Vector3D(0.0,0.0,sens_key)));
-	}
-	if (graphics.geometry.get_keyboard_state('d')) {
-		graphics.geometry.set_offset(offset.add(Vector3D(sens_key,0.0,0.0)));
-	}
-	if (graphics.geometry.get_keyboard_state('q')) {
-		graphics.geometry.set_offset(offset.add(Vector3D(0.0,sens_key,0.0)));
-	}
-	if (graphics.geometry.get_keyboard_state('e')) {
-		graphics.geometry.set_offset(offset.add(Vector3D(0.0,-sens_key,0.0)));
-	}
-	// ESCAPE key is ASCII code 27
-	if (graphics.geometry.get_keyboard_state(27)) {
-		glutLeaveMainLoop();
-	}
-	
-	if (graphics.geometry.get_special_keyboard_state(GLUT_KEY_UP)) {
-		graphics.geometry.set_pitch(graphics.geometry.get_pitch()+sens_key);
-	}
-	if (graphics.geometry.get_special_keyboard_state(GLUT_KEY_LEFT)) {
-		graphics.geometry.set_yaw(graphics.geometry.get_yaw()-sens_key);
-	}
-	if (graphics.geometry.get_special_keyboard_state(GLUT_KEY_DOWN)) {
-		graphics.geometry.set_pitch(graphics.geometry.get_pitch()-sens_key);
-	}
-	if (graphics.geometry.get_special_keyboard_state(GLUT_KEY_RIGHT)) {
-		graphics.geometry.set_yaw(graphics.geometry.get_yaw()+sens_key);
-	}
-	
-	glutPostRedisplay();
-	//glutTimerFunc(25, updateWindow, 0);
-}
-
-
-void Graphics::keyboard (unsigned char key, int x, int y) {
-	if (key == 'w' || key == 'W') {
-		graphics.geometry.set_keyboard_state('w', true);
-		glutPostRedisplay();
-	}
-	else if (key == 'a' || key == 'A') {
-		graphics.geometry.set_keyboard_state('a', true);
-		glutPostRedisplay();
-	}
-	else if (key == 's' || key == 'S') {
-		graphics.geometry.set_keyboard_state('s', true);
-		glutPostRedisplay();
-	}
-	else if (key == 'd' || key == 'D') {
-		graphics.geometry.set_keyboard_state('d', true);
-		glutPostRedisplay();
-	}
-	else if (key == 'q' || key == 'Q') {
-		graphics.geometry.set_keyboard_state('q', true);
-		glutPostRedisplay();
-	}
-	else if (key == 'e' || key == 'E') {
-		graphics.geometry.set_keyboard_state('e', true);
-		glutPostRedisplay();
-	}
-	// ESCAPE key is ASCII code 27
-	else if (key == 27) {
-		graphics.geometry.set_keyboard_state(27, true);
-		glutPostRedisplay();
-	}
-}
-
-void Graphics::keyboard_up (unsigned char key, int x, int y) {
-	if (key == 'w' || key == 'W') {
-		graphics.geometry.set_keyboard_state('w', false);
-		glutPostRedisplay();
-	}
-	else if (key == 'a' || key == 'A') {
-		graphics.geometry.set_keyboard_state('a', false);
-		glutPostRedisplay();
-	}
-	else if (key == 's' || key == 'S') {
-		graphics.geometry.set_keyboard_state('s', false);
-		glutPostRedisplay();
-	}
-	else if (key == 'd' || key == 'D') {
-		graphics.geometry.set_keyboard_state('d', false);
-		glutPostRedisplay();
-	}
-	else if (key == 'q' || key == 'Q') {
-		graphics.geometry.set_keyboard_state('q', false);
-		glutPostRedisplay();
-	}
-	else if (key == 'e' || key == 'E') {
-		graphics.geometry.set_keyboard_state('e', false);
-		glutPostRedisplay();
-	}
-	// ESCAPE key is ASCII code 27
-	else if (key == 27) {
-		graphics.geometry.set_keyboard_state(27, false);
-		glutPostRedisplay();
-	}
-}
-
-void Graphics::special_keyboard (int key, int x, int y) {
-	if (key == GLUT_KEY_UP) {
-		graphics.geometry.set_special_keyboard_state(GLUT_KEY_UP, true);
-	}
-	else if (key == GLUT_KEY_LEFT) {
-		graphics.geometry.set_special_keyboard_state(GLUT_KEY_LEFT, true);
-	}
-	else if (key == GLUT_KEY_DOWN) {
-		graphics.geometry.set_special_keyboard_state(GLUT_KEY_DOWN, true);
-	}
-	else if (key == GLUT_KEY_RIGHT) {
-		graphics.geometry.set_special_keyboard_state(GLUT_KEY_RIGHT, true);
-	}
-}
-
-void Graphics::special_keyboard_up (int key, int x, int y) {
-	if (key == GLUT_KEY_UP) {
-		graphics.geometry.set_special_keyboard_state(GLUT_KEY_UP, false);
-	}
-	else if (key == GLUT_KEY_LEFT) {
-		graphics.geometry.set_special_keyboard_state(GLUT_KEY_LEFT, false);
-	}
-	else if (key == GLUT_KEY_DOWN) {
-		graphics.geometry.set_special_keyboard_state(GLUT_KEY_DOWN, false);
-	}
-	else if (key == GLUT_KEY_RIGHT) {
-		graphics.geometry.set_special_keyboard_state(GLUT_KEY_RIGHT, false);
-	}
-}
-
-
 void Graphics::mouse_movement (int x, int y) {
 	double sens_mouse = graphics.get_mouse_sensitivity();
 	double w = graphics.window_width;
 	double h = graphics.window_height;
 	graphics.geometry.adjust_view(x, y, w, h, sens_mouse);
 	if (x <= w/4 || x >= w*3/4) {
-		glutWarpPointer(w/2, y);
+		//glutWarpPointer(w/2, y);
 	}
 	if (y <= h/4 || y >= h*3/4) {
-		glutWarpPointer(x, h/2);
+		//glutWarpPointer(x, h/2);
 	}
 }
 
@@ -424,31 +354,6 @@ void Graphics::load_image (const char * imagepath) {
 
 	//Everything is in memory now, the file can be closed
 	fclose(file);
-
-	/*
-	glGenTexture(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture); 
-
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-glGenerateMipmap(GL_TEXTURE_2D);
-
-
-	//maybe? -Answer: No
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2); 
-
-	#version 330 core
-layout (location = 0) in vec3 aPos;
-layout (location = 1) in vec3 aColor;
-layout (location = 2) in vec2 aTexCoord;
-
-out vec3 ourColor;
-out vec2 TexCoord;
-
-glBindTexture(GL_TEXTURE_2D, texture);
-glBindVertexArray(VAO);
-glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); 
-*/
 }
 
 
@@ -469,42 +374,5 @@ double Graphics::get_mouse_sensitivity () const {
 
 void Graphics::set_mouse_sensitivity (double new_mouse_sensitivity) {
 	mouse_sensitivity = new_mouse_sensitivity;
-}
-
-
-void Graphics::buffer () {
-	glGenBuffers(num_buffers, buffer_ids);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer_ids[0]);
-
-
-	/*
-	unsigned int numVertices = 4;
-	
-
-	glGenBuffers(1, buffers);
-	glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-
-	buffers[0].glBegin(GL_QUADS);
-	buffers[0].glColor3f(1.0, 0.0, 0.0);
-	buffers[0].glVertex3f(20.0, 5.0, 20.0);
-	
-	buffers[0].glColor3f(0.0, 1.0, 0.0);
-	buffers[0].glVertex3f(-20.0, 5.0, 20.0);
-	
-	buffers[0].glColor3f(0.0, 1.0, 1.0);
-	buffers[0].glVertex3f(-20.0, 5.0, -20.0);
-	
-	buffers[0].glColor3f(1.0, 0.0, 1.0);
-	buffers[0].glVertex3f(20.0, 5.0, -20.0);
-	buffers[0].glEnd();
-	
-	glBindBuffer(GL_ARRAY_BUFFER, bufA);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufB);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, (char*)0);
-	glColorPointer(3, GL_FLOAT, 0, (char*)(3*sizeof(GLfloat)*numVertices));
-	glDrawElements(GL_QUADS, 1, GL_UNSIGNED_INT, (char*)0);
-	*/
 }
 
