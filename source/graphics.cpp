@@ -173,8 +173,13 @@ void Graphics::draw (GLFWwindow* window, int shaderProgram, unsigned int VAO) {
 	double pitch = graphics.geometry.get_pitch();
 	double yaw = graphics.geometry.get_yaw();
 
+	perspective_gl(45.0, (double)graphics.window_width / (double)graphics.window_height, 1.0, 200.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	glMatrixMode(GL_MODELVIEW);
+	glMatrixMode(GL_TEXTURE);
+	glMatrixMode(GL_PROJECTION);
+	glMatrixMode(GL_COLOR);
 	// Camera motion
 	glRotatef(pitch, 1.0, 0.0, 0.0);
 	glRotatef(yaw, 0.0, 1.0, 0.0);
@@ -234,6 +239,7 @@ void Graphics::key_callback(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
     	graphics.geometry.set_offset(offset.add(Vector3D(0.0,0.0,-sens_key)));
     	std::cout << "w" << std::endl;
+    	std::cout << "Offset: " << graphics.geometry.get_offset().x << ", "<< graphics.geometry.get_offset().y << ", " << graphics.geometry.get_offset().z << std::endl; 
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
 		graphics.geometry.set_offset(offset.add(Vector3D(-sens_key,0.0,0.0)));
