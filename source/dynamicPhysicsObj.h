@@ -7,13 +7,15 @@ class DynamicPhysicsObj: public PhysicsObj{
 	Vector3D velocity;
 	Vector3D acceleration;
 	Vector3D angularVelocity;
-	
-	DynamicPhysicsObj();
-	DynamicPhysicsObj(Vector3D,Vector3D,Collider);
-	DynamicPhysicsObj(Vector3D,Vector3D,Vector3D,Vector3D,Vector3D,Collider);
+	Vector3D gravity;
 	
 	public:
-	void update(PhysicsObj*,long,long,double);
+	DynamicPhysicsObj();
+	DynamicPhysicsObj(Vector3D,Vector3D,Collider);
+	DynamicPhysicsObj(Vector3D,Vector3D,Vector3D,Vector3D,Vector3D,Vector3D,Collider);
+	
+	public:
+	void update(PhysicsObj**,long,long,double);
 	virtual CollisionType uponCollision();
 };
 #endif

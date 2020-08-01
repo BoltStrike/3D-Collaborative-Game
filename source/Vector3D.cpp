@@ -103,3 +103,7 @@ double Vector3D::mag(void){
 						v.x*t[1][0]+v.y*t[1][1]+v.z*t[1][2],
 						v.x*t[2][0]+v.y*t[2][1]+v.z*t[2][2]);
 	}
+
+void Vector3D::display(){
+	std::cout<<"("<<this->x<<", "<<this->y<<" ,"<<this->z<<")";
+}
