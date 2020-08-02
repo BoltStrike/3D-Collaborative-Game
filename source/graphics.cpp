@@ -1,44 +1,23 @@
 /*****************************************************************************
-** File: graphics.hpp
-** Project: Collada Export
-** Author: Andrew Johnson
+** File: graphics.cpp
+** Project: 3D Collaborative Game
 ** Date Created: 12 July 2020
 ** Description: Holds all the functions for the Graphics class
 *****************************************************************************/
 
 
-// the GLFW and OpenGL libraries have to be linked correctly
-#include "../glad/glad.h"
-#include "../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
-
-#include <cmath>
-#include <fstream> 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "graphics.h"
-#include "geometry.h"
-
-// The ONLY global object
-Graphics graphics;
 
 
 Graphics::Graphics () {
-	window_width = 1280;
-	window_height = 720;
-	key_sensitivity = 1;
-	mouse_sensitivity = 0.1;
-}
 
+}
 
 Graphics::~Graphics () {
 
-}
-
-
+<<<<<<< Updated upstream
 void Graphics::create (int argc, char **argv) {
-	const char *vertexShaderSource = graphics.get_vertex_shader();
+	/*const char *vertexShaderSource = graphics.get_vertex_shader();
 	const char *fragmentShaderSource = graphics.get_fragment_shader();
 	int SCR_WIDTH = graphics.window_width;
 	int SCR_HEIGHT = graphics.window_height;
@@ -157,77 +136,29 @@ void Graphics::create (int argc, char **argv) {
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     glfwTerminate();
-    return;
+    return;*/
+=======
+>>>>>>> Stashed changes
 }
 
-
-void Graphics::draw (GLFWwindow* window, int shaderProgram, unsigned int VAO) {
-	// input
-    key_callback(window);
-
-    // render
+void Graphics::draw () {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-
-    Vector3D offset=graphics.geometry.get_offset();
-	double pitch = graphics.geometry.get_pitch();
-	double yaw = graphics.geometry.get_yaw();
-
-	perspective_gl(45.0, (double)graphics.window_width / (double)graphics.window_height, 1.0, 200.0);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glMatrixMode(GL_MODELVIEW);
-	glMatrixMode(GL_TEXTURE);
-	glMatrixMode(GL_PROJECTION);
-	glMatrixMode(GL_COLOR);
-	// Camera motion
-	glRotatef(pitch, 1.0, 0.0, 0.0);
-	glRotatef(yaw, 0.0, 1.0, 0.0);
-	glTranslatef(offset.x, offset.y, offset.z);
-	glTranslatef(0.0, -1.0, -5.0);
-
-	
-
-    // draw our first triangle
-    glUseProgram(shaderProgram);
-    glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-
-	glRotatef(pitch, 1.0, 0.0, 0.0);
-	glRotatef(yaw, 0.0, 1.0, 0.0);
-	glTranslatef(offset.x, offset.y, offset.z);
-	glTranslatef(0.0, -1.0, -5.0);
-    
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-    // glBindVertexArray(0); // no need to unbind it every time 
-
+    //camera.draw();
+    object.draw();
     glFlush();
-
-    // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-}
-
-// glfw: whenever the window size changed (by OS or user resize) this callback function executes
-void Graphics::framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-    // make sure the viewport matches the new window dimensions; note that width and 
-    // height will be significantly larger than specified on retina displays.
-    glViewport(0, 0, width, height);
 }
 
 
-const char* Graphics::get_vertex_shader () const {
-	return vertexShaderSource;
+void Graphics::initialize () {
+	object.initialize();
 }
 
-const char* Graphics::get_fragment_shader () const {
-	return fragmentShaderSource;
-}
 
-void Graphics::error_callback(int error, const char* description)
-{
-    fprintf(stderr, "Error: %s\n", description);
+void Graphics::terminate () {
+	object.deallocate();
 }
+<<<<<<< Updated upstream
 
 
 void Graphics::key_callback(GLFWwindow* window) {
@@ -382,3 +313,12 @@ void Graphics::set_mouse_sensitivity (double new_mouse_sensitivity) {
 	mouse_sensitivity = new_mouse_sensitivity;
 }
 
+int Graphics::getWidth() {
+	return graphics.window_width;
+}
+
+int Graphics::getHeight() {
+	return graphics.window_height;
+}
+=======
+>>>>>>> Stashed changes

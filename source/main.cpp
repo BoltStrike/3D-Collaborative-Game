@@ -1,14 +1,23 @@
 /******************************************************************************
 ** File: main.cpp
-** Project: Collada Export
-** Author: Andrew Johnson
+** Project: 3D Collaborative Game
 ** Date Created: 4 July 2020
 ** Description: Holds the main function of the whole program
 ******************************************************************************/
 
 
-#include "graphics.h"
+<<<<<<< Updated upstream
+=======
+#include "gameEngine.h"
+#include <iostream>
 
+using namespace std;
+>>>>>>> Stashed changes
+
+#include "gameEngine.h"
+#include <iostream>
+
+using namespace std;
 
 /******************************************************************************
 ** Function: main
@@ -19,6 +28,20 @@
 ** Post-Conditions: None
 ******************************************************************************/
 int main (int argc, char **argv) {
-	Graphics::create(argc, argv);
+	GameEngine engine;
+<<<<<<< Updated upstream
+	bool success = engine.initialize(argc, argv);
+=======
+	bool success = engine.initialize();
+>>>>>>> Stashed changes
+	if (success) {
+		engine.run();
+	}
+	else {
+		cout << "Failed to initiallize game engine" << endl;
+	}
+
+	engine.shutdown();
+
 	return 0;
 }

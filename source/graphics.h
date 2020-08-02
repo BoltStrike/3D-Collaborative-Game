@@ -1,7 +1,6 @@
 /******************************************************************************
 ** File: graphics.hpp
-** Project: Collada Export
-** Author: Andrew Johnson
+** Project: 3D Collaborative Game
 ** Date Created: 12 July 2020
 ** Description: Creates an object to handle all OpenGL and GLUT window 
 ** operations and commands
@@ -11,42 +10,27 @@
 #ifndef GRAPHICS_HPP
 #define GRAPHICS_HPP
 
-#include "geometry.h"
+// the GLFW and OpenGL libraries have to be linked correctly
+#ifndef _GLAD_
+#define _GLAD_
+#include "../glad/glad.h"
+#endif
 #include "../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
+
+#include "window_framework.h"
+#include "object.h"
+#include "camera.h"
 
 
 class Graphics {
 	private:
-		Geometry geometry;
-		int window_id;
-		int window_width;
-		int window_height;
-		double key_sensitivity;
-		double mouse_sensitivity;
-		
-		unsigned char header[54];
-		unsigned int dataPos;
-		unsigned int width, height;
-		unsigned int imageSize;
-		unsigned char * data;
-		unsigned int texture;
-
-		const char *vertexShaderSource = "#version 330 core\n"
-			"layout (location = 0) in vec3 aPos;\n"
-			"void main()\n"
-			"{\n"
-			"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-			"}\0";
-		const char *fragmentShaderSource = "#version 330 core\n"
-			"out vec4 FragColor;\n"
-			"void main()\n"
-			"{\n"
-			"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-			"}\n\0";
+		Object object;
+		Camera camera;
 		
 	public:
 		Graphics();
 		~Graphics();
+<<<<<<< Updated upstream
 		static void create(int, char**);
 		static void initalization();
 		static void error_callback(int, const char*);
@@ -65,6 +49,14 @@ class Graphics {
 		const char* get_vertex_shader()const;
 		const char* get_fragment_shader()const;
 		static void framebuffer_size_callback(GLFWwindow*, int, int);
+		int getWidth();
+		int getHeight();
+=======
+		//void start_program(int, char**);
+		void initialize();
+		void draw();
+		void terminate();
+>>>>>>> Stashed changes
 };
 
 
