@@ -65,6 +65,8 @@ class Graphics {
 		const char* get_vertex_shader()const;
 		const char* get_fragment_shader()const;
 		static void framebuffer_size_callback(GLFWwindow*, int, int);
+		int getWidth();
+		int getHeight();
 };
 
 

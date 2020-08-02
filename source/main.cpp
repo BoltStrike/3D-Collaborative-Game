@@ -7,8 +7,11 @@
 ******************************************************************************/
 
 
-#include "graphics.h"
 
+#include "gameEngine.h"
+#include <iostream>
+
+using namespace std;
 
 /******************************************************************************
 ** Function: main
@@ -19,6 +22,16 @@
 ** Post-Conditions: None
 ******************************************************************************/
 int main (int argc, char **argv) {
-	Graphics::create(argc, argv);
+	GameEngine engine;
+	bool success = engine.initialize(argc, argv);
+	if (success) {
+		engine.run();
+	}
+	else {
+		cout << "Failed to initiallize game engine" << endl;
+	}
+
+	engine.shutdown();
+
 	return 0;
 }
