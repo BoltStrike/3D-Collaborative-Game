@@ -12,22 +12,15 @@
 #include <stdlib.h>
 
 #include "graphics.h"
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 #include "geometry.h"
 =======
 >>>>>>> Stashed changes
-=======
-#include "geometry.h"
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 
 
 using namespace std;
 
-<<<<<<< HEAD
 <<<<<<< Updated upstream
-=======
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 //Controls fps cap for game
 int FPS = 60;
 float timeAdd = (1000 / FPS);
@@ -153,7 +146,6 @@ bool GameEngine::initialize(int argc, char** argv) {
 
 	
 	
-<<<<<<< HEAD
 =======
 
 GameEngine::GameEngine () {
@@ -169,8 +161,6 @@ GameEngine::~GameEngine () {
 bool GameEngine::initialize() {
 	framework.initialize();
 >>>>>>> Stashed changes
-=======
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 	return true;
 }
 
@@ -189,10 +179,7 @@ void GameEngine::run() {
 }
 
 void GameEngine::shutdown() {
-<<<<<<< HEAD
 <<<<<<< Updated upstream
-=======
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 	// optional: de-allocate all resources once they've outlived their purpose:
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
@@ -201,35 +188,26 @@ void GameEngine::shutdown() {
 	// glfw: terminate, clearing all previously allocated GLFW resources.
 	glfwTerminate();
 	exit(0);
-<<<<<<< HEAD
 =======
 	graphics.terminate();
 	framework.terminate();
 >>>>>>> Stashed changes
-=======
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 	return;
 }
 
 void GameEngine::processInput() {
-<<<<<<< HEAD
 <<<<<<< Updated upstream
-=======
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 
 }
 
 void GameEngine::update() {
 
-<<<<<<< HEAD
 =======
 	framework.key_callback();
 }
 
 void GameEngine::update() {
 >>>>>>> Stashed changes
-=======
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 	static uint32_t nextTicks = 0;
 	static uint32_t lastTicks = 0;
 	//waits for elapsed time to catch up to the frame rate
@@ -254,16 +232,12 @@ void GameEngine::update() {
 	if (deltat > 0.05f) { deltat = 0.05f; }
 	//cout << deltat << endl;
 
-<<<<<<< HEAD
 <<<<<<< Updated upstream
-=======
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 	if (!glfwWindowShouldClose(window)) {
 		graphics.draw(window, shaderProgram, VAO);
 	}
 	else {
 		shutdown();
-<<<<<<< HEAD
 =======
 	if (!glfwWindowShouldClose(framework.window)) {
 		graphics.draw();
@@ -274,19 +248,13 @@ void GameEngine::update() {
 		shutdown();
 		exit(0);
 >>>>>>> Stashed changes
-=======
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
 	}
 }
 
 void GameEngine::generateOutputs() {
 	//graphics.updateWindow();
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 }
 =======
 }
 >>>>>>> Stashed changes
-=======
-}
->>>>>>> ea22b727cde97addf8bd70078239341323b26e7e
