@@ -6,14 +6,6 @@
 ******************************************************************************/
 
 
-<<<<<<< Updated upstream
-=======
-#include "gameEngine.h"
-#include <iostream>
-
-using namespace std;
->>>>>>> Stashed changes
-
 #include "gameEngine.h"
 #include <iostream>
 
@@ -29,11 +21,7 @@ using namespace std;
 ******************************************************************************/
 int main (int argc, char **argv) {
 	GameEngine engine;
-<<<<<<< Updated upstream
-	bool success = engine.initialize(argc, argv);
-=======
 	bool success = engine.initialize();
->>>>>>> Stashed changes
 	if (success) {
 		engine.run();
 	}

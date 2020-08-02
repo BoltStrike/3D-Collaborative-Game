@@ -30,33 +30,9 @@ class Graphics {
 	public:
 		Graphics();
 		~Graphics();
-<<<<<<< Updated upstream
-		static void create(int, char**);
-		static void initalization();
-		static void error_callback(int, const char*);
-		static void key_callback(GLFWwindow*);
-		static void draw(GLFWwindow*, int, unsigned int);
-		static void handleResize(int, int);
-		static void updateWindow(int);
-		static void mouse_movement(int, int);
-		void load_image(const char*);
-		static void perspective_gl(double, double, double, double);
-		static void util_compat_gluLookAt(float, float, float, float, float, float, float, float, float);
-		double get_key_sensitivity()const;
-		void set_key_sensitivity(double);
-		double get_mouse_sensitivity()const;
-		void set_mouse_sensitivity(double);
-		const char* get_vertex_shader()const;
-		const char* get_fragment_shader()const;
-		static void framebuffer_size_callback(GLFWwindow*, int, int);
-		int getWidth();
-		int getHeight();
-=======
-		//void start_program(int, char**);
 		void initialize();
 		void draw();
 		void terminate();
->>>>>>> Stashed changes
 };
 
 
