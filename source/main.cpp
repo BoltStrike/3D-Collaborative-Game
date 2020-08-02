@@ -1,18 +1,12 @@
 /******************************************************************************
 ** File: main.cpp
-** Project: 3D Collaborative Game
+** Project: Collada Export
+** Author: Andrew Johnson
 ** Date Created: 4 July 2020
 ** Description: Holds the main function of the whole program
 ******************************************************************************/
 
 
-<<<<<<< Updated upstream
-=======
-#include "gameEngine.h"
-#include <iostream>
-
-using namespace std;
->>>>>>> Stashed changes
 
 #include "gameEngine.h"
 #include <iostream>
@@ -29,11 +23,7 @@ using namespace std;
 ******************************************************************************/
 int main (int argc, char **argv) {
 	GameEngine engine;
-<<<<<<< Updated upstream
 	bool success = engine.initialize(argc, argv);
-=======
-	bool success = engine.initialize();
->>>>>>> Stashed changes
 	if (success) {
 		engine.run();
 	}
