@@ -38,7 +38,7 @@ Graphics::~Graphics () {
 
 
 void Graphics::create (int argc, char **argv) {
-	const char *vertexShaderSource = graphics.get_vertex_shader();
+	/*const char *vertexShaderSource = graphics.get_vertex_shader();
 	const char *fragmentShaderSource = graphics.get_fragment_shader();
 	int SCR_WIDTH = graphics.window_width;
 	int SCR_HEIGHT = graphics.window_height;
@@ -157,7 +157,7 @@ void Graphics::create (int argc, char **argv) {
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     glfwTerminate();
-    return;
+    return;*/
 }
 
 
@@ -382,3 +382,10 @@ void Graphics::set_mouse_sensitivity (double new_mouse_sensitivity) {
 	mouse_sensitivity = new_mouse_sensitivity;
 }
 
+int Graphics::getWidth() {
+	return graphics.window_width;
+}
+
+int Graphics::getHeight() {
+	return graphics.window_height;
+}
