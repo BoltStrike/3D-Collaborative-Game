@@ -7,31 +7,31 @@
 ******************************************************************************/
 
 
-#ifndef GRAPHICS_HPP
-#define GRAPHICS_HPP
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
 // the GLFW and OpenGL libraries have to be linked correctly
 #ifndef _GLAD_
 #define _GLAD_
 #include "../glad/glad.h"
 #endif
-#include "../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
 
-#include "window_framework.h"
 #include "object.h"
 #include "camera.h"
 
 
 class Graphics {
 	private:
-		Object object;
+		Object tri1;
 		Camera camera;
+		Object *tri2;
 		
 	public:
 		Graphics();
 		~Graphics();
 		void initialize();
 		void draw();
+		void handle_input(bool*);
 		void terminate();
 };
 

@@ -58,6 +58,11 @@ int WindowFramework::initialize () {
         return -1;
     }
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    framebuffer_size_callback(window, window_width, window_height);
+
+	framebuffer_size_callback(window, window_width, window_height);
+	graphics.initialize();
+    
 	return 0;
 }
 
@@ -89,12 +94,14 @@ void WindowFramework::perspective_gl( double fovY, double aspect, double zNear, 
 
 
 int WindowFramework::render () {
-	key_callback();
+	graphics.draw();
+	glfwSwapBuffers(window);
 	return 0;
 }
 
 
 void WindowFramework::terminate () {
+	graphics.terminate();
 	glfwTerminate();
 }
 
@@ -128,25 +135,48 @@ void WindowFramework::adjust_view (int x, int y, int width, int height, double s
 
 
 void WindowFramework::key_callback() {
+	// Upon press
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, GLFW_TRUE);
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-    	std::cout << "w" << std::endl;
+    	keyboard_state['w'] = true;
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-		std::cout << "a" << std::endl;
+    	keyboard_state['a'] = true;
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-		std::cout << "s" << std::endl;
+		keyboard_state['s'] = true;
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-		std::cout << "d" << std::endl;
+		keyboard_state['d'] = true;
 	}
 	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-		std::cout << "q" << std::endl;
+		keyboard_state['q'] = true;
 	}
 	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-		std::cout << "e" << std::endl;
+		keyboard_state['e'] = true;
 	}
+
+	// Upon release
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_RELEASE) {
+    	keyboard_state['w'] = false;
+    }
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_RELEASE) {
+    	keyboard_state['a'] = false;
+	}
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_RELEASE) {
+		keyboard_state['s'] = false;
+	}
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_RELEASE) {
+		keyboard_state['d'] = false;
+	}
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_RELEASE) {
+		keyboard_state['q'] = false;
+	}
+	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_RELEASE) {
+		keyboard_state['e'] = false;
+	}
+	
+	graphics.handle_input(keyboard_state);
 }

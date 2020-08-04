@@ -20,6 +20,7 @@
 #include "../glad/glad.h"
 #endif
 #include "../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
+#include "graphics.h"
 
 
 class WindowFramework {
@@ -28,6 +29,7 @@ class WindowFramework {
 		double mouse_sensitivity;
 		int mouse_x;
 		int mouse_y;
+		Graphics graphics;
 		bool* keyboard_state;
 		
 	public:

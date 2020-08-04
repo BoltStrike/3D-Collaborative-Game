@@ -11,23 +11,23 @@
 #define CAMERA_H
 
 #include "Vector3D.h"
-#ifndef _GLAD_
-#define _GLAD_
+#ifndef GLAD_H
+#define GLAD_H
 #include "../glad/glad.h"
 #endif
+#include <iostream>
 
 class Camera {
 	private:
-		Vector3D location;
 		double pitch;
 		double yaw;
+		double key_sensitivity;
 	public:
+		Vector3D location;
 		Camera();
 		~Camera();
-		void translate(Vector3D);
-		void rotate_pitch(double);
-		void rotate_yaw(double);
 		void draw();
+		void handle_input(bool*);
 };
 
 

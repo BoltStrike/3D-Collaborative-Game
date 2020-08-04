@@ -8,9 +8,10 @@
 
 #ifndef GAME_ENGINE_H
 #define GAME_ENGINE_H
+#ifndef GLAD_H
+#define GLAD_H
 #include "../glad/glad.h"
-#include "graphics.h"
-
+#endif
 #include "window_framework.h"
 
 class GameEngine {
@@ -32,8 +33,6 @@ public:
 	void shutdown();
 
 	void run();
-
-	Graphics graphics;
 };
 
 #endif 

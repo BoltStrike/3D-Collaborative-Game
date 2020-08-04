@@ -21,18 +21,28 @@ Graphics::~Graphics () {
 void Graphics::draw () {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    //camera.draw();
-    object.draw();
+    tri1.draw(camera);
+    tri2->draw(camera);
+    
     glFlush();
+}
+
+void Graphics::handle_input (bool *keyboard_state) {
+	camera.handle_input(keyboard_state);
 }
 
 
 void Graphics::initialize () {
-	object.initialize();
+	tri1.initialize();
+	const char *filepath = "assets/triangle/";
+	tri2 = new Object(filepath);
+	tri2->initialize();
 }
 
 
 void Graphics::terminate () {
-	object.deallocate();
+	tri1.deallocate();
+	tri2->deallocate();
+	delete tri2;
 }
 

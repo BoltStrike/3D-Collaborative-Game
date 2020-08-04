@@ -30,7 +30,6 @@ GameEngine::~GameEngine () {
 
 bool GameEngine::initialize() {
 	framework.initialize();
-	graphics.initialize();
 	return true;
 }
 
@@ -49,7 +48,6 @@ void GameEngine::run() {
 }
 
 void GameEngine::shutdown() {
-	graphics.terminate();
 	framework.terminate();
 	return;
 }
@@ -83,8 +81,7 @@ void GameEngine::update() {
 	if (deltat > 0.05f) { deltat = 0.05f; }
 	//cout << deltat << endl;
 	if (!glfwWindowShouldClose(framework.window)) {
-		graphics.draw();
-		glfwSwapBuffers(framework.window);
+		framework.render();
 		glfwPollEvents();
 	}
 	else {
