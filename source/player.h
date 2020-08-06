@@ -3,7 +3,7 @@
 
 #include "physics.h"
 
-class Player:public DynamicPhysicsObj{
+class Player: public DynamicPhysicsObj{
 	public:
 	Vector3D camPosOffset;
 	Vector3D camRotOffset;
@@ -11,6 +11,6 @@ class Player:public DynamicPhysicsObj{
 	~Player();
 	Vector3D getCamPos();
 	Vector3D getCamRot();
-}
+};
 
 #endif
