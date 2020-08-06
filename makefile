@@ -10,7 +10,7 @@ else
 endif
 
 
-ifeq ($(OS), Window_NT)
+ifeq ($(shell echo "check_quotes"),"check_quotes")
 	#Enable the compiler to know where the standard libraries are
 	STDFLAGS := -isystem "mingw64" -static
 	#Flag to link GLFW
