@@ -1,22 +1,6 @@
 #include "gameEngine.h"
 
-#include <stdlib.h>
-#include <windows.h>
-
-//#include "../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
-
-#include <cmath>
-#include <fstream> 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "graphics.h"
-
-
 using namespace std;
-
-
 
 GameEngine::GameEngine () {
 	//Controls fps cap for game

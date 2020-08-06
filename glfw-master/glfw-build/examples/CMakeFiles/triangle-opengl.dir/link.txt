@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/triangle-opengl.dir/triangle-opengl.c.o CMakeFiles/triangle-opengl.dir/__/deps/glad_gl.c.o  -o triangle-opengl  -Wl,-rpath,/home/irifulmin/Documents/personalDocuments/programming/3D-Collaborative-Game/glfw-master/glfw-build/src ../src/libglfw.so.3.4 -lm 
