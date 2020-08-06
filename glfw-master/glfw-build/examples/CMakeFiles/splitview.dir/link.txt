@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/splitview.dir/splitview.c.o CMakeFiles/splitview.dir/__/deps/glad_gl.c.o  -o splitview  -Wl,-rpath,/home/irifulmin/Documents/personalDocuments/programming/3D-Collaborative-Game/glfw-master/glfw-build/src ../src/libglfw.so.3.4 -lm 

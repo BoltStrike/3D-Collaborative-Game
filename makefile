@@ -9,14 +9,29 @@ else
 	CFLAGS := -DNDEBG -03
 endif
 
-#Enable the compiler to know where the standard libraries are
-STDFLAGS := -isystem "mingw64" -isystem "mingw64/include" -isystem "mingw64/include/c++/10.1.0" -isystem "mingw64/lib/gcc/x86_64-w64-mingw32/10.1.0" -static-libgcc -static-libstdc++ -static
+
+ifeq ($(shell echo "check_quotes"),"check_quotes")
+	#Enable the compiler to know where the standard libraries are
+	STDFLAGS := -isystem "mingw64" -static
+	#Flag to link GLFW
+	GLFWFLAG := glfw-3.3.2.bin.WIN64/lib-mingw-w64/libglfw3dll.a
+	#Flag to link OpenGL
+	GLFLAG := -lopengl32
+	#Setting left blank to let Windows search CD for libraries
+	LIBFLAG := 
+else
+	#STDFLAGS left blank to use standard Linux g++ complier
+	STDFLAGS := 
+	#Flag to link GLFW Linux version
+	GLFWFLAG := glfw-master/glfw-build/src/libglfw.so 
+	#Flag to link OpenGL Linux version
+	GLFLAG := -lGL -ldl
+	#Additional setting to get GLFW to run
+	LIBFLAG := "-Wl,-rpath,$(PWD)/glfw-master/glfw-build/src/"
+endif 
 
 #Compile it as a Position Independent Executable (PIE)
 CFLAGS := -no-pie
-
-#Special flags to get FreeGLUT and OpenGL to work 
-OGLFLAGS := freeglut-MinGW-3.0.0-1/lib/x64/libfreeglut.a -lopengl32
 
 #Special flag to get the math library to work
 MATHFLAG := -lm
@@ -27,13 +42,12 @@ OBJ_DIR := objects
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
-#Compile all .cpp files in the source directory and glad in the glad directory
 $(exe_file): $(OBJ_FILES) $(OBJ_DIR)/glad.o
-	$(CC) -o $@ $^ $(STDFLAGS) $(CFLAGS) $(MATHFLAG) $(OGLFLAGS)
+	$(CC) -o $@ $^ $(STDFLAGS) $(CFLAGS) $(MATHFLAG) $(GLFWFLAG) $(GLFLAG) $(LIBFLAG)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) -c -o $@ $<
 $(OBJ_DIR)/glad.o: glad/glad.c
-	$(CC) -c glad/glad.c -o $(OBJ_DIR)/glad.o $(CFLAGS)
+	$(CC) $(CFLAGS) -c -o $(OBJ_DIR)/glad.o glad/glad.c
 
 clean:
 	rm -rf $(exe_file) *.o

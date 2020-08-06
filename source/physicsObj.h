@@ -4,7 +4,7 @@
 #include "Vector3D.h"
 #include "collider.h"
 #include "collisionType.h"
-#include "BoxCollider.h"
+#include "boxCollider.h"
 class PhysicsObj{
 	protected:
 	Vector3D* position;
