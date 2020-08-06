@@ -6,6 +6,7 @@
 ******************************************************************************/
 
 
+
 #include "gameEngine.h"
 #include <iostream>
 
@@ -19,6 +20,8 @@ using namespace std;
 ** Pre-Conditions: None
 ** Post-Conditions: None
 ******************************************************************************/
+#include "physicsTestKit.h"
+using namespace std;
 int main (int argc, char **argv) {
 	GameEngine engine;
 	bool success = engine.initialize();

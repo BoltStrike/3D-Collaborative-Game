@@ -6,15 +6,16 @@
 
 class BoxCollider:public Collider{
 	private:
-	Vector3D normals[3];
+	Vector3D* normals[3];
 	public:
 	BoxCollider();//:Collider(ColliderType::box);
-	BoxCollider(Vector3D,Vector3D,Vector3D);//:Collider(ColliderType::box);
+	BoxCollider(Vector3D*,Vector3D*,Vector3D*);//:Collider(ColliderType::box);
 	BoxCollider(double,double,double);//:Collider(ColliderType::box);
-	Vector3D* getNormals();
-	int checkCollision(Vector3D,Vector3D,Collider*,Vector3D,Vector3D);
+	virtual ~BoxCollider();
+	Vector3D** getNormals();
+	int checkCollision(Vector3D*,Vector3D*,Collider*,Vector3D*,Vector3D*);
 	private:
-	static int checkCollision(BoxCollider*,Vector3D,Vector3D,BoxCollider*,Vector3D,Vector3D);
+	static int checkCollision(BoxCollider*,Vector3D*,Vector3D*,BoxCollider*,Vector3D*,Vector3D*);
 };
-	static bool lineVsBox(Vector3D,Vector3D,Vector3D,Vector3D*,Vector3D );
+	static bool lineVsBox(Vector3D,Vector3D,Vector3D,Vector3D*,Vector3D* );
 #endif

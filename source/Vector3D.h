@@ -1,5 +1,6 @@
 #ifndef Vector3D_h
 #define Vector3D_h
+#include <iostream>
 class Vector3D{
 	public:
 	double x;
@@ -8,6 +9,7 @@ class Vector3D{
 	Vector3D(double x,double y,double z);
 	Vector3D(double* val);
 	Vector3D();
+	Vector3D( const Vector3D &obj);
 	//returns the magnatude of the vector
 	double mag(void);
 
@@ -29,6 +31,8 @@ class Vector3D{
 	Vector3D operator-();
 	
 	bool isZero();
+	
+	void display();
 	
 };
 	//dot product

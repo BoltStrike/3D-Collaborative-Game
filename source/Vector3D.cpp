@@ -18,7 +18,11 @@ using namespace std;
 		this->y=val[1];
 		this->z=val[2];
 	}
-
+	Vector3D::Vector3D(const Vector3D &obj){
+		this->x=obj.x;
+		this->y=obj.y;
+		this->z=obj.z;
+	}
 	//returns the magnatude of the vector
 double Vector3D::mag(void){
 		return sqrt((x*x)+(y*y)+(z*z));
@@ -103,3 +107,7 @@ double Vector3D::mag(void){
 						v.x*t[1][0]+v.y*t[1][1]+v.z*t[1][2],
 						v.x*t[2][0]+v.y*t[2][1]+v.z*t[2][2]);
 	}
+
+void Vector3D::display(){
+	std::cout<<"("<<this->x<<", "<<this->y<<" ,"<<this->z<<")";
+}
