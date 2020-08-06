@@ -7,18 +7,19 @@
 #include "BoxCollider.h"
 class PhysicsObj{
 	protected:
-	Vector3D position;
-	Vector3D rotation;
-	Collider collider;
+	Vector3D* position;
+	Vector3D* rotation;
+	Collider* collider;
 	public:
 	PhysicsObj();
-	PhysicsObj(Vector3D,Vector3D,Collider);
+	PhysicsObj(Vector3D*,Vector3D*,Collider*);
+	virtual ~PhysicsObj();
 	
 	public:
-	Vector3D getPosition();
-	Vector3D getRotation();
+	Vector3D* getPosition();
+	Vector3D* getRotation();
 	Collider* getCollider();
-	bool checkCollision(Collider*,Vector3D,Vector3D);
+	bool checkCollision(Collider*,Vector3D*,Vector3D*);
 	virtual CollisionType uponCollision();
 };
 #endif

@@ -5,7 +5,8 @@
 class StaticTestBox: public StaticPhysicsObj{
 	public:
 	StaticTestBox();
-	StaticTestBox(Vector3D,Vector3D);
+	StaticTestBox(Vector3D*,Vector3D*);
+	virtual ~StaticTestBox();
 	CollisionType uponCollision();	
 };
 

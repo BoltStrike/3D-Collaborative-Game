@@ -5,7 +5,8 @@
 class DynamicTestBox: public DynamicPhysicsObj{
 	public:
 	DynamicTestBox();
-	DynamicTestBox(Vector3D,Vector3D);
+	DynamicTestBox(Vector3D*,Vector3D*);
+	virtual ~DynamicTestBox();
 	CollisionType uponCollision();	
 };
 

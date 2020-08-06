@@ -18,7 +18,11 @@ using namespace std;
 		this->y=val[1];
 		this->z=val[2];
 	}
-
+	Vector3D::Vector3D(const Vector3D &obj){
+		this->x=obj.x;
+		this->y=obj.y;
+		this->z=obj.z;
+	}
 	//returns the magnatude of the vector
 double Vector3D::mag(void){
 		return sqrt((x*x)+(y*y)+(z*z));

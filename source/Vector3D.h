@@ -9,6 +9,7 @@ class Vector3D{
 	Vector3D(double x,double y,double z);
 	Vector3D(double* val);
 	Vector3D();
+	Vector3D( const Vector3D &obj);
 	//returns the magnatude of the vector
 	double mag(void);
 
