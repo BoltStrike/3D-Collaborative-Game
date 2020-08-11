@@ -1,7 +1,6 @@
 /*****************************************************************************
 ** File: object.h
 ** Project: 3D Collaborative Game
-** Author: Andrew Johnson
 ** Date Created: 1 August 2020
 ** Description: Holds all the functions for the Object class
 *****************************************************************************/
@@ -23,18 +22,23 @@
 #include <cstring>
 
 #include "camera.h"
+#include "xml_object.h"
+#include "wavefront.h"
 
 class Object {
 	private:
 		char *vertexShaderSource;
 		char *fragmentShaderSource;
+		unsigned int num_vertices;
 		float *vertices;
+		Wavefront verts;
 		int shaderProgram;
 		int offsetLocation;
 		int perspectiveMatrixUnif;
 		float theMatrix[16];
 		unsigned int VAO;
 		unsigned int VBO;
+		unsigned int elementbuffer;
 
 		unsigned char header[54];
 		unsigned int dataPos;
@@ -46,6 +50,7 @@ class Object {
 		Object();
 		Object(const char*);
 		~Object();
+		void load(const char*);
 		int initialize();
 		void draw(Camera);
 		void deallocate();

@@ -22,9 +22,9 @@
 
 class Graphics {
 	private:
-		Object tri1;
+		unsigned int num_objects;
+		Object *objects_array;
 		Camera camera;
-		Object *tri2;
 		
 	public:
 		Graphics();

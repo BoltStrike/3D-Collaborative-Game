@@ -1,7 +1,6 @@
 /*****************************************************************************
 ** File: object.cpp
 ** Project: 3D Collaborative Game
-** Author: Andrew Johnson
 ** Date Created: 1 August 2020
 ** Description: Holds all the functions for the Object class
 *****************************************************************************/
@@ -12,42 +11,36 @@
 
 
 Object::Object () {
-	vertexShaderSource = load_file("assets/triangle/vertex_shader.vert");
-	fragmentShaderSource = load_file("assets/triangle/fragment_shader.frag");
-	vertices = new float[9];
-	vertices[0] = 20.0f;
-	vertices[1] = -0.5f;
-	vertices[2] = 20.0f;
-	vertices[3] = 20.0f;
-	vertices[4] = -0.5f;
-	vertices[5] = -20.0f;
-	vertices[6] = -20.0f;
-	vertices[7] = -0.5f;
-	vertices[8] = -20.0f;
+
 }
 
 Object::Object (const char *filepath) {
-	char path[200];
-	strcpy(path, filepath);
-	vertexShaderSource = load_file(strcat(path, "vertex_shader.vert"));
-	strcpy(path, filepath);
-	fragmentShaderSource = load_file(strcat(path, "fragment_shader2.frag"));
-	vertices = new float[9];
-	vertices[0] = 20.0f;
-	vertices[1] = -0.5f;
-	vertices[2] = 20.0f;
-	vertices[3] = -20.0f;
-	vertices[4] = -0.5f;
-	vertices[5] = 20.0f;
-	vertices[6] = -20.0f;
-	vertices[7] = -0.5f;
-	vertices[8] = -20.0f;
+	load(filepath);
 }
 
 Object::~Object () {
 	delete [] vertices;
 	delete [] vertexShaderSource;
 	delete [] fragmentShaderSource;
+}
+
+void Object::load (const char *filepath) {
+	unsigned int length = strlen(filepath);
+	char *path = new char[length+100];
+	strcpy(path, filepath);
+	vertexShaderSource = load_file(strcat(path, "vertex_shader.vert"));
+	strcpy(path, filepath);
+	fragmentShaderSource = load_file(strcat(path, "fragment_shader.frag"));
+	strcpy(path, filepath);
+
+
+	vertices = verts.get_vertices(strcat(path, "vertices.obj"));
+	num_vertices = verts.num_verts;
+	verts.print();
+	std::cout << verts.num_vertex_indices << std::endl;
+	delete [] path;
+	initialize();
+	std::cout << "initializeation done" << std::endl;
 }
 
 int Object::initialize () {
@@ -106,7 +99,6 @@ int Object::initialize () {
 	glUniformMatrix4fv(perspectiveMatrixUnif, 1, GL_FALSE, theMatrix);
 	glUseProgram(0);
 
-
     // set up vertex data (and buffer(s)) and configure vertex attributes
 
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -114,17 +106,20 @@ int Object::initialize () {
 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+
+	glGenBuffers(1, &elementbuffer);
+	
+    
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
     glBindVertexArray(VAO);
 
-    
-	glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_VERTEX_ARRAY);
 
     return 0;
 }
 
 void Object::draw (Camera camera) {
-	glUseProgram(shaderProgram);
+    glUseProgram(shaderProgram);
 
 	float xoffset = 0.5f+camera.location.x;
 	float yoffset = 0.0f+camera.location.y;
@@ -134,7 +129,11 @@ void Object::draw (Camera camera) {
 	glUniform4f(offsetLocation, xoffset*-1, yoffset, zoffset, woffset);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, 9*sizeof(vertices[0]), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, num_vertices*sizeof(vertices[0]), vertices, GL_STATIC_DRAW);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, verts.num_vertex_indices*sizeof(verts.vertex_indices[0]), verts.vertex_indices, GL_STATIC_DRAW);
+
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
@@ -146,36 +145,19 @@ void Object::draw (Camera camera) {
     // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
     glBindVertexArray(0); 
 
-    
-/*
-    //glClear(GL_COLOR_BUFFER_BIT);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, 9*sizeof(vertices[0]), vertices, GL_STATIC_DRAW);
-	glVertexPointer(3, GL_FLOAT, 0, 0);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDisableClientState(GL_VERTEX_ARRAY);
-*/
-
     glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-/*
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, vertices);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDisableClientState(GL_VERTEX_ARRAY);
-*/
 
     glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    
+    //glDrawArrays(GL_TRIANGLES, 0, num_vertices*3);
     // glBindVertexArray(0); // no need to unbind it every time 
-
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	glDrawElements(GL_TRIANGLES, verts.num_vertex_indices, GL_UNSIGNED_INT, (void*)0);
+	
 	glDisableVertexAttribArray(0);
 	glUseProgram(0);
     
     glDisableClientState(GL_VERTEX_ARRAY);
-
 }
 
 void Object::deallocate () {
