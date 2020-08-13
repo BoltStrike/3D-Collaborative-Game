@@ -16,6 +16,7 @@
 #include "../glad/glad.h"
 #endif
 #include <iostream>
+#include <cmath>
 
 class Camera {
 	private:

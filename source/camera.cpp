@@ -11,11 +11,11 @@
 
 
 Camera::Camera () {
-	location = Vector3D(0.0, 0.0, 0.0);
+	location = Vector3D(1.0, 1.0, 1.0);
 	pitch = 2.0;
 	yaw = 2.0;
 	key_sensitivity = 0.1;
-	mouse_sensitivity = 0.1;
+	mouse_sensitivity = 0.001;
 	mouse_x = 0.0;
 	mouse_y = 0.0;
 }
@@ -55,8 +55,14 @@ void Camera::handle_mouse (double x, double y, double w, double h) {
 		y = h/2;
 		mouse_y = h/2;
 	}
+	
 	yaw += mouse_sensitivity*(x-mouse_x);
 	pitch += mouse_sensitivity*(y-mouse_y);
-	mouse_x = x;
-	mouse_y = y;
+	
+	if (mouse_x != x || mouse_y != y) {
+		mouse_x = x;
+		mouse_y = y;
+		double magnitude = sqrt(location.x*location.x+location.z*location.z);
+		location = Vector3D(magnitude*cos(yaw), -magnitude*sin(pitch), magnitude*-sin(yaw));
+	}
 }
