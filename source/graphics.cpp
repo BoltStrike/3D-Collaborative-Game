@@ -36,11 +36,11 @@ void Graphics::handle_input (bool *keyboard_state) {
 void Graphics::initialize () {
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
-	num_objects = 3;
+	num_objects = 1;
 	objects_array = new Object[num_objects];
-	objects_array[0].load("assets/export_triangle/");
-	objects_array[1].load("assets/export_triangle2/");
-	objects_array[2].load("assets/cube/");
+	//objects_array[0].load("assets/export_triangle/");
+	//objects_array[1].load("assets/export_triangle2/");
+	objects_array[0].load("assets/building/");
 }
 
 

@@ -38,12 +38,18 @@ void Object::load (const char *filepath) {
 	num_vertices = verts.num_verts;
 	verts.print();
 	std::cout << verts.num_vertex_indices << std::endl;
+
+	strcpy(path, filepath);
+	load_image(strcat(path, "texture.bmp"));
+	
 	delete [] path;
+
+	
 	initialize();
 	std::cout << "initializeation done" << std::endl;
 }
 
-int Object::initialize () {
+void Object::do_shaders () {
 	// build and compile our shader program
     // vertex shader
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -98,23 +104,87 @@ int Object::initialize () {
 	glUseProgram(shaderProgram);
 	glUniformMatrix4fv(perspectiveMatrixUnif, 1, GL_FALSE, theMatrix);
 	glUseProgram(0);
+}
 
-    // set up vertex data (and buffer(s)) and configure vertex attributes
 
+void Object::create_buffers () {
 	glEnableClientState(GL_VERTEX_ARRAY);
+	
+	
     //glEnableClientState(GL_COLOR_ARRAY);
 
     glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-
-	glGenBuffers(1, &elementbuffer);
 	
+	glBindVertexArray(VAO);
+    
+    glGenBuffers(2, VBO);
+
+    glGenTextures(1, &tex);
+
+    glBindTexture(GL_TEXTURE_2D, tex);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+/*
+	// Black/white checkerboard
+	float pixels[] = {
+		0.0f, 0.0f, 0.0f,   1.0f, 1.0f, 1.0f,
+		1.0f, 1.0f, 1.0f,   0.0f, 0.0f, 0.0f
+	};
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2, 2, 0, GL_RGB, GL_FLOAT, pixels);
+	*/
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	
+
+	//glGenBuffers(1, &elementbuffer);
+
+	// First buffer vertices
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+	glBufferData(GL_ARRAY_BUFFER, verts.num_combined*sizeof(verts.combined[0]), verts.combined, GL_STATIC_DRAW);
+	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
+    glEnableVertexAttribArray(posAttrib);
+	glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 8*sizeof(verts.combined[0]), 0);
+	GLint texAttrib = glGetAttribLocation(shaderProgram, "texcoord");
+	glEnableVertexAttribArray(texAttrib);
+	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8*sizeof(verts.combined[0]), (void*)(3*sizeof(verts.combined[0])));
+/*
+	// Second buffer texture UV coordinates
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+	glBufferData(GL_ARRAY_BUFFER, verts.num_texture_coors*sizeof(verts.texture_coors[0]), verts.texture_coors, GL_STATIC_DRAW);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	//glEnableVertexAttribArray(1);
+
+	// Third buffer normals
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[2]);
+	glBufferData(GL_ARRAY_BUFFER, verts.num_normals*sizeof(verts.normals[0]), verts.normals, GL_STATIC_DRAW);
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	//glEnableVertexAttribArray(2);
+*/
+	// Fourth buffer vertex indices
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, VBO[1]);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, verts.num_combined_indices*sizeof(verts.combined_indices[0]), verts.combined_indices, GL_STATIC_DRAW);
+	//glVertexAttribPointer(1, 3, GL_UNSIGNED_INT, GL_FALSE, 0, (void*)0);
+    //glEnableVertexAttribArray(1);
+	
+
     
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
     glBindVertexArray(VAO);
-
     glDisableClientState(GL_VERTEX_ARRAY);
+    //system("pause");
 
+}
+
+
+int Object::initialize () {
+	do_shaders();
+	create_buffers();
+    // set up vertex data (and buffer(s)) and configure vertex attributes
+	
     return 0;
 }
 
@@ -128,41 +198,82 @@ void Object::draw (Camera camera) {
 	
 	glUniform4f(offsetLocation, xoffset*-1, yoffset, zoffset, woffset);
 
+	create_buffers();
+	
+/*
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, num_vertices*sizeof(vertices[0]), vertices, GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, verts.num_vertex_indices*sizeof(verts.vertex_indices[0]), verts.vertex_indices, GL_STATIC_DRAW);
 
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    */
+
+
+/*
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, texture_indices);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, verts.num_texture_indices*sizeof(verts.texture_indices[0]), verts.texture_indices, GL_STATIC_DRAW);
+*/
+	
+    
 
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
-    glBindBuffer(GL_ARRAY_BUFFER, 0); 
+   // glBindBuffer(GL_ARRAY_BUFFER, 0); 
 
     // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
     // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-    glBindVertexArray(0); 
+    //glBindVertexArray(0); 
 
-    glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
+    //glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 
-    glEnableClientState(GL_VERTEX_ARRAY);
+    //glEnable(GL_TEXTURE_2D);
+    /*
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glColor3f(1.0f, 1.0f, 1.0f);
+    */
+    /*
+    
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+	
+	*/
+	
+	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glEnableClientState(GL_VERTEX_ARRAY);
     
     //glDrawArrays(GL_TRIANGLES, 0, num_vertices*3);
     // glBindVertexArray(0); // no need to unbind it every time 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-	glDrawElements(GL_TRIANGLES, verts.num_vertex_indices, GL_UNSIGNED_INT, (void*)0);
+
+	//glTexCoordPointer(2, GL_FLOAT, 0, verts.texture_coors);
+    
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, VBO[1]);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, texture_indices);
+	glDrawElements(GL_TRIANGLES, verts.num_combined_indices, GL_UNSIGNED_INT, (void*)0);
 	
 	glDisableVertexAttribArray(0);
 	glUseProgram(0);
-    
+
     glDisableClientState(GL_VERTEX_ARRAY);
+    //glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    //glDisable(GL_TEXTURE_2D);
 }
 
 void Object::deallocate () {
 	glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(2, VBO);
+    //glDeleteBuffers(1, &elementbuffer);
     glDeleteProgram(shaderProgram);
 }
 
@@ -200,15 +311,7 @@ char* Object::load_file (const char *filepath) {
 
 
 void Object::load_image (const char * imagepath) {
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	
 	
 	FILE * file = fopen(imagepath,"rb");
 	if (!file) {

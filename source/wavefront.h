@@ -25,6 +25,12 @@ class Wavefront {
 		unsigned int num_verts;
 		unsigned int num_texture_coors;
 		unsigned int num_normals;
+
+		float *combined;
+		unsigned int num_combined;
+		unsigned int *combined_indices;
+		unsigned int num_combined_indices;
+		
 		unsigned int *vertex_indices;
 		unsigned int *texture_indices;
 		unsigned int *normals_indices;

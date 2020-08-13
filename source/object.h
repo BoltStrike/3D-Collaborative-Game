@@ -22,7 +22,6 @@
 #include <cstring>
 
 #include "camera.h"
-#include "xml_object.h"
 #include "wavefront.h"
 
 class Object {
@@ -37,8 +36,8 @@ class Object {
 		int perspectiveMatrixUnif;
 		float theMatrix[16];
 		unsigned int VAO;
-		unsigned int VBO;
-		unsigned int elementbuffer;
+		unsigned int VBO[2];
+		unsigned int tex;
 
 		unsigned char header[54];
 		unsigned int dataPos;
@@ -51,6 +50,8 @@ class Object {
 		Object(const char*);
 		~Object();
 		void load(const char*);
+		void do_shaders();
+		void create_buffers();
 		int initialize();
 		void draw(Camera);
 		void deallocate();
