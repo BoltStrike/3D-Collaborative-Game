@@ -259,6 +259,7 @@ void Object::draw (Camera camera) {
     
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, VBO[1]);
+	glBindTexture(GL_TEXTURE_2D, tex);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, texture_indices);
 	glDrawElements(GL_TRIANGLES, verts.num_combined_indices, GL_UNSIGNED_INT, (void*)0);
 	

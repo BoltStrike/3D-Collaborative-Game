@@ -22,12 +22,15 @@ class Camera {
 		double pitch;
 		double yaw;
 		double key_sensitivity;
+		double mouse_sensitivity;
+		double mouse_x;
+		double mouse_y;
 	public:
 		Vector3D location;
 		Camera();
 		~Camera();
-		void draw();
 		void handle_input(bool*);
+		void handle_mouse(double, double ,double, double);
 };
 
 

@@ -24,7 +24,7 @@ class Graphics {
 	private:
 		unsigned int num_objects;
 		Object *objects_array;
-		Camera camera;
+		Camera *camera;
 		
 	public:
 		Graphics();
@@ -32,6 +32,7 @@ class Graphics {
 		void initialize();
 		void draw();
 		void handle_input(bool*);
+		void handle_mouse(double, double, double, double);
 		void terminate();
 };
 

@@ -38,6 +38,7 @@ void GameEngine::shutdown() {
 
 void GameEngine::processInput() {
 	framework.key_callback();
+	framework.cursor_position_callback();
 }
 
 void GameEngine::update() {
