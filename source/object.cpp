@@ -7,7 +7,8 @@
 
 
 #include "object.h"
-
+#include "../glm/glm.hpp"
+#include "../glm/gtx/transform.hpp"
 
 
 Object::Object () {
