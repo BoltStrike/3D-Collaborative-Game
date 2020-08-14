@@ -62,7 +62,7 @@ void Camera::handle_mouse (double x, double y, double w, double h) {
 	if (mouse_x != x || mouse_y != y) {
 		mouse_x = x;
 		mouse_y = y;
-		double magnitude = sqrt(location.x*location.x+location.z*location.z);
-		location = Vector3D(magnitude*cos(yaw), -magnitude*sin(pitch), magnitude*-sin(yaw));
+		//double magnitude = sqrt(location.x*location.x+location.z*location.z);
+		//location = Vector3D(magnitude*cos(yaw), -magnitude*sin(pitch), magnitude*-sin(yaw));
 	}
 }

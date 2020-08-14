@@ -19,7 +19,7 @@
 #include <cmath>
 
 class Camera {
-	private:
+	public:
 		double pitch;
 		double yaw;
 		double key_sensitivity;

@@ -93,7 +93,7 @@ double Vector3D::mag(void){
 		a[1][0]=cos(angle.x);
 		a[1][1]=cos(angle.y);
 		a[1][2]=cos(angle.z);
-		cos(angle.x),cos(angle.y),cos(angle.z);
+		//cos(angle.x),cos(angle.y),cos(angle.z);
 		double t[3][3];
 		t[0][0]=a[1][2]*a[1][1];
 		t[0][1]=a[1][2]*a[0][1]*a[0][0]-a[0][2]*a[1][0];

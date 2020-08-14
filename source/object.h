@@ -34,7 +34,6 @@ class Object {
 		int shaderProgram;
 		int offsetLocation;
 		int perspectiveMatrixUnif;
-		float theMatrix[16];
 		unsigned int VAO;
 		unsigned int VBO[2];
 		unsigned int tex;
@@ -46,13 +45,14 @@ class Object {
 		unsigned char * data;
 		unsigned int texture;
 	public:
+		float theMatrix[16];
 		Object();
-		Object(const char*);
+		Object(const char*,Camera*);
 		~Object();
-		void load(const char*);
-		void do_shaders();
+		void load(const char*,Camera*);
+		void do_shaders(Camera*);
 		void create_buffers();
-		int initialize();
+		int initialize(Camera*);
 		void draw(Camera);
 		void deallocate();
 		char* load_file(const char*);

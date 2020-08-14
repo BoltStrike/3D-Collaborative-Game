@@ -14,8 +14,9 @@ Object::Object () {
 
 }
 
-Object::Object (const char *filepath) {
-	load(filepath);
+Object::Object (const char *filepath,Camera* cam) {
+	load(filepath,cam);
+	memset(theMatrix, 0, sizeof(float) * 16);
 }
 
 Object::~Object () {
@@ -24,7 +25,7 @@ Object::~Object () {
 	delete [] fragmentShaderSource;
 }
 
-void Object::load (const char *filepath) {
+void Object::load (const char *filepath, Camera* cam) {
 	unsigned int length = strlen(filepath);
 	char *path = new char[length+100];
 	strcpy(path, filepath);
@@ -45,11 +46,11 @@ void Object::load (const char *filepath) {
 	delete [] path;
 
 	
-	initialize();
+	initialize(cam);
 	std::cout << "initializeation done" << std::endl;
 }
 
-void Object::do_shaders () {
+void Object::do_shaders (Camera* cam) {
 	// build and compile our shader program
     // vertex shader
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -88,21 +89,7 @@ void Object::do_shaders () {
     glDeleteShader(fragmentShader);
 
 
-	offsetLocation = glGetUniformLocation(shaderProgram, "offset");
-    perspectiveMatrixUnif = glGetUniformLocation(shaderProgram, "perspectiveMatrix");
 
-    float fFrustumScale = 1.0f; float fzNear = 0.5f; float fzFar = 100.0f;
-
-	memset(theMatrix, 0, sizeof(float) * 16);
-
-	theMatrix[0] = fFrustumScale;
-	theMatrix[5] = fFrustumScale;
-	theMatrix[10] = (fzFar + fzNear) / (fzNear - fzFar);
-	theMatrix[14] = (2 * fzFar * fzNear) / (fzNear - fzFar);
-	theMatrix[11] = -1.0f;
-
-	glUseProgram(shaderProgram);
-	glUniformMatrix4fv(perspectiveMatrixUnif, 1, GL_FALSE, theMatrix);
 	glUseProgram(0);
 }
 
@@ -180,8 +167,8 @@ void Object::create_buffers () {
 }
 
 
-int Object::initialize () {
-	do_shaders();
+int Object::initialize (Camera* cam) {
+	do_shaders(cam);
 	create_buffers();
     // set up vertex data (and buffer(s)) and configure vertex attributes
 	
@@ -189,7 +176,26 @@ int Object::initialize () {
 }
 
 void Object::draw (Camera camera) {
-    glUseProgram(shaderProgram);
+    //glUseProgram(shaderProgram);
+	offsetLocation = glGetUniformLocation(shaderProgram, "offset");
+    perspectiveMatrixUnif = glGetUniformLocation(shaderProgram, "perspectiveMatrix");
+
+    float fFrustumScale = 1.0f; float fzNear = 0.5f; float fzFar = 100.0f;
+	
+	//memset(theMatrix, 0, sizeof(float) * 16);
+	theMatrix[(0*4)+0] = fFrustumScale*cos(camera.yaw);
+	theMatrix[(0*4)+1] = sin(camera.yaw)*sin(camera.pitch);
+	theMatrix[(0*4)+2] = sin(camera.yaw)*cos(camera.pitch);
+	theMatrix[(1*4)+1] = fFrustumScale*cos(camera.pitch);
+	theMatrix[(1*4)+2] = -sin(camera.pitch);
+	theMatrix[(2*4)+0] = -sin(camera.yaw);
+	theMatrix[(2*4)+1] = cos(camera.yaw)*sin(camera.pitch);
+	theMatrix[(2*4)+2] = cos(camera.yaw)*cos(camera.pitch)*(fzFar + fzNear) / (fzNear - fzFar);
+	theMatrix[(3*4)+2] = (2 * fzFar * fzNear) / (fzNear - fzFar);
+	theMatrix[(2*4)+3] = -1.0f;
+
+	glUseProgram(shaderProgram);
+	glUniformMatrix4fv(perspectiveMatrixUnif, 1, GL_FALSE, theMatrix);
 
 	float xoffset = 0.5f+camera.location.x;
 	float yoffset = 0.0f+camera.location.y;

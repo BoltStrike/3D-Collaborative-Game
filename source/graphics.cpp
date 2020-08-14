@@ -45,7 +45,7 @@ void Graphics::initialize () {
 	objects_array = new Object[num_objects];
 	//objects_array[0].load("assets/export_triangle/");
 	//objects_array[1].load("assets/export_triangle2/");
-	objects_array[0].load("assets/cube/");
+	objects_array[0].load("assets/cube/",camera);
 }
 
 
