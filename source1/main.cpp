@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 /******************************************************************************
 ** File: main.cpp
 ** Project: 3D Collaborative Game
@@ -9,9 +8,7 @@
 
 
 #include "gameEngine.h"
-#include <iostream>
 
-using namespace std;
 
 /******************************************************************************
 ** Function: main
@@ -21,8 +18,6 @@ using namespace std;
 ** Pre-Conditions: None
 ** Post-Conditions: None
 ******************************************************************************/
-#include "physicsTestKit.h"
-using namespace std;
 int main (int argc, char **argv) {
 	GameEngine engine;
 	bool success = engine.initialize();
@@ -37,23 +32,3 @@ int main (int argc, char **argv) {
 
 	return 0;
 }
-=======
-
-#define STB_IMAGE_IMPLEMENTATION // Required for stb_image.h (Only define once)
-
-#include "game_engine.h"
-#include "program_log.h"
-
-int main (int argc, char **argv) {
-	program_log("\n\nBegin Program");
-	
-	GameEngine engine;
-	if(engine.initialize() == 0) {
-		engine.game_loop();
-		engine.deallocate();
-	}
-
-	return 0;
-}
-
->>>>>>> Stashed changes

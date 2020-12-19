@@ -39,9 +39,10 @@ MATHFLAG := -lm
 #Get all .cpp files in the source directory
 SRC_DIR := source
 OBJ_DIR := objects
-SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(SRC_DIR)/*/*.cpp) $(wildcard $(SRC_DIR)/*/*/*.cpp)
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
+#Compile each file and the whole EXE
 $(exe_file): $(OBJ_FILES) $(OBJ_DIR)/glad.o
 	$(CC) -o $@ $^ $(STDFLAGS) $(CFLAGS) $(MATHFLAG) $(GLFWFLAG) $(GLFLAG) $(LIBFLAG)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp

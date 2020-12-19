@@ -12,16 +12,13 @@
 #define GLAD_H
 #include "../glad/glad.h"
 #endif
-#include "window_framework.h"
 
 #include <stdlib.h>
 #include <cmath>
 #include <fstream> 
 #include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
 
-#include "graphics.h"
 
 class GameEngine {
 private:
@@ -38,7 +35,7 @@ private:
 public:
 	GameEngine();
 	~GameEngine();
-	bool initialize();
+	int initialize_window();
 	void shutdown();
 
 	void run();

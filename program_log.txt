@@ -1,0 +1,52 @@
+
+
+Begin Program
+ID of texture: 1
+Loaded:
+assets/amerature_test/cube_tex.png
+ID of texture: 2
+Loaded:
+assets/amerature_test/awesomeface.png
+
+
+Begin Program
+ID of texture: 1
+Loaded:
+assets/amerature_test/cube_tex.png
+ID of texture: 2
+Loaded:
+assets/amerature_test/awesomeface.png
+
+
+Begin Program
+ID of texture: 1
+Loaded:
+assets/amerature_test/cube_tex.png
+ID of texture: 2
+Loaded:
+assets/amerature_test/awesomeface.png
+
+
+Begin Program
+ID of texture: 1
+Loaded:
+assets/amerature_test/cube_tex.png
+ID of texture: 2
+Loaded:
+assets/amerature_test/awesomeface.png
+
+
+Begin Program
+ID of texture: 1
+Loaded:
+assets/amerature_test/cube_tex.png
+ID of texture: 2
+Loaded:
+assets/amerature_test/awesomeface.png
+
+
+Begin Program
+Loaded:
+assets/amerature_test/cube_tex.png
+Loaded:
+assets/amerature_test/awesomeface.png

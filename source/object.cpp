@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /*****************************************************************************
 ** File: object.cpp
 ** Project: 3D Collaborative Game
@@ -6,12 +7,16 @@
 ** Description: Holds all the functions for the Object class
 *****************************************************************************/
 
+=======
+>>>>>>> Stashed changes
 
 #include "object.h"
 
-
-
+/******************************************************************************
+ * This is the default constructor
+******************************************************************************/
 Object::Object () {
+<<<<<<< Updated upstream
 	vertexShaderSource = load_file("assets/triangle/vertex_shader.vert");
 	fragmentShaderSource = load_file("assets/triangle/fragment_shader.frag");
 	vertices = new float[9];
@@ -42,14 +47,54 @@ Object::Object (const char *filepath) {
 	vertices[6] = -20.0f;
 	vertices[7] = -0.5f;
 	vertices[8] = -20.0f;
+=======
+	mat = nullptr;
+	mesh = nullptr;
+	name = "Undefined";
+	position = glm::vec3(0.0f, 0.0f, 0.0f);
+	rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+	scale = glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
-Object::~Object () {
-	delete [] vertices;
-	delete [] vertexShaderSource;
-	delete [] fragmentShaderSource;
+/******************************************************************************
+ * This function loads the object specified by the given object file.
+ * Params:
+ *		filepath - Filepath from the executable to the object file
+******************************************************************************/
+void Object::load (const char *filepath) {
+	std::string path;
+	std::stringstream stream = file_tosstream(filepath);// Store file as stream
+	stream >> path;
+	if(path.compare("#") != 0) {	// Load material if one is provided
+		mat = new Material;
+		mat->load(path.c_str());
+	}
+	stream >> path;
+	if(path.compare("#") != 0) {	// Load material if one is provided
+		mesh = new Mesh;
+		mesh->load(path.c_str());
+	}
+	compile();
+>>>>>>> Stashed changes
 }
 
+/******************************************************************************
+ * This function prepares the object to be rendered with OpenGL. This should be
+ * called every time either the material or the mesh changes.
+******************************************************************************/
+void Object::compile () {
+	GLint posAttrib = glGetAttribLocation(mat->ID, "aPos");
+	GLint texAttrib = glGetAttribLocation(mat->ID, "aTexCoord");
+	//glEnableClientState(GL_VERTEX_ARRAY);
+	mesh->compile(posAttrib, texAttrib);
+	// tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
+	// -------------------------------------------------------------------------------------------
+	mat->use();
+	mat->setInt("texture1", 0);
+	mat->setInt("texture2", 1);
+}
+
+<<<<<<< Updated upstream
 int Object::initialize () {
 	// build and compile our shader program
     // vertex shader
@@ -182,41 +227,65 @@ void Object::deallocate () {
 	glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteProgram(shaderProgram);
+=======
+/******************************************************************************
+ * This function sets the name to the given name
+******************************************************************************/
+void Object::set_name (std::string new_name) {
+	name = new_name;
 }
 
-
-char* Object::load_file (const char *filepath) {
-	std::ifstream file;
-	char *data;
-	unsigned long int length;
-	
-	file.open(filepath, std::ios::in | std::ios::binary);
-	if (!file) {
-		std::cout << "Failed to open \"" << filepath << "\"" << std::endl;
-		return data;
-	}
-	
-	file.seekg(0, std::ios::end);
-	length = file.tellg();
-	file.seekg(0, std::ios::beg);
-
-	data = new char[length+1];
-	data[length] = 0;
-
-	unsigned long int i = 0;
-	while (file.good()) {
-		data[i] = file.get();
-		if (!file.eof()) {
-			i++;
-		}
-	}
-	data[i] = 0;
-	
-	file.close();
-	return data;
+/******************************************************************************
+ * This function returns the current name
+******************************************************************************/
+std::string Object::get_name () const {
+	return name;
 }
 
+/******************************************************************************
+ * This function sets the position to the given position
+******************************************************************************/
+void Object::set_position (glm::vec3 new_position) {
+	position = new_position;
+}
 
+/******************************************************************************
+ * This function returns the current position
+******************************************************************************/
+glm::vec3 Object::get_position () const {
+	return position;
+}
+
+/******************************************************************************
+ * This function translates the position by the given vector
+******************************************************************************/
+void Object::translate (glm::vec3 movement) {
+	position = position + movement;
+}
+
+/******************************************************************************
+ * This function sets the rotation to the given rotation
+******************************************************************************/
+void Object::set_rotation (glm::vec3 new_rotation) {
+	rotation = new_rotation;
+>>>>>>> Stashed changes
+}
+
+/******************************************************************************
+ * This function returns the current rotation
+******************************************************************************/
+glm::vec3 Object::get_rotation () const {
+	return rotation;
+}
+
+/******************************************************************************
+ * This function rotates the rotation by the given vector
+******************************************************************************/
+void Object::rotate (glm::vec3 movement) {
+	rotation = rotation + movement;
+}
+
+<<<<<<< Updated upstream
 void Object::load_image (const char * imagepath) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
@@ -260,8 +329,25 @@ void Object::load_image (const char * imagepath) {
 
 	// Read the actual data from the file into the buffer
 	fread(data,1,imageSize,file);
+=======
+/******************************************************************************
+ * This function sets the scale to the given scale
+******************************************************************************/
+void Object::set_scale (glm::vec3 new_scale) {
+	scale = new_scale;
+}
+>>>>>>> Stashed changes
 
-	//Everything is in memory now, the file can be closed
-	fclose(file);
+/******************************************************************************
+ * This function returns the current scale
+******************************************************************************/
+glm::vec3 Object::get_scale () const {
+	return scale;
 }
 
+/******************************************************************************
+ * This function dilates the scale by the given vector
+******************************************************************************/
+void Object::dilate (glm::vec3 movement) {
+	scale = scale + movement;
+}
