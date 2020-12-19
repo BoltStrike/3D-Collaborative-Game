@@ -5,10 +5,10 @@
 #include <fstream>
 #include <stdio.h>
 
-#include "../glad/glad.h"
+#include "../../glad/glad.h"
 
-#include "program_log.h"
-#include "file_tosstream.h"
+#include "../generic/program_log.h"
+#include "../generic/file_tosstream.h"
 
 class Mesh {
 	private:

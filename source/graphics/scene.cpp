@@ -38,18 +38,8 @@ void Scene::load (const char *filepath) {
 /******************************************************************************
  * This function draws the entire scene
 ******************************************************************************/
-void Scene::draw (float fov, 
-				  const unsigned int SCR_WIDTH, 
-				  const unsigned int SCR_HEIGHT, 
-				  glm::vec3 cameraPos, 
-				  glm::vec3 cameraFront, 
-				  glm::vec3 cameraUp) {
-
-	//glEnableClientState(GL_VERTEX_ARRAY);
-	
+void Scene::draw () {
 	for(unsigned int i = 0; i < num_objects; i++) {	// Draw each object
-
-
 		// activate shader
 		objects[i].mat->use();
 
@@ -61,11 +51,17 @@ void Scene::draw (float fov,
 		glBindTexture(GL_TEXTURE_2D, objects[i].mat->tex[1]);
 
 		// pass projection matrix to shader (note that in this case it could change every frame)
-		glm::mat4 projection = glm::perspective(glm::radians(fov), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+		glm::mat4 projection = glm::perspective(glm::radians(Window::fov), 
+											    (float)Window::scr_width / 
+											    (float)Window::scr_height, 
+											    0.1f, 
+											    100.0f);
 		objects[i].mat->setMat4("projection", projection);
 
 		// camera/view transformation
-		glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+		glm::mat4 view = glm::lookAt(Window::cameraPos, 
+									 Window::cameraPos + Window::cameraFront, 
+									 Window::cameraUp);
 		objects[i].mat->setMat4("view", view);
 
 

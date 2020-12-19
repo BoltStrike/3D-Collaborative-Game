@@ -5,15 +5,15 @@
 #include <string>
 #include <sstream>
 
-#include "../glad/glad.h"
-#include "../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
-#include "../stb-master/stb_image.h"
-#include "../glm/glm.hpp"
-#include "../glm/gtc/matrix_transform.hpp"
-#include "../glm/gtc/type_ptr.hpp"
+#include "../../glad/glad.h"
+#include "../../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
+#include "../../stb-master/stb_image.h"
+#include "../../glm/glm.hpp"
+#include "../../glm/gtc/matrix_transform.hpp"
+#include "../../glm/gtc/type_ptr.hpp"
 
-#include "program_log.h"
-#include "file_tosstream.h"
+#include "../generic/program_log.h"
+#include "../generic/file_tosstream.h"
 
 class Material {
 	private:

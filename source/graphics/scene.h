@@ -6,7 +6,8 @@
 #include <sstream>
 
 #include "object.h"
-#include "file_tosstream.h"
+#include "window.h"
+#include "../generic/file_tosstream.h"
 
 class Scene {
 	private:
@@ -18,11 +19,6 @@ class Scene {
 		Scene();					// Default constructor
 		~Scene();					// Default destructor
 		void load(const char*);		// Loads the scene
-		void draw(float,	 		// Draw the scene
-				  const unsigned int, 
-				  const unsigned int, 
-				  glm::vec3, 
-				  glm::vec3, 
-				  glm::vec3);			
+		void draw();				// Draw the scene			
 };
 #endif
