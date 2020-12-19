@@ -1,14 +1,3 @@
-<<<<<<< Updated upstream
-/*****************************************************************************
-** File: object.h
-** Project: 3D Collaborative Game
-** Author: Andrew Johnson
-** Date Created: 1 August 2020
-** Description: Holds all the functions for the Object class
-*****************************************************************************/
-
-=======
->>>>>>> Stashed changes
 
 #ifndef OBJECT_H
 #define OBJECT_H
@@ -20,42 +9,11 @@
 #include "../glm/gtc/matrix_transform.hpp"
 #include "../glm/gtc/type_ptr.hpp"
 
-<<<<<<< Updated upstream
-#include "camera.h"
-=======
 #include "mesh.h"
 #include "material.h"
->>>>>>> Stashed changes
 
 class Object{
 	private:
-<<<<<<< Updated upstream
-		char *vertexShaderSource;
-		char *fragmentShaderSource;
-		float *vertices;
-		int shaderProgram;
-		int offsetLocation;
-		int perspectiveMatrixUnif;
-		float theMatrix[16];
-		unsigned int VAO;
-		unsigned int VBO;
-
-		unsigned char header[54];
-		unsigned int dataPos;
-		unsigned int width, height;
-		unsigned int imageSize;
-		unsigned char * data;
-		unsigned int texture;
-	public:
-		Object();
-		Object(const char*);
-		~Object();
-		int initialize();
-		void draw(Camera);
-		void deallocate();
-		char* load_file(const char*);
-		void load_image(const char*);
-=======
 		
 		
 		std::string name;	// Name of the object
@@ -90,6 +48,5 @@ class Object{
 		glm::vec3 get_scale()const;		// Get scale
 		void dilate(glm::vec3);			// Dilate object by given vector
 		
->>>>>>> Stashed changes
 };
 #endif

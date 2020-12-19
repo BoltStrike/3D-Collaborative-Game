@@ -60,6 +60,7 @@ int WindowFramework::initialize () {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     framebuffer_size_callback(window, window_width, window_height);
 
+
 	framebuffer_size_callback(window, window_width, window_height);
 	graphics.initialize();
     
@@ -106,31 +107,20 @@ void WindowFramework::terminate () {
 }
 
 
-void WindowFramework::mouse_movement (int x, int y) {
+void WindowFramework::cursor_position_callback () {
+	double x;
+	double y;
+	glfwGetCursorPos(window, &x, &y);
+	std::cout << "Mouse: (" << x << ", " << y << ")" << std::endl;
 	double w = window_width;
 	double h = window_height;
-	adjust_view(x, y, w, h, mouse_sensitivity);
+	graphics.handle_mouse(x, y, w, h);
 	if (x <= w/4 || x >= w*3/4) {
-		//glutWarpPointer(w/2, y);
+		glfwSetCursorPos(window, w/2, y);
 	}
 	if (y <= h/4 || y >= h*3/4) {
-		//glutWarpPointer(x, h/2);
+		glfwSetCursorPos(window, x, h/2);
 	}
-}
-
-void WindowFramework::adjust_view (int x, int y, int width, int height, double sens) {
-	if (x <= width/4 || x >= width*3/4) {
-		x = width/2;
-		mouse_x = width/2;
-	}
-	if (y <= height/4 || y >= height*3/4) {
-		y = height/2;
-		mouse_y = height/2;
-	}
-	yaw += sens*(x-mouse_x);
-	pitch += sens*(y-mouse_y);
-	mouse_x = x;
-	mouse_y = y;
 }
 
 

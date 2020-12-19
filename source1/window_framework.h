@@ -46,8 +46,7 @@ class WindowFramework {
 		static void perspective_gl(double, double, double, double);
 		int render();
 		void terminate();
-		void mouse_movement(int, int);
-		void adjust_view (int, int, int, int, double);
+		void cursor_position_callback();
 		void key_callback();
 };
 

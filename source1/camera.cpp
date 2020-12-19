@@ -11,20 +11,18 @@
 
 
 Camera::Camera () {
-	location = Vector3D(0.0, 0.0, 0.0);
+	location = Vector3D(1.0, 1.0, 1.0);
 	pitch = 2.0;
 	yaw = 2.0;
 	key_sensitivity = 0.1;
+	mouse_sensitivity = 0.001;
+	mouse_x = 0.0;
+	mouse_y = 0.0;
 }
 
 Camera::~Camera () {
 
 }
-
-void Camera::draw () {
-
-}
-
 
 void Camera::handle_input (bool *key) {
 	if (key['w']) {
@@ -45,5 +43,26 @@ void Camera::handle_input (bool *key) {
 	if (key['e']) {
 		location = location + Vector3D(0.0, -key_sensitivity, 0.0);
 	}
-	//std::cout << "Location: (" << location.x << ", " << location.y << ", " << location.z << ")" << std::endl;
+}
+
+
+void Camera::handle_mouse (double x, double y, double w, double h) {
+	if (x <= w/4 || x >= w*3/4) {
+		x = w/2;
+		mouse_x = w/2;
+	}
+	if (y <= h/4 || y >= h*3/4) {
+		y = h/2;
+		mouse_y = h/2;
+	}
+	
+	yaw += mouse_sensitivity*(x-mouse_x);
+	pitch += mouse_sensitivity*(y-mouse_y);
+	
+	if (mouse_x != x || mouse_y != y) {
+		mouse_x = x;
+		mouse_y = y;
+		double magnitude = sqrt(location.x*location.x+location.z*location.z);
+		location = Vector3D(magnitude*cos(yaw), -magnitude*sin(pitch), magnitude*-sin(yaw));
+	}
 }
