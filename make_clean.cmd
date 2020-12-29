@@ -1,2 +1,2 @@
-del /f objects\*o
+rmdir objects /s /q
 del /f *exe
