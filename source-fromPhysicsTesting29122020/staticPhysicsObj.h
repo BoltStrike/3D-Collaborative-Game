@@ -1,6 +1,7 @@
 #ifndef STATIC_PHYSICS_OBJ_H
 #define STATIC_PHYSICS_OBJ_H
 
+#include "globalPhysics.h"
 #include "physicsObj.h"
 class StaticPhysicsObj: public PhysicsObj{
 	public:

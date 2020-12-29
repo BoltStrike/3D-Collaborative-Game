@@ -14,8 +14,12 @@ class BoxCollider:public Collider{
 	virtual ~BoxCollider();
 	Vector3D** getNormals();
 	int checkCollision(Vector3D*,Vector3D*,Collider*,Vector3D*,Vector3D*);
+	ResolvedData fixCollision(Vector3D*,Vector3D*,Vector3D*,Collider*,Vector3D*,Vector3D*);
+	ResolvedData fixCollision(BoxCollider*,Vector3D*,Vector3D*,Vector3D*,BoxCollider*,Vector3D*,Vector3D*);
+	ResolvedData fixCollision(Vector3D,Vector3D,Vector3D, Vector3D*, Vector3D*, Vector3D*);
 	private:
 	static int checkCollision(BoxCollider*,Vector3D*,Vector3D*,BoxCollider*,Vector3D*,Vector3D*);
+	
 };
 	static bool lineVsBox(Vector3D,Vector3D,Vector3D,Vector3D*,Vector3D* );
 #endif

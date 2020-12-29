@@ -2,7 +2,7 @@
 #define PHYSICS_TEST_KIT_H
 
 #include "physics.h"
-#include "dynamicTestBox.h"
-#include "staticTestBox.h"
+#include "dynamicTestObj.h"
+#include "staticTestObj.h"
 
 #endif

@@ -1,6 +1,7 @@
 #ifndef PHYSICS_OBJ_H
 #define PHYSICS_OBJ_H
 
+#include "globalPhysics.h"
 #include "Vector3D.h"
 #include "collider.h"
 #include "collisionType.h"

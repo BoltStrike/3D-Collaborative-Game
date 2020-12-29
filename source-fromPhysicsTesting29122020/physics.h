@@ -6,6 +6,7 @@
 #include "collisionType.h"
 #include "collider.h"
 #include "boxCollider.h"
+#include "sphereCollider.h"
 #include "physicsObj.h"
 #include "staticPhysicsObj.h"
 #include "dynamicPhysicsObj.h"
