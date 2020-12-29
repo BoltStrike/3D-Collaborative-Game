@@ -5,24 +5,36 @@
  * This is the default constructor
 ******************************************************************************/
 GameEngine::GameEngine () {
-
+	window = new Window;
+	scene = new Scene;
 }
 
 /******************************************************************************
  * This is the default destructor
 ******************************************************************************/
 GameEngine::~GameEngine () {
+	program_log("Deleting engine...\n");
 
+	delete scene;
+	delete window;
+	program_log("Deleted engine\n");
 }
 
 /******************************************************************************
  * This function initializes a GLFW window with OpenGL.
  *****************************************************************************/
 int GameEngine::initialize () {
-	if(window.create_window(800, 600, "Reworked Game Engine") != 0)
+	program_log("Initializing engine...\n");
+
+	if(window->create_window(800, 600, "Reworked Game Engine") != 0)
 		return -1;
 
-	scene.load("assets/amerature_test/scene1.scene");
+	window->set_vsync(true);
+
+	const char *default_scene = "assets/amerature_test/scene1.scene";
+	scene->load(default_scene);	// Load default scene
+
+	program_log("Initalized engine\n\n");
 	return 0;
 }
 
@@ -30,9 +42,12 @@ int GameEngine::initialize () {
  * This function is the main game loop. 
 ******************************************************************************/
 void GameEngine::game_loop () {
-	while (!window.should_close()) {
-		window.prepare();
-		scene.draw();
+	program_log("Begin Game Loop\n");
+	while (!window->should_close()) {
+		window->prepare();	// Clear viewport, compute times, and gather inputs
+		scene->draw();		// Draw next frame from this scene
+		window->input();
 	}
+	program_log("Game Loop Stopped\n");
 }
 

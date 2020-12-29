@@ -178,7 +178,7 @@ int main()
 	// load image, create texture and generate mipmaps
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-	unsigned char* data = stbi_load("cat.jpg", &width, &height, &nrChannels, STBI_rgb);
+	unsigned char* data = stbi_load("assets/amerature_test/cube_tex.png", &width, &height, &nrChannels, STBI_rgb);
 	std::cout << "l";
 	if (data)
 	{
@@ -206,7 +206,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	std::cout << "3";
 	// load image, create texture and generate mipmaps
-	data = stbi_load("cat.jpg", &width, &height, &nrChannels, STBI_rgb_alpha);
+	data = stbi_load("assets/amerature_test/awesomeface.png", &width, &height, &nrChannels, STBI_rgb_alpha);
 	std::cout << "4";
 	if (data)
 	{
@@ -235,6 +235,7 @@ int main()
 	ourShader.use();
 	//ourShader.setInt("texture1", 0);
 	//ourShader.setInt("texture2", 1);
+
 
 
 	std::cout << "o";

@@ -11,7 +11,7 @@ void main()
 {
 	// Linearally interpret between the textures
 	vec4 texColor =  mix(texture(texture1, TexCoord), texture(texture2, TexCoord), 0.2);
-	if(texColor.a < 0.1)	// If the pixel is transparent enough, discard it
+	if(texColor.a < 0.01)	// If the pixel is transparent enough, discard it
 		discard;
 	FragColor = texColor;
 }

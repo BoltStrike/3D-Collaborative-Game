@@ -5,6 +5,7 @@
  * This is the default constructor
 ******************************************************************************/
 Scene::Scene () {
+	name = "Unknown";
 	objects = nullptr;
 	num_objects = 0;
 }
@@ -13,7 +14,15 @@ Scene::Scene () {
  * This is the default destructor
 ******************************************************************************/
 Scene::~Scene () {
+	std::string message  = "Deleting scene: ";
+	program_log(message.append(name).append("...\n"));
+	
+	delete [] objects;
+	objects = nullptr;
 	glDeleteVertexArrays(1, &VAO);
+	
+	message = "Deleted scene: ";
+	program_log(message.append(name).append("\n"));
 }
 
 /******************************************************************************
@@ -22,8 +31,8 @@ Scene::~Scene () {
  * 		filepath - Filepath from the executable to the scene file
 ******************************************************************************/
 void Scene::load (const char *filepath) {
-	glGenVertexArrays(1, &VAO);	// Create a vertex array
-	glBindVertexArray(VAO);		// Set the VAO as the active vertex array
+	std::string message = "Loading scene: ";
+	program_log(message.append(filepath).append("...\n"));
 
 	std::string path;	// Temporary string to store individual object paths
 	std::stringstream stream = file_tosstream(filepath);// Read file
@@ -33,47 +42,35 @@ void Scene::load (const char *filepath) {
 		stream >> path;
 		objects[i].load(path.c_str());
 	}
+
+	message = "Loaded scene: ";
+	program_log(message.append(filepath).append("...\n"));
 }
 
 /******************************************************************************
  * This function draws the entire scene
 ******************************************************************************/
 void Scene::draw () {
-	for(unsigned int i = 0; i < num_objects; i++) {	// Draw each object
-		// activate shader
-		objects[i].mat->use();
-
-		// bind textures on corresponding texture units
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, objects[i].mat->tex[0]);
-		
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, objects[i].mat->tex[1]);
-
-		// pass projection matrix to shader (note that in this case it could change every frame)
-		glm::mat4 projection = glm::perspective(glm::radians(Window::fov), 
-											    (float)Window::scr_width / 
-											    (float)Window::scr_height, 
-											    0.1f, 
-											    100.0f);
-		objects[i].mat->setMat4("projection", projection);
-
-		// camera/view transformation
-		glm::mat4 view = glm::lookAt(Window::cameraPos, 
-									 Window::cameraPos + Window::cameraFront, 
-									 Window::cameraUp);
-		objects[i].mat->setMat4("view", view);
-
-
-		glBindVertexArray(VAO);	// Set the current vertex array to the VAO
-		
-		// calculate the model matrix for each object and pass it to shader before drawing
-		glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-		model = glm::translate(model, objects[i].get_position());
-		float angle = 20.0f * i;
+	glBindVertexArray(VAO);	// Set the current vertex array to the VAO
+	// pass projection matrix to shader (note that in this case it could change every frame)
+	glm::mat4 projection = glm::perspective(glm::radians(Window::fov), 
+										    (float)Window::scr_width / 
+										    (float)Window::scr_height, 
+										    0.1f, 
+										    100.0f);
+	// camera/view transformation
+	glm::mat4 view = glm::lookAt(Window::cameraPos, 
+								 Window::cameraPos + Window::cameraFront, 
+								 Window::cameraUp);
+	// calculate the model matrix for each object and pass it to shader before drawing
+	glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+	//model = glm::translate(model, get_position());
+	float angle;
+	
+	
+	for(int i = 0; i < num_objects; i++) {	// Draw each object
+		angle = 20.0 * i;
 		model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-		objects[i].mat->setMat4("model", model);
-		
-		glDrawArrays(GL_TRIANGLES, 0, objects[i].mesh->get_num_faces() * 24);
+		objects[i].draw(projection, view, model);
 	}
 }

@@ -17,7 +17,9 @@ class Mesh {
 		float* coord, *normal, *uv;	// Vertex position, normal, and UV storage
 		int* indices;				// Indicies to create faces
 		float* vertex_data;			// OpenGL ready vertex data
-		unsigned int VBO; 			// Vertex buffer ID for OpenGL
+		
+		
+		GLint posAttrib, texAttrib, norAttrib;	// Vertex attribute pointer IDs
 		
 		// Number of vertices, faces, and UV coordinates the object has
 		int num_vertices, num_faces, num_uvs;
@@ -32,6 +34,9 @@ class Mesh {
 		void prepare();	// Organizes object data in OpenGL ready format
 		
 	public:
+		unsigned int VBO; 					// Vertex buffer ID for OpenGL
+		unsigned int VAO;
+	
 		Mesh();								// Default constructor
 		~Mesh();							// Default destructor
 		void deallocate();					// Frees object data
@@ -42,6 +47,6 @@ class Mesh {
 		struct Face get_face(int) const;	// Return face at given index
 		float* get_vertex_data() const;		// Returns OpenGL ready data
 		int load(const char*);				// Reads object data from file
-		void compile(GLint, GLint);			// Link mesh to OpenGL
+		void compile(GLint, GLint, GLint);	// Link mesh to OpenGL
 };
 #endif

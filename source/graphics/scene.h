@@ -11,6 +11,7 @@
 
 class Scene {
 	private:
+		std::string name;			// Name of scene
 		Object *objects;			// Array holding all objects in the scene
 		unsigned int num_objects;	// Number of objects in the scene
 		unsigned int VAO;			// Vertex array ID for OpenGL

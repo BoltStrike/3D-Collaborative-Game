@@ -2,6 +2,13 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+// Operating system dependent libraries
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+
 #include "../../glad/glad.h"
 #include "../../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
 
@@ -32,6 +39,7 @@ class Window {
 
 		static float deltaTime;	// Time between current frame and last frame
 		static float lastFrame;	// Time last frame was finished
+		static unsigned int fps;// Frames per second of the program
 	
 		Window();	// Default constructor
 		~Window();	// Default destructor
@@ -39,7 +47,10 @@ class Window {
 		// Creates GLFW window with OpenGL context. Initializes OpenGL.
 		int create_window(unsigned int, unsigned int, const char*);
 		void prepare();			// Prepares the window for the next frame
+		void input();			// Gathers the input, and resets viewport
 		bool should_close();	// Signifies if the render loop should stop
+		void set_vsync(bool);	// Sets the vsync property to given Boolean
+		void sleep(double);		// Sleeps program for specified seconds
 
 		// Callback functions
 		static void framebuffer_size_callback(GLFWwindow* window, int width, int height);

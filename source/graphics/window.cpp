@@ -29,6 +29,7 @@ float Window::fov{45.0f};
 // Timing
 float Window::deltaTime{0.0f};
 float Window::lastFrame{0.0f};
+unsigned int Window::fps{30};
 
 /******************************************************************************
  * This is the default constructor
@@ -56,6 +57,8 @@ int Window::create_window (unsigned int width,
 							unsigned int height, 
 							const char* name) {
 
+	program_log("Creating window...\n");
+	
 	Window::scr_width = width;
 	Window::scr_height = height;
 	
@@ -72,7 +75,7 @@ int Window::create_window (unsigned int width,
 	// glfw window creation
 	window = glfwCreateWindow(scr_width, scr_height, name, NULL, NULL);
 	if (window == NULL)	{
-		program_log("Failed to create GLFW window");
+		program_log("ERROR::Failed to create GLFW window\n");
 		glfwTerminate();
 		return -1;
 	}
@@ -88,14 +91,40 @@ int Window::create_window (unsigned int width,
 
 	// glad: load all OpenGL function pointers
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		program_log("Failed to initialize GLAD");
+		program_log("ERROR::Failed to initialize GLAD\n");
 		return -1;
 	}
 	
 	// configure global opengl state
-	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);	// Correct face layering
+	glEnable(GL_CULL_FACE);		// Backface culling
+	glCullFace(GL_BACK);		// Cull the backs of faces
+	glFrontFace(GL_CCW);  		// Set counter-clock-wise as the front face 
 
+	program_log("Created window\n");
 	return 0;	
+}
+
+/******************************************************************************
+ * This function enables v-sync on the window.
+******************************************************************************/
+void Window::set_vsync (bool state) {
+	if(state) { 
+		glfwSwapInterval(1);	// Enable v-sync if state is true
+		program_log("Set V-Sync: On\n");
+	}
+	else {
+		glfwSwapInterval(0);	// Disable v-sync if state is false
+		program_log("Set V-Sync: Off\n");
+	}
+}
+
+/******************************************************************************
+ * This function suspends the program for the specifed amount of time in
+ * microseconds.
+******************************************************************************/
+void Window::sleep (double seconds) {
+	sleep(seconds);
 }
 
 /******************************************************************************
@@ -103,9 +132,6 @@ int Window::create_window (unsigned int width,
  * clears the viewport in preparation for rendering the next frame.
 ******************************************************************************/
 void Window::prepare () {
-	glfwSwapBuffers(window);	// Swap buffers
-	glfwPollEvents();			// Poll IO events
-
 	// Time logic
 	float currentFrame = glfwGetTime();
 	deltaTime = currentFrame - lastFrame;
@@ -116,6 +142,19 @@ void Window::prepare () {
 	// Clear viewport
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+/******************************************************************************
+ * This function gets the input and resets the viewport for the next frame.
+ * If the program is running to fast, the program will be suspended for brief
+ * intervals to regulate the speed. 
+******************************************************************************/
+void Window::input () {
+	glfwSwapBuffers(window);	// Swap buffers
+	glfwPollEvents();			// Poll IO events
+	//float currentFrame = glfwGetTime();
+	//if(currentFrame - lastFrame < 1.0f/fps) 
+	//	sleep(1.0f/fps - (currentFrame - lastFrame));
 }
 
 /******************************************************************************
@@ -216,5 +255,6 @@ void Window::scroll_callback(GLFWwindow* window,
 	if (fov < 1.0f)
 		fov = 1.0f;
 	if (fov > 45.0f)
+
 		fov = 45.0f;
 }

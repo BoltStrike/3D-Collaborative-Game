@@ -5,6 +5,7 @@
  * This is the default constructor
  *****************************************************************************/
 Material::Material () {
+	name = "unkown";
 	v_source = nullptr;
 	f_source = nullptr;
 	g_source = nullptr;
@@ -15,12 +16,29 @@ Material::Material () {
 }
 
 /******************************************************************************
+ * This is the default destructor
+******************************************************************************/
+Material::~Material () {
+	std::string message = "    Deleting material: ";
+	program_log(message.append(name).append("...\n"));
+
+	glDeleteTextures(num_textures, tex);
+	glDeleteProgram(ID);
+	
+	message = "    Deleted material: ";
+	program_log(message.append(name).append("\n").c_str());
+}
+
+/******************************************************************************
  * This function loads the material from a material file.
  * Params:
  *		filepath - Filepath from the exacutable to the material file
  *****************************************************************************/
 void Material::load (const char *filepath) {
-	int num_textures = 0;	// Stores number of textures material uses
+	std::string message = "    Loading material: ";
+	program_log(message.append(filepath).append("...\n").c_str());
+
+	num_textures = 0;		// Stores number of textures material uses
 	std::string vpath;		// Stores path to vertex shader source
 	std::string fpath;		// Stores path to fragment shader source
 	std::string gpath;		// Stores path to geometry shader source
@@ -44,6 +62,9 @@ void Material::load (const char *filepath) {
 		stream >> tpath;
 		create_texture(tpath.c_str(), tex[i]);
 	}
+
+	message = "    Loaded material: ";
+	program_log(message.append(filepath).append("\n").c_str());
 }
 
 /******************************************************************************
@@ -163,12 +184,12 @@ void Material::create_texture (const char *filepath, unsigned int &tex) {
 						data);
 						
 		glGenerateMipmap(GL_TEXTURE_2D);	// Generate the mipmap
-		program_log("Loaded:");
-		program_log(filepath);
+		std::string message = "      Loaded image: ";
+		program_log(message.append(filepath).append("\n").c_str());
 	}
 	else {
-		program_log("ERROR::Failed to load image:");
-		program_log(filepath);
+		std::string message = "      ERROR::Failed to load image: ";
+		program_log(message.append(filepath).append("\n").c_str());
 	}
 	stbi_image_free(data);	// Texture linked to OpenGL. Data no longer needed.
 }

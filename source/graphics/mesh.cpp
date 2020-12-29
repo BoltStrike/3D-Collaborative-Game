@@ -22,8 +22,17 @@ Mesh::Mesh () {
  * This is the destructor
  *****************************************************************************/
 Mesh::~Mesh () {
+	std::string message = "    Deleting mesh: ";
+	program_log(message.append(name).append("...\n"));
+
+	glDisableVertexAttribArray(posAttrib);
+	glDisableVertexAttribArray(texAttrib);
+	glDisableVertexAttribArray(norAttrib);
 	glDeleteBuffers(1, &VBO);
+	
 	deallocate();
+	message = "    Deleted mesh: ";
+	program_log(message.append(name).append("\n").c_str());
 }
 
 /******************************************************************************
@@ -78,7 +87,7 @@ struct Mesh::Face Mesh::get_face(int index) const{
 		return faces[index];
 	}
 	else {
-		program_log("ERROR::Index face out of bounds");
+		program_log("    ERROR::Index face out of bounds\n");
 		struct Face default_face;
 		return default_face;
 	}
@@ -101,8 +110,8 @@ void Mesh::prepare () {
 	if(vertex_data == nullptr) 					// Allocate only if not already
 		vertex_data = new float[num_faces * 24];// (3+3+2)*3=24 floats per face
 
-	if(faces == nullptr)						// Allcoate only if not already
-		faces = new struct Face[num_faces];		// Allocate a Face per face
+	//if(faces == nullptr)						// Allcoate only if not already
+	//	faces = new struct Face[num_faces];		// Allocate a Face per face
 
 
 	// Fill vertex_data as xyzXYZuv
@@ -119,6 +128,7 @@ void Mesh::prepare () {
 		vertex_data[i*8 + 7] = uv[i*2+1];
 	}
 
+	/*
 	// Fill faces
 	for(int i = 0; i < num_faces; i++) {
 		for(int j = 0; j < 3; j++) {	// Find values using indices array
@@ -134,6 +144,7 @@ void Mesh::prepare () {
 			faces[i].uv[j][1] = uv[indices[i * 3 + j + 2] + 1];
 		}
 	}
+	*/
 
 	// Deallocated coord, normal, uv, and indices arrays. We are done with them
 	delete coord;
@@ -153,6 +164,9 @@ void Mesh::prepare () {
  * 		filepath - the relative filepath from the executable to the file
  *****************************************************************************/
 int Mesh::load (const char* filepath) {
+	std::string message = "    Loading mesh: ";
+	program_log(message.append(filepath).append("...\n").c_str());
+
 	std::stringstream stream = file_tosstream(filepath);// Read file as stream
 
 	stream >> name_length;					// Get the length of the name
@@ -182,6 +196,9 @@ int Mesh::load (const char* filepath) {
 		stream >> indices[i];
 
 	prepare();		// Fill faces and vertex_data
+	
+	message = "    Loaded mesh: ";
+	program_log(message.append(filepath).append("\n").c_str());
 	return 0;
 }
 
@@ -189,7 +206,13 @@ int Mesh::load (const char* filepath) {
  * This function links the mesh to OpenGL. This should be called every time
  * the mesh changes
 ******************************************************************************/
-void Mesh::compile(GLint posAttrib, GLint texAttrib) {
+void Mesh::compile(GLint pos, GLint tex, GLint nor) {
+	posAttrib = pos;
+	texAttrib = tex;
+	norAttrib = nor;
+
+	glGenVertexArrays(1, &VAO);	// Create a vertex array
+	glBindVertexArray(VAO);		// Set the VAO as the active vertex array
 	glGenBuffers(1, &VBO);		// Create a vertex buffer
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);	// Set VBO as active vertex buffer
 	glBufferData(GL_ARRAY_BUFFER, 		// Link mesh to OpenGL
@@ -210,6 +233,6 @@ void Mesh::compile(GLint posAttrib, GLint texAttrib) {
 	glEnableVertexAttribArray(texAttrib);
 	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	// Specify where in the vertex array the normals are
-	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(4);
+	glEnableVertexAttribArray(norAttrib);
+	glVertexAttribPointer(norAttrib, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 }

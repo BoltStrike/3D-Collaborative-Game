@@ -17,8 +17,10 @@
 
 class Material {
 	private:
+		const char *name;							// Name of material
 		const char *v_source, *f_source, *g_source;	// Raw source code
 		unsigned int v_id, f_id, g_id;				// OpenGL IDs
+		int num_textures;							// Quantity of textures
 		
 
 		// If no vertex shader is given, this will be used
@@ -26,6 +28,7 @@ class Material {
 			"#version 330 core\n"
 			"layout (location = 0) in vec3 aPos;\n"
 			"layout (location = 1) in vec2 aTexCoord;\n"
+			"layout (location = 2) in vec3 aNormal;\n"
 
 			"out vec2 TexCoord;\n"
 
@@ -62,7 +65,8 @@ class Material {
 		unsigned int ID;	// Shader ID
 		unsigned int *tex;	// Texture IDs
 		
-		Material();
+		Material();		// Default constructor
+		~Material();	// Default destructor
 		// Compiles shader program
 		void create_shaders(const char*, const char*, const char*);
 		void load(const char*);							// Loads material

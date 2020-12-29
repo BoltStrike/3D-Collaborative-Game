@@ -14,8 +14,6 @@
 
 class Object{
 	private:
-		
-		
 		std::string name;	// Name of the object
 		glm::vec3 position;	// Position of the object in the scene
 		glm::vec3 rotation;	// Rotation of the object in the scene (radians)
@@ -29,9 +27,12 @@ class Object{
 		Mesh *mesh; 	// Mesh of the object
 	
 		Object();				// Default constructor
+		~Object();				// Default destructor
 		void load(const char*);	// Loads the object 
 		void compile();			// Link current object to OpenGL
-		void draw();			// Draws the object in its current state
+		
+		// Draws the object in its current state
+		void draw(glm::mat4, glm::mat4, glm::mat4);
 		
 		void set_name(std::string);		// Set the name
 		std::string get_name()const;	// Get the name
