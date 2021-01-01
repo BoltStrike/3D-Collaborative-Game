@@ -26,12 +26,12 @@ GameEngine::~GameEngine () {
 int GameEngine::initialize () {
 	program_log("Initializing engine...\n");
 
-	if(window->create_window(800, 600, "Reworked Game Engine") != 0)
+	if(window->create_window(1600, 900, "Reworked Game Engine") != 0)
 		return -1;
 
 	window->set_vsync(true);
 
-	const char *default_scene = "assets/amerature_test/scene1.scene";
+	const char *default_scene = "assets/scenes/floating_island.scene";
 	scene->load(default_scene);	// Load default scene
 
 	program_log("Initalized engine\n\n");

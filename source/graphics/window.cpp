@@ -7,8 +7,8 @@
  * outside functions.
 ******************************************************************************/
 // Screen dimensions
-unsigned int Window::scr_width{800};
-unsigned int Window::scr_height{600};
+unsigned int Window::scr_width{1600};
+unsigned int Window::scr_height{900};
 
 // camera
 glm::vec3 Window::cameraPos{glm::vec3(0.0f, 0.0f, 3.0f)};
@@ -100,6 +100,9 @@ int Window::create_window (unsigned int width,
 	glEnable(GL_CULL_FACE);		// Backface culling
 	glCullFace(GL_BACK);		// Cull the backs of faces
 	glFrontFace(GL_CCW);  		// Set counter-clock-wise as the front face 
+	// Blending functionality (transparency)
+	glEnable(GL_BLEND);	
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
 
 	program_log("Created window\n");
 	return 0;	

@@ -1,0 +1,10 @@
+9
+assets/objects/floating_island/meshes_materials/cave.object 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0
+assets/objects/floating_island/meshes_materials/main_grass.object 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0
+assets/objects/floating_island/meshes_materials/rock.object 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0
+assets/objects/floating_island/meshes_materials/tree.object 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0
+assets/objects/floating_island/meshes_materials/trim_grass.object 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0
+assets/objects/floating_island/meshes_materials/underside.object 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0
+assets/objects/floating_island/meshes_materials/water.object 0.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0
+assets/objects/floating_island/meshes_materials/test_cube.object 5.9406 -0.038568 2.3737 90.0 0.0 0.0 1.0 1.0 1.0
+assets/objects/floating_island/meshes_materials/test_cube.object 5.9406 4.038568 2.3737 90.0 90.0 0.0 1.0 1.0 1.0

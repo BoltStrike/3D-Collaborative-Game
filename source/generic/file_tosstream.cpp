@@ -21,7 +21,7 @@ std::stringstream file_tosstream (const char *filepath) {
 	}
 	catch (std::ifstream::failure & e) {
 		std::string message = "ERROR::Failed to read file ";
-		message.append(filepath);
+		message.append(filepath).append("\n");
 		program_log(message.c_str());
 	}
 

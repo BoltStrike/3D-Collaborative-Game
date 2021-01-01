@@ -35,12 +35,21 @@ void Scene::load (const char *filepath) {
 	program_log(message.append(filepath).append("...\n"));
 
 	std::string path;	// Temporary string to store individual object paths
+	glm::vec3 location; // Temporary vector storing location
+	glm::vec3 rotation; // Temporary vector storing rotation
+	glm::vec3 dilation; // Temporary vector storing dilation
+	
 	std::stringstream stream = file_tosstream(filepath);// Read file
 	stream >> num_objects;					// Get num_objects
 	objects = new Object[num_objects];		// Allocate objects
 	for(int i = 0; i < num_objects; i++) {	// Load objects
 		stream >> path;
-		objects[i].load(path.c_str());
+
+		stream >> location[0] >> location[1] >> location[2]; // Get location
+		stream >> rotation[0] >> rotation[1] >> rotation[2]; // Get rotation
+		stream >> dilation[0] >> dilation[1] >> dilation[2]; // Get dilation
+		
+		objects[i].load(path.c_str(), location, rotation, dilation);
 	}
 
 	message = "Loaded scene: ";
@@ -65,12 +74,12 @@ void Scene::draw () {
 	// calculate the model matrix for each object and pass it to shader before drawing
 	glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 	//model = glm::translate(model, get_position());
-	float angle;
+	//float angle;
 	
 	
 	for(int i = 0; i < num_objects; i++) {	// Draw each object
-		angle = 20.0 * i;
-		model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+		//angle = 20.0 * i;
+		//model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 		objects[i].draw(projection, view, model);
 	}
 }
