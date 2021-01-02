@@ -8,9 +8,9 @@ Object::Object () {
 	mat = nullptr;
 	mesh = nullptr;
 	name = "Undefined";
-	position = glm::vec3(0.0f, 0.0f, 0.0f);
+	location = glm::vec3(0.0f, 0.0f, 0.0f);
 	rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-	scale = glm::vec3(0.0f, 0.0f, 0.0f);
+	dilation = glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
 /******************************************************************************
@@ -34,9 +34,16 @@ Object::~Object () {
  * Params:
  *		filepath - Filepath from the executable to the object file
 ******************************************************************************/
-void Object::load (const char *filepath) {
+void Object::load (const char *filepath, 
+				   glm::vec3 new_location, 
+				   glm::vec3 new_rotation, 
+				   glm::vec3 new_dilation) {
 	std::string message = "  Loading object: ";
 	program_log(message.append(filepath).append("...\n"));
+
+	location = new_location;
+	rotation = new_rotation;
+	dilation = new_dilation;
 	
 	std::string path;
 	std::stringstream stream = file_tosstream(filepath);// Store file as stream
@@ -81,12 +88,21 @@ void Object::draw (glm::mat4 projection, glm::mat4 view, glm::mat4 model) {
 	
 	mat->use();// activate shader
 
-	// bind textures on corresponding texture units
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, mat->tex[0]);
+	// Get maximum number of textures units available on this machine
+	int max_textures;
+	glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &max_textures);
 	
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, mat->tex[1]);
+	// bind textures on corresponding texture units
+	for(int i = 0; i < mat->num_textures && i < max_textures; i++) {
+		glActiveTexture(GL_TEXTURE0 + i);
+		glBindTexture(GL_TEXTURE_2D, mat->tex[i]);
+	}
+
+	model = glm::translate(model, location);
+	model = glm::rotate(model, glm::radians(rotation[0]), glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::rotate(model, glm::radians(rotation[1]), glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::rotate(model, glm::radians(rotation[2]), glm::vec3(0.0f, 0.0f, 1.0f));
+	model = glm::scale(model, dilation);
 
 	mat->setMat4("projection", projection);
 	mat->setMat4("view", view);
@@ -110,24 +126,24 @@ std::string Object::get_name () const {
 }
 
 /******************************************************************************
- * This function sets the position to the given position
+ * This function sets the location to the given location
 ******************************************************************************/
-void Object::set_position (glm::vec3 new_position) {
-	position = new_position;
+void Object::set_location (glm::vec3 new_location) {
+	location = new_location;
 }
 
 /******************************************************************************
- * This function returns the current position
+ * This function returns the current location
 ******************************************************************************/
-glm::vec3 Object::get_position () const {
-	return position;
+glm::vec3 Object::get_location () const {
+	return location;
 }
 
 /******************************************************************************
- * This function translates the position by the given vector
+ * This function translates the location by the given vector
 ******************************************************************************/
 void Object::translate (glm::vec3 movement) {
-	position = position + movement;
+	location = location + movement;
 }
 
 /******************************************************************************
@@ -152,22 +168,22 @@ void Object::rotate (glm::vec3 movement) {
 }
 
 /******************************************************************************
- * This function sets the scale to the given scale
+ * This function sets the dilation to the given dilation
 ******************************************************************************/
-void Object::set_scale (glm::vec3 new_scale) {
-	scale = new_scale;
+void Object::set_dilation (glm::vec3 new_dilation) {
+	dilation = new_dilation;
 }
 
 /******************************************************************************
- * This function returns the current scale
+ * This function returns the current dilation
 ******************************************************************************/
-glm::vec3 Object::get_scale () const {
-	return scale;
+glm::vec3 Object::get_dilation () const {
+	return dilation;
 }
 
 /******************************************************************************
- * This function dilates the scale by the given vector
+ * This function dilates the dilation by the given vector
 ******************************************************************************/
 void Object::dilate (glm::vec3 movement) {
-	scale = scale + movement;
+	dilation = dilation + movement;
 }

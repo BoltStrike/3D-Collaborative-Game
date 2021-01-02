@@ -20,7 +20,7 @@ class Material {
 		const char *name;							// Name of material
 		const char *v_source, *f_source, *g_source;	// Raw source code
 		unsigned int v_id, f_id, g_id;				// OpenGL IDs
-		int num_textures;							// Quantity of textures
+		
 		
 
 		// If no vertex shader is given, this will be used
@@ -64,6 +64,7 @@ class Material {
 	public:
 		unsigned int ID;	// Shader ID
 		unsigned int *tex;	// Texture IDs
+		int num_textures;	// Quantity of textures
 		
 		Material();		// Default constructor
 		~Material();	// Default destructor
