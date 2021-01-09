@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/empty.dir/empty.c.o CMakeFiles/empty.dir/__/deps/tinycthread.c.o CMakeFiles/empty.dir/__/deps/glad_gl.c.o  -o empty  -Wl,-rpath,/home/irifulmin/Documents/personalDocuments/programming/3D-Collaborative-Game/glfw-master/glfw-build/src ../src/libglfw.so.3.4 -lm -lrt -lpthread 
