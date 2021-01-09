@@ -83,7 +83,11 @@ void Object::compile () {
 /******************************************************************************
  * This function draws the object to the window. 
 ******************************************************************************/
-void Object::draw (glm::mat4 projection, glm::mat4 view, glm::mat4 model) {
+void Object::draw (float time, 
+				   glm::mat4 projection, 
+				   glm::mat4 view, 
+				   glm::mat4 model) {
+	
 	glBindVertexArray(mesh->VAO);// Set VAO as active vertex arrray
 	
 	mat->use();// activate shader
@@ -104,6 +108,7 @@ void Object::draw (glm::mat4 projection, glm::mat4 view, glm::mat4 model) {
 	model = glm::rotate(model, glm::radians(rotation[2]), glm::vec3(0.0f, 0.0f, 1.0f));
 	model = glm::scale(model, dilation);
 
+	mat->setFloat("time", time);
 	mat->setMat4("projection", projection);
 	mat->setMat4("view", view);
 	mat->setMat4("model", model);

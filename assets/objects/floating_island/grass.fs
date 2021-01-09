@@ -6,7 +6,6 @@ in VS_OUT
     vec3 v_Normal;
     vec2 v_TexCoord;
     vec4 v_FragPos;
-    float time;
 } fs_in;
 
 //	Classic Perlin 3D Noise 
@@ -84,12 +83,65 @@ float cnoise(vec3 P){
   return 2.2 * n_xyz;
 }
 
+float mod289(float x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+vec4 mod289(vec4 x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+vec4 perm(vec4 x){return mod289(((x * 34.0) + 1.0) * x);}
+
+float noise(vec3 p)
+{
+    vec3 a = floor(p);
+    vec3 d = p - a;
+    d = d * d * (3.0 - 2.0 * d);
+
+    vec4 b = a.xxyy + vec4(0.0, 1.0, 0.0, 1.0);
+    vec4 k1 = perm(b.xyxy);
+    vec4 k2 = perm(k1.xyxy + b.zzww);
+
+    vec4 c = k2 + a.zzzz;
+    vec4 k3 = perm(c);
+    vec4 k4 = perm(c + 1.0);
+
+    vec4 o1 = fract(k3 * (1.0 / 41.0));
+    vec4 o2 = fract(k4 * (1.0 / 41.0));
+
+    vec4 o3 = o2 * d.z + o1 * (1.0 - d.z);
+    vec2 o4 = o3.yw * d.x + o3.xz * (1.0 - d.x);
+
+    return o4.y * d.y + o4.x * (1.0 - d.y);
+}
+
+float remap(float value, vec2 original, vec2 new) 
+{
+	return new.x + (value - original.x) * (new.y - new.x) / (original.y - original.x);
+}
+
 void main() 
 {
-	float value = cnoise(vec3(fs_in.v_FragPos.x, fs_in.v_FragPos.y, fs_in.v_FragPos.z+fs_in.time));
-	float red = value;
-	value = value*-1 + 1.0;
-	vec4 texColor = vec4(0.0, value, value, red);
-	texColor.a = (texColor.x + texColor.y + texColor.z)*0.1;
+	vec2 r = vec2(0.216, 0.336);
+	vec2 g = vec2(0.263, 0.729);
+	vec2 b = vec2(0.217, 0.301);
+	vec2 original = vec2(0.0, 1.0);
+
+	float value = noise(fs_in.v_FragPos.xyz*30.0);
+	float red = remap(value, original, r);
+	float green = remap(value, original, g);
+	float blue = remap(value, original, b);
+	vec3 small_noise = vec3(red, green, blue);
+	
+	value = cnoise(fs_in.v_FragPos.xyz*15);
+	red = remap(value, original, r);
+	green = remap(value, original, g);
+	blue = remap(value, original, b);
+	vec3 large_noise = vec3(red, green, blue);
+
+	value = noise(fs_in.v_FragPos.xyz*200.0);
+	red = remap(value, original, r);
+	green = remap(value, original, g);
+	blue = remap(value, original, b);
+	vec3 micro_noise = vec3(red, green, blue);
+
+	vec3 mixture = mix(mix(small_noise, large_noise, 0.5), micro_noise, 0.5);
+	
+	vec4 texColor = vec4(mixture, 1.0);
 	FragColor = texColor;
 }

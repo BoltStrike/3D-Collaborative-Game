@@ -36,7 +36,7 @@ class Object{
 		void compile();			// Link current object to OpenGL
 		
 		// Draws the object in its current state
-		void draw(glm::mat4, glm::mat4, glm::mat4);
+		void draw(float, glm::mat4, glm::mat4, glm::mat4);
 		
 		void set_name(std::string);		// Set the name
 		std::string get_name()const;	// Get the name
