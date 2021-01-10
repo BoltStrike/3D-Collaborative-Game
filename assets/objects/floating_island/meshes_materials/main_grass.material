@@ -1,5 +1,4 @@
-assets/objects/floating_island/one_texture.vs
-assets/objects/floating_island/one_texture.fs
+assets/objects/floating_island/grass.vs
+assets/objects/floating_island/grass.fs
 #
-1
-assets/objects/floating_island/textures/main_grass.png
+0

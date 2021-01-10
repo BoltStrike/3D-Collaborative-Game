@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/particles.dir/particles.c.o CMakeFiles/particles.dir/__/deps/tinycthread.c.o CMakeFiles/particles.dir/__/deps/getopt.c.o CMakeFiles/particles.dir/__/deps/glad_gl.c.o  -o particles  -Wl,-rpath,/home/irifulmin/Documents/personalDocuments/programming/3D-Collaborative-Game/glfw-master/glfw-build/src ../src/libglfw.so.3.4 -lm -lrt -lpthread 

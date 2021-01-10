@@ -11,6 +11,15 @@ Object::Object () {
 	location = glm::vec3(0.0f, 0.0f, 0.0f);
 	rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 	dilation = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	// REMOVE LATER ONCE INSTANCES HAVE BEEN ESTABLISHED IN THE SCENE
+	num_instances = 100;
+	translations = new glm::vec3[num_instances];
+	for(unsigned int i = 0; i < num_instances; i++) {
+		translations[i].x = 10 * i;
+		translations[i].y = 10 * i;
+		translations[i].z = 10 * i;
+	}
 }
 
 /******************************************************************************
@@ -24,6 +33,9 @@ Object::~Object () {
 	mat = nullptr;	
 	delete mesh;
 	mesh = nullptr;
+
+	delete translations;
+	translations = nullptr;
 
 	message = "  Deleted object: ";
 	program_log(message.append(name).append("\n"));
@@ -71,8 +83,23 @@ void Object::compile () {
 	GLint posAttrib = glGetAttribLocation(mat->ID, "aPos");
 	GLint texAttrib = glGetAttribLocation(mat->ID, "aTexCoord");
 	GLint norAttrib = glGetAttribLocation(mat->ID, "aNormal");
+	GLint offsetAttrib = glGetAttribLocation(mat->ID, "aOffset");
 
 	mesh->compile(posAttrib, texAttrib, norAttrib);
+
+	// Generate instance buffer
+	glGenBuffers(1, &instanceVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * num_instances, &translations[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	// Enable instance buffer
+	glEnableVertexAttribArray(offsetAttrib);
+	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+	glVertexAttribPointer(offsetAttrib, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);	
+	glVertexAttribDivisor(offsetAttrib, 1);  
+	
 	// tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
 	// -------------------------------------------------------------------------------------------
 	mat->use();
@@ -83,7 +110,11 @@ void Object::compile () {
 /******************************************************************************
  * This function draws the object to the window. 
 ******************************************************************************/
-void Object::draw (glm::mat4 projection, glm::mat4 view, glm::mat4 model) {
+void Object::draw (float time, 
+				   glm::mat4 projection, 
+				   glm::mat4 view, 
+				   glm::mat4 model) {
+	
 	glBindVertexArray(mesh->VAO);// Set VAO as active vertex arrray
 	
 	mat->use();// activate shader
@@ -104,11 +135,15 @@ void Object::draw (glm::mat4 projection, glm::mat4 view, glm::mat4 model) {
 	model = glm::rotate(model, glm::radians(rotation[2]), glm::vec3(0.0f, 0.0f, 1.0f));
 	model = glm::scale(model, dilation);
 
+	mat->setFloat("time", time);
 	mat->setMat4("projection", projection);
 	mat->setMat4("view", view);
 	mat->setMat4("model", model);
-	
-	glDrawArrays(GL_TRIANGLES, 0, mesh->get_num_faces() * 24);
+
+	// No instancing
+	//glDrawArrays(GL_TRIANGLES, 0, mesh->get_num_faces() * 24);
+	// With instancing
+	glDrawArraysInstanced(GL_TRIANGLES, 0, mesh->get_num_faces() * 24, num_instances);  
 }
 
 /******************************************************************************
@@ -125,65 +160,4 @@ std::string Object::get_name () const {
 	return name;
 }
 
-/******************************************************************************
- * This function sets the location to the given location
-******************************************************************************/
-void Object::set_location (glm::vec3 new_location) {
-	location = new_location;
-}
 
-/******************************************************************************
- * This function returns the current location
-******************************************************************************/
-glm::vec3 Object::get_location () const {
-	return location;
-}
-
-/******************************************************************************
- * This function translates the location by the given vector
-******************************************************************************/
-void Object::translate (glm::vec3 movement) {
-	location = location + movement;
-}
-
-/******************************************************************************
- * This function sets the rotation to the given rotation
-******************************************************************************/
-void Object::set_rotation (glm::vec3 new_rotation) {
-	rotation = new_rotation;
-}
-
-/******************************************************************************
- * This function returns the current rotation
-******************************************************************************/
-glm::vec3 Object::get_rotation () const {
-	return rotation;
-}
-
-/******************************************************************************
- * This function rotates the rotation by the given vector
-******************************************************************************/
-void Object::rotate (glm::vec3 movement) {
-	rotation = rotation + movement;
-}
-
-/******************************************************************************
- * This function sets the dilation to the given dilation
-******************************************************************************/
-void Object::set_dilation (glm::vec3 new_dilation) {
-	dilation = new_dilation;
-}
-
-/******************************************************************************
- * This function returns the current dilation
-******************************************************************************/
-glm::vec3 Object::get_dilation () const {
-	return dilation;
-}
-
-/******************************************************************************
- * This function dilates the dilation by the given vector
-******************************************************************************/
-void Object::dilate (glm::vec3 movement) {
-	dilation = dilation + movement;
-}

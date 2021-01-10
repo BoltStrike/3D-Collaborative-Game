@@ -67,19 +67,17 @@ void Scene::draw () {
 										    (float)Window::scr_height, 
 										    0.1f, 
 										    100.0f);
+	
 	// camera/view transformation
 	glm::mat4 view = glm::lookAt(Window::cameraPos, 
 								 Window::cameraPos + Window::cameraFront, 
 								 Window::cameraUp);
 	// calculate the model matrix for each object and pass it to shader before drawing
 	glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-	//model = glm::translate(model, get_position());
-	//float angle;
-	
 	
 	for(int i = 0; i < num_objects; i++) {	// Draw each object
 		//angle = 20.0 * i;
 		//model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-		objects[i].draw(projection, view, model);
+		objects[i].draw(Window::lastFrame, projection, view, model);
 	}
 }
