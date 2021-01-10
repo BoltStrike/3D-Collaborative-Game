@@ -3,6 +3,8 @@
 
 #include "collider.h"
 #include "internalPhysics.h"
+#include <string>
+#include <sstream>
 
 const int BoxColliderLineList[12][2]={
 			{0,1},
@@ -27,6 +29,7 @@ class BoxCollider:public Collider{
 		BoxCollider(float,float,float);
 		BoxCollider(glm::vec3*);
 		BoxCollider(const BoxCollider& other);
+		BoxCollider(std::stringstream*,float);
 		
 		glm::vec3* getPointList();
 		

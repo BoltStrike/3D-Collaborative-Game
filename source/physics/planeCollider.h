@@ -3,6 +3,8 @@
 
 #include "collider.h"
 #include "internalPhysics.h"
+#include <string>
+#include <sstream>
 
 class PlaneCollider: public Collider{
 	private:
@@ -17,6 +19,7 @@ class PlaneCollider: public Collider{
 		//~PlaneCollider();
 		//PlaneCollider(const PlaneCollider &old);
 		PlaneCollider(glm::vec3,glm::vec3,glm::vec3,glm::vec3,glm::vec3);
+		PlaneCollider(std::stringstream*,float);
 		bool checkCollision(Collider*);
 	public:
 		bool checkLine(glm::vec3,glm::vec3);

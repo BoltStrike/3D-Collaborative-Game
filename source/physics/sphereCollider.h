@@ -3,6 +3,8 @@
 
 #include "internalPhysics.h"
 #include "collider.h"
+#include <string>
+#include <sstream>
 
 class SphereCollider: public Collider{
 	private:
@@ -12,6 +14,7 @@ class SphereCollider: public Collider{
 		~SphereCollider();
 		SphereCollider(float);
 		SphereCollider(float,glm::vec3);
+		SphereCollider(std::stringstream*,float);
 		
 		bool checkCollision(Collider*);
 		//There will be functions for resolving collision, though they are not yet implimented or used

@@ -1,5 +1,5 @@
 #ifndef COLLIDER_H
-#define CLOOIDER_H
+#define COLLIDER_H
 
 #include "internalPhysics.h"
 

@@ -3,24 +3,28 @@
 
 #include "collider.h"
 #include "internalPhysics.h"
+#include <string>
+#include <sstream>
+#include "../generic/file_tosstream.h"
 
 class MeshCollider:public Collider{
 	private:
 		glm::vec3* pointList;
 		int numPoints;
-		int** triangleList;
+		int* triangleList;
 		int numTriangles;
 		//have list of edges
 		//have list of triangle areas?
 	public:
 		//MeshCollider();
 		~MeshCollider();
-		MeshCollider(glm::vec3*,int, int**,int,float);
+		MeshCollider(glm::vec3*,int, int* triangleList,int,float);
 		MeshCollider(const MeshCollider &other);
+		MeshCollider(std::stringstream*,float);
 		
 		glm::vec3* getPointList();
 		int getNumPoints();
-		int** getTriangleList();
+		int* getTriangleList();
 		int getNumTriangles();
 		
 		bool checkCollision(Collider*);
@@ -40,6 +44,7 @@ class MeshCollider:public Collider{
 	private:
 		inline bool areaCheck(glm::vec3,int,float);
 		inline bool pointLineCheck(glm::vec3,float,int,int,int);
+		inline glm::vec3 getPoint(int,int);
 };
 
 #endif

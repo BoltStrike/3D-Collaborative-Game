@@ -7,13 +7,26 @@
 }*/
 PlaneCollider::PlaneCollider(glm::vec3 pA,glm::vec3 pB,glm::vec3 pC,glm::vec3 pD,glm::vec3 n):Collider(ColliderType::plane,std::fmax(glm::length(pA-pC),glm::length(pB-pD))){
 	this->pointA=pA;
-	this->pointA=pA;
-	this->pointA=pA;
-	this->pointA=pA;
+	this->pointB=pB;
+	this->pointC=pC;
+	this->pointD=pD;
 	this->normal=n; //will assume this has length of 1
 	this->area=glm::length(glm::cross(pB-pA,pC-pA));
 }
-
+PlaneCollider::PlaneCollider(std::stringstream* stream,float rad):Collider(ColliderType::plane,rad){
+	float x,y,z;
+	(*stream)>>x>>y>>z;
+	this->pointA=glm::vec3(x,y,z);
+	(*stream)>>x>>y>>z;
+	this->pointB=glm::vec3(x,y,z);
+	(*stream)>>x>>y>>z;
+	this->pointC=glm::vec3(x,y,z);
+	(*stream)>>x>>y>>z;
+	this->pointD=glm::vec3(x,y,z);
+	(*stream)>>x>>y>>z;
+	this->normal=glm::vec3(x,y,z);
+	(*stream)>>area;
+}
 bool PlaneCollider::checkCollision(Collider* oCol){
 	//check each of the lines
 	if(oCol->checkLine(pointA,pointB)) return true;

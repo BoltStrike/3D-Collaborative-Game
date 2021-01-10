@@ -11,6 +11,13 @@ InfPlaneCollider::InfPlaneCollider(glm::vec3 p,glm::vec3 n):Collider(ColliderTyp
 	this->point=p;
 	this->normal=n;
 }
+InfPlaneCollider::InfPlaneCollider(std::stringstream* stream,float rad):Collider(ColliderType::infPlane,rad){
+	float x,y,z;
+	(*stream)>>x>>y>>z;
+	this->point=glm::vec3(x,y,z);
+	(*stream)>>x>>y>>z;
+	this->normal=glm::vec3(x,y,z);
+}
 InfPlaneCollider::InfPlaneCollider(const InfPlaneCollider &old){
 	point=old.point;
 	normal=old.normal;

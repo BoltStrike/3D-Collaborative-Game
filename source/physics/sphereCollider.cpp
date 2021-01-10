@@ -8,11 +8,15 @@ SphereCollider::~SphereCollider(){
 SphereCollider::SphereCollider(float rad):Collider(ColliderType::sphere,rad){
 	this->pos=glm::vec3(0.0f,0.0f,0.0f);
 }
+SphereCollider::SphereCollider(std::stringstream* stream,float rad):Collider(ColliderType::sphere,rad){
+	float x,y,z;
+	(*stream)>>x>>y>>z;
+	this->pos=glm::vec3(x,y,z);
+}
 
 bool SphereCollider::checkCollision(Collider* oCol){
 	return oCol->checkPoint(this->pos,Collider::boundingRad);
 }
-//all functions return false, use child classes;
 bool SphereCollider::checkLine(glm::vec3 q1,glm::vec3 q2){
 	//find shortest distance between pos and line
 	float shortestDist=glm::length(glm::cross(pos-q1,q2-q1))/glm::length(q2-q1);

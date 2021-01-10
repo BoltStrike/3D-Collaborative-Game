@@ -29,6 +29,31 @@ BoxCollider::BoxCollider(float x,float y,float z):Collider(ColliderType::box,glm
 BoxCollider::BoxCollider(glm::vec3* pointList):Collider(ColliderType::box,glm::length(pointList[0]-pointList[7])){
 	this->pointList=pointList;
 }
+BoxCollider::BoxCollider(std::stringstream* stream,float rad):Collider(ColliderType::box,rad){
+	this->pointList=(glm::vec3*)malloc(8*sizeof(glm::vec3));
+	//indicate weater it is a simple or complex file
+	char format;
+	(*stream)>>format;
+	float x, y, z;
+	if(format=='s'){
+		//simple 3 number format
+		(*stream)>>x>>y>>z;
+		pointList[0]=glm::vec3(-x,-y,-z);
+		pointList[1]=glm::vec3(-x,-y, z);
+		pointList[2]=glm::vec3(-x, y,-z);
+		pointList[3]=glm::vec3(-x, y, z);
+		pointList[4]=glm::vec3( x,-y,-z);
+		pointList[5]=glm::vec3( x,-y, z);
+		pointList[6]=glm::vec3( x, y,-z);
+		pointList[7]=glm::vec3( x, y, z);
+	}else{
+		//complex 8 vector format
+		for(int i=0;i<8;i++){
+			(*stream)>>x>>y>>z;
+			pointList[i]=glm::vec3(x,y,z);
+		}
+	}
+}
 BoxCollider::BoxCollider(const BoxCollider& other){
 	this->pointList=(glm::vec3*)malloc(8*sizeof(glm::vec3));
 	glm::vec3* otherPointList=other.pointList;//other.getPointList();
