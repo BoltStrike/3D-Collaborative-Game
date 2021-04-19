@@ -129,11 +129,16 @@ void Object::draw (float time,
 		glBindTexture(GL_TEXTURE_2D, mat->tex[i]);
 	}
 
-	model = glm::translate(model, location);
-	model = glm::rotate(model, glm::radians(rotation[0]), glm::vec3(1.0f, 0.0f, 0.0f));
-	model = glm::rotate(model, glm::radians(rotation[1]), glm::vec3(0.0f, 1.0f, 0.0f));
-	model = glm::rotate(model, glm::radians(rotation[2]), glm::vec3(0.0f, 0.0f, 1.0f));
+	// model = glm::mat4
+	model = glm::mat4(1.0f);
+	
+	glm::quat new_rot = glm::quat(rotation[0]==0?1.0:rotation[0], rotation[0], 0.0, 0.0);
+	model = glm::toMat4(new_rot);
+	//model = glm::rotate(model, glm::radians(rotation[0]), glm::vec3(1.0f, 0.0f, 0.0f));// x
+	//model = glm::rotate(model, glm::radians(rotation[1]), glm::vec3(0.0f, 1.0f, 0.0f));// y
+	//model = glm::rotate(model, glm::radians(rotation[2]), glm::vec3(0.0f, 0.0f, 1.0f));// z
 	model = glm::scale(model, dilation);
+	model = glm::translate(model, location);
 
 	mat->setFloat("time", time);
 	mat->setMat4("projection", projection);

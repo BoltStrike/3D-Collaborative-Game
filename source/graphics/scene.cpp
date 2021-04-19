@@ -59,25 +59,25 @@ void Scene::load (const char *filepath) {
 /******************************************************************************
  * This function draws the entire scene
 ******************************************************************************/
-void Scene::draw () {
+void Scene::draw (float fov, int scr_width, int scr_height,
+				  glm::vec3 cameraPos, glm::vec3 cameraFront, glm::vec3 cameraUp) {
 	glBindVertexArray(VAO);	// Set the current vertex array to the VAO
+	
 	// pass projection matrix to shader (note that in this case it could change every frame)
-	glm::mat4 projection = glm::perspective(glm::radians(Window::fov), 
-										    (float)Window::scr_width / 
-										    (float)Window::scr_height, 
+	glm::mat4 projection = glm::perspective(glm::radians(fov), 
+										    (float)scr_width / (float)scr_height, 
 										    0.1f, 
 										    100.0f);
 	
 	// camera/view transformation
-	glm::mat4 view = glm::lookAt(Window::cameraPos, 
-								 Window::cameraPos + Window::cameraFront, 
-								 Window::cameraUp);
+	glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+	
 	// calculate the model matrix for each object and pass it to shader before drawing
 	glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 	
 	for(int i = 0; i < num_objects; i++) {	// Draw each object
 		//angle = 20.0 * i;
 		//model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-		objects[i].draw(Window::lastFrame, projection, view, model);
+		objects[i].draw(in::get_time(), projection, view, model);
 	}
 }

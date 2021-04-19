@@ -1,0 +1,147 @@
+
+#define STB_IMAGE_IMPLEMENTATION // Required for stb_image.h (Only define once)
+
+#include "game_engine.h"
+#include "generic/program_log.h"
+#include <stdio.h>
+#include <thread>
+
+using namespace std;
+
+int test1 = 0;
+int test2 = 0;
+int test3 = 0;
+int test4 = 0;
+int test5 = 0;
+int test6 = 0;
+int test7 = 0;
+int test8 = 0;
+int test9 = 0;
+int test10 = 0;
+int test11 = 0;
+int test12 = 0;
+
+
+void increment1 () {
+	while (true) {
+		test1++;
+	}
+}
+
+void increment2 () {
+	while (true) {
+		test2++;
+	}
+}
+
+void increment3 () {
+	while (true) {
+		test3++;
+	}
+}
+
+void increment4 () {
+	while (true) {
+		test4++;
+	}
+}
+
+void increment5 () {
+	while (true) {
+		test5++;
+	}
+}
+
+void increment6 () {
+	while (true) {
+		test6++;
+	}
+}
+
+void increment7 () {
+	while (true) {
+		test7++;
+	}
+}
+
+void increment8 () {
+	while (true) {
+		test8++;
+	}
+}
+
+void increment9 () {
+	while (true) {
+		test9++;
+	}
+}
+
+void increment10 () {
+	while (true) {
+		test10++;
+	}
+}
+
+void increment11 () {
+	while (true) {
+		test11++;
+	}
+}
+
+void increment12 () {
+	while (true) {
+		test12++;
+	}
+}
+
+/******************************************************************************
+ * This is the main function. This starts the game engine, enters the game loop
+ * and terminates the game engine after it is finished. 
+******************************************************************************/
+int main (int argc, char **argv) {
+	/*
+	increment1();
+	increment2();
+	increment3();
+	increment4();
+	increment5();
+	increment6();
+	increment7();
+	increment8();
+	increment9();
+	increment10();
+	increment11();
+	increment12();
+	*/
+	
+	thread th1(increment1);
+	thread th2(increment2);
+	thread th3(increment3);
+	thread th4(increment4);
+	thread th5(increment5);
+	thread th6(increment6);
+	thread th7(increment7);
+	thread th8(increment8);
+	thread th9(increment9);
+	thread th10(increment10);
+	thread th11(increment11);
+	thread th12(increment12);
+
+	th1.join();
+	th2.join();
+	th3.join();
+	th4.join();
+	th5.join();
+	th6.join();
+	th7.join();
+	th8.join();
+	th9.join();
+	th10.join();
+	th11.join();
+	th12.join();
+	
+	
+	printf("Finished\n");
+	return 0;
+}
+
