@@ -13,6 +13,8 @@
 #include "mesh.h"
 #include "material.h"
 
+#include "graphics_wrapper_functions.h"
+
 class Object{
 	private:
 		std::string name;	// Name of the object

@@ -80,10 +80,10 @@ void Object::load (const char *filepath,
  * called every time either the material or the mesh changes.
 ******************************************************************************/
 void Object::compile () {
-	GLint posAttrib = glGetAttribLocation(mat->ID, "aPos");
-	GLint texAttrib = glGetAttribLocation(mat->ID, "aTexCoord");
-	GLint norAttrib = glGetAttribLocation(mat->ID, "aNormal");
-	GLint offsetAttrib = glGetAttribLocation(mat->ID, "aOffset");
+	int posAttrib = glGetAttribLocation(mat->ID, "aPos");
+	int texAttrib = glGetAttribLocation(mat->ID, "aTexCoord");
+	int norAttrib = glGetAttribLocation(mat->ID, "aNormal");
+	int offsetAttrib = glGetAttribLocation(mat->ID, "aOffset");
 
 	mesh->compile(posAttrib, texAttrib, norAttrib);
 
@@ -102,9 +102,9 @@ void Object::compile () {
 	
 	// tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
 	// -------------------------------------------------------------------------------------------
-	mat->use();
-	mat->setInt("texture1", 0);
-	mat->setInt("texture2", 1);
+	gwf::use_shader(mat->ID);
+	gwf::setInt(mat->ID, "texture1", 0);
+	gwf::setInt(mat->ID, "texture2", 1);
 }
 
 /******************************************************************************
@@ -117,7 +117,7 @@ void Object::draw (float time,
 	
 	glBindVertexArray(mesh->VAO);// Set VAO as active vertex arrray
 	
-	mat->use();// activate shader
+	gwf::use_shader(mat->ID);	// activate shader
 
 	// Get maximum number of textures units available on this machine
 	int max_textures;
@@ -140,10 +140,10 @@ void Object::draw (float time,
 	model = glm::scale(model, dilation);
 	model = glm::translate(model, location);
 
-	mat->setFloat("time", time);
-	mat->setMat4("projection", projection);
-	mat->setMat4("view", view);
-	mat->setMat4("model", model);
+	gwf::setFloat(mat->ID, "time", time);
+	gwf::setMat4(mat->ID, "projection", projection);
+	gwf::setMat4(mat->ID, "view", view);
+	gwf::setMat4(mat->ID, "model", model);
 
 	// No instancing
 	//glDrawArrays(GL_TRIANGLES, 0, mesh->get_num_faces() * 24);

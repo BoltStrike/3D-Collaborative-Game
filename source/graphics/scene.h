@@ -7,7 +7,6 @@
 
 #include "object.h"
 #include "input.h"
-//#include "window.h"
 #include "../generic/file_tosstream.h"
 
 class Scene {

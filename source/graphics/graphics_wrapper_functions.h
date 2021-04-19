@@ -14,6 +14,8 @@
 #include "../../glad/glad.h"
 #include "../../glfw-3.3.2.bin.WIN64/include/GLFW/glfw3.h"
 
+#include "../../stb-master/stb_image.h"
+
 #include "../../glm/glm.hpp"
 #include "../../glm/gtc/matrix_transform.hpp"
 #include "../../glm/gtc/type_ptr.hpp"
@@ -30,6 +32,12 @@ namespace gwf{
 static std::unordered_map<std::string, GLFWwindow*> windows;
 
 void draw(unsigned int, unsigned int, unsigned int, unsigned int);
+void use_shader(unsigned int);						// Use the given shader
+void delete_shader(unsigned int);					// Delete given shader
+void compile_shader(unsigned int&, const char*, const char*, const char*);
+void create_texture(const char*, unsigned int&);	// Creates one texture
+void delete_textures(unsigned int, unsigned int*);	// Delets given textures
+
 
 void initialize_glfw();
 void terminate_glfw();
@@ -38,7 +46,7 @@ bool load_opengl();
 // Creates GLFW window with OpenGL context. Initializes OpenGL.
 bool create_window(unsigned int, unsigned int, std::string);
 
-void set_window(std::string name);	// Sets the currently active window
+void set_window(std::string);		// Sets the currently active window
 void set_cursor(bool);				// Set mouse cursor visibility to Boolean
 void set_vsync(bool);				// Sets the vsync property to given Boolean
 void set_depth_test(bool);			// Sets depth testing to given Boolean
@@ -53,7 +61,7 @@ void get_dimensions(int&, int&);	// Retrieves screen dimensions
 void clear_viewport(float,float,float);	
 
 // Callback functions
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebuffer_size_callback(GLFWwindow*, int, int);
 
 // Utility uniform functions provide access to shader variables
 void setBool(unsigned int, const std::string&, bool);
@@ -68,6 +76,8 @@ void setVec4(unsigned int, const std::string&, float, float, float, float);
 void setMat2(unsigned int, const std::string&, const glm::mat2&);
 void setMat3(unsigned int, const std::string&, const glm::mat3&);
 void setMat4(unsigned int, const std::string&, const glm::mat4&);
+// Utility function for checking shader compilation/linking errors.
+void check_compile_errors(unsigned int, std::string);
 
 }// Namespace gwf
 

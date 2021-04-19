@@ -14,6 +14,137 @@ void draw (unsigned int ID, unsigned int VAO, unsigned int num_vertices, unsigne
 }
 
 /******************************************************************************
+ * This function activates the given shader for drawing.
+ * Params:
+ *		ID	- OpenGL ID referencing a shader program
+ *****************************************************************************/
+void use_shader (unsigned int ID) {
+	glUseProgram(ID);
+}
+
+/******************************************************************************
+ * This function deletes the given shader.
+ * Params:
+ *		ID	- OpenGL ID referencing a shader program
+ *****************************************************************************/
+void delete_shader (unsigned int ID) {
+	glDeleteProgram(ID);
+}
+
+/******************************************************************************
+ * This function compiles a shader program from a given set of shader source
+ * files. The created program ID is returned by reference.
+ * Params:
+ *		ID	 - The OpenGL ID returned for the created program
+ *	v_source - The vertex shader source code
+ *	f_source - The fragment shader source code
+ *	g_source - The geometry shader source code (may be nullptr)
+ *****************************************************************************/
+void compile_shader (unsigned int &ID, 
+					 const char* v_source, 
+					 const char* f_source, 
+					 const char* g_source = nullptr) {
+
+	unsigned int v_id, f_id, g_id;	// OpenGL IDs
+
+	// vertex shader
+	v_id = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(v_id, 1, &v_source, NULL);
+	glCompileShader(v_id);
+	gwf::check_compile_errors(v_id, "VERTEX");
+
+	// fragment Shader
+	f_id = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(f_id, 1, &f_source, NULL);
+	glCompileShader(f_id);
+	gwf::check_compile_errors(f_id, "FRAGMENT");
+
+	// geometry shader
+	if(g_source != nullptr) {	// Only create geometry shader if provided with one
+		g_id = glCreateShader(GL_GEOMETRY_SHADER);
+		glShaderSource(g_id, 1, &g_source, NULL);
+		glCompileShader(g_id);
+		gwf::check_compile_errors(g_id, "GEOMETRY");
+	}
+
+	// Compile the shader program. Store its id in the ID variable
+	ID = glCreateProgram();
+	glAttachShader(ID, v_id);
+	glAttachShader(ID, f_id);
+	if (g_source != nullptr)
+		glAttachShader(ID, g_id);
+	glLinkProgram(ID);
+	gwf::check_compile_errors(ID, "PROGRAM");
+	
+	// delete shaders as they're linked into the program and no longer necessery
+	glDeleteShader(v_id);
+	glDeleteShader(f_id);
+	if (g_source != nullptr)
+		glDeleteShader(g_id);
+		
+}
+
+/******************************************************************************
+ * This function creates a single texture from an image ready for OpenGL. 
+ * Params:
+ *		filepath - Filepath from executable to the image
+ *		tex		 - ID of the 
+ *****************************************************************************/
+void create_texture (const char *filepath, unsigned int &tex) {
+	unsigned char *data;			// Holds image data from stbi
+	int width, height, nrChannels;	// Variables used by stbi
+
+	glGenTextures(1, &tex);				// Alocate texture ID in OpenGL
+	glBindTexture(GL_TEXTURE_2D, tex);	// Specify ID refers to 2D texture
+	
+	// set the texture wrapping parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// Wrap x
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	// Wrap y
+	// set texture filtering parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);// Zoom x
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);// Zoom y
+	
+	stbi_set_flip_vertically_on_load(true); // Flip image on y-axis
+	// Load image with RGBA
+	data = stbi_load(filepath, &width, &height, &nrChannels, STBI_rgb_alpha);
+	if (data) {	// Check if anything was loaded.
+		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+		glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+		glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+		glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+		
+		glTexImage2D(	GL_TEXTURE_2D, 		// Generate the texture
+						0, 
+						GL_RGBA, 
+						width, 
+						height, 
+						0, 
+						GL_RGBA, 
+						GL_UNSIGNED_BYTE, 
+						data);
+						
+		glGenerateMipmap(GL_TEXTURE_2D);	// Generate the mipmap
+		std::string message = "      Loaded image: ";
+		program_log(message.append(filepath).append("\n").c_str());
+	}
+	else {
+		std::string message = "      ERROR::Failed to load image: ";
+		program_log(message.append(filepath).append("\n").c_str());
+	}
+	stbi_image_free(data);	// Texture linked to OpenGL. Data no longer needed.
+}
+
+/******************************************************************************
+ * This function deletes a given set of textures.
+ * Params:
+ *		num_textures - Number of textures to delete
+ *		tex		 	 - Pointer to array of textures to delete from
+ *****************************************************************************/
+void delete_textures (unsigned int num_textures, unsigned int* tex) {
+	glDeleteTextures(num_textures, tex);
+}
+
+/******************************************************************************
  * This function creates a GLFW window with OpenGL context. By doing this,
  * OpenGL is loaded using GLAD. Returns true on success, false on failure.
  * Params:
@@ -264,6 +395,47 @@ void setMat3(unsigned int ID, const std::string& name, const glm::mat3& mat) {
 /*****************************************************************************/
 void setMat4(unsigned int ID, const std::string& name, const glm::mat4& mat) {
 	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+}
+
+/******************************************************************************
+ * This function checks for shader compilation/linking errors. 
+ * Params:
+ * 		shader 	- The ID of the shader that is being checked
+ *		type	- A string describing the type of shader being checked
+ *				  (Must be "VERTEX", "FRAGMENT", "GEOMETRY", or "PROGRAM")
+ *****************************************************************************/
+void check_compile_errors(unsigned int shader, std::string type) {
+	GLint success;
+	GLchar infoLog[1024];
+	if (type != "PROGRAM")
+	{
+		glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+			std::string message = "ERROR::SHADER_COMPILATION_ERROR of type: ";
+			message.append(type);
+			message.append("\n");
+			message.append(infoLog);
+			message.append("\n-------------------------------------------\n");
+			program_log(message.c_str());
+		}
+	}
+	else
+	{
+		glGetProgramiv(shader, GL_LINK_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(shader, 1024, NULL, infoLog);
+			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+			std::string message = "ERROR::SHADER_COMPILATION_ERROR of type: ";
+			message.append(type);
+			message.append("\n");
+			message.append(infoLog);
+			message.append("\n-------------------------------------------\n");
+			program_log(message.c_str());
+		}
+	}
 }
 
 }// Namespace gwf
