@@ -61,8 +61,8 @@ void Object::load (const char *filepath,
 	std::stringstream stream = file_tosstream(filepath);// Store file as stream
 	stream >> path;
 	if(path.compare("#") != 0) {	// Load material if one is provided
-		mat = new Material;
-		mat->load(path.c_str());
+		mat = new Material(path.c_str());
+		//mat->load(path.c_str());
 	}
 	stream >> path;
 	if(path.compare("#") != 0) {	// Load mesh if one is provided

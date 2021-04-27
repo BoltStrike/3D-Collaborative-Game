@@ -28,6 +28,40 @@
 
 namespace gwf{
 
+// If no vertex shader is given, this will be used
+constexpr static const char* DEFAULT_VERTEX_SHADER = ""
+	"#version 330 core\n"
+	"layout (location = 0) in vec3 aPos;\n"
+	"layout (location = 1) in vec2 aTexCoord;\n"
+	"layout (location = 2) in vec3 aNormal;\n"
+	"layout (location = 3) in vec3 aOffset;\n" // The position per instance
+	"out vec2 TexCoord;\n"
+	"uniform mat4 model;\n"
+	"uniform mat4 view;\n"
+	"uniform mat4 projection;\n"
+	"void main()\n"
+	"{\n"
+	"	gl_Position = projection * view * model * vec4(aPos+aOffset, 1.0f);\n"
+	"	TexCoord = vec2(aTexCoord.x, aTexCoord.y);\n"
+	"}\n";
+
+// If no fragment shader is given, this will be used
+constexpr static const char* DEFAULT_FRAGMENT_SHADER = ""
+	"#version 330 core\n"
+	"out vec4 FragColor;\n"
+	"in vec2 TexCoord;\n"
+	// texture samplers
+	"uniform sampler2D texture1;\n"
+	"uniform sampler2D texture2;\n"
+	"void main()\n"
+	"{\n"
+	"	float result = mod(floor(TexCoord.x*10) + floor(TexCoord.y*10), 2.0);\n"
+    "	FragColor = mix(vec4(1.0, 0.0, 1.0, 1.0), vec4(0.0, 0.0, 0.0, 1.0), result);\n"
+	"}\n";
+		
+extern unsigned int *DEFAULT_SHADER_ID;	// Default shader, null on start
+
+
 // unordered_map storing all windows of the program
 static std::unordered_map<std::string, GLFWwindow*> windows;
 
@@ -77,7 +111,7 @@ void setMat2(unsigned int, const std::string&, const glm::mat2&);
 void setMat3(unsigned int, const std::string&, const glm::mat3&);
 void setMat4(unsigned int, const std::string&, const glm::mat4&);
 // Utility function for checking shader compilation/linking errors.
-void check_compile_errors(unsigned int, std::string);
+bool check_compile_errors(unsigned int, std::string);
 
 }// Namespace gwf
 

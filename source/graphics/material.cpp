@@ -2,14 +2,13 @@
 #include "material.h"
 
 /******************************************************************************
- * This is the default constructor
+ * This is the constructor
+ * Params:
+ *		filepath - Filepath from the executable to the material file
  *****************************************************************************/
-Material::Material () {
+Material::Material (const char *filepath) {
 	name = "unkown";
-	v_source = nullptr;
-	f_source = nullptr;
-	g_source = nullptr;
-	ID = 0;
+	load(filepath);
 }
 
 /******************************************************************************
@@ -29,7 +28,7 @@ Material::~Material () {
 /******************************************************************************
  * This function loads the material from a material file.
  * Params:
- *		filepath - Filepath from the exacutable to the material file
+ *		filepath - Filepath from the executable to the material file
  *****************************************************************************/
 void Material::load (const char *filepath) {
 	std::string message = "    Loading material: ";
@@ -67,9 +66,9 @@ void Material::load (const char *filepath) {
 /******************************************************************************
  * This function compiles all the OpenGL sharder language files into a shader.
  * Params:
- * 		vpath - Filepath from exacutable to vertex sharder source 
- *		fpath - Filepath from exacutable to fragment sharder source 
- *		gpath - Filepath from exacutable to geometry shader source (optional)
+ * 		vpath - Filepath from executable to vertex sharder source 
+ *		fpath - Filepath from executable to fragment sharder source 
+ *		gpath - Filepath from executable to geometry shader source (optional)
  *****************************************************************************/
 void Material::create_shaders (	const char* vpath = nullptr, 
 								const char* fpath = nullptr, 
@@ -93,12 +92,12 @@ void Material::create_shaders (	const char* vpath = nullptr,
 	g_source = gfile.c_str();
 
 	if(vfile.empty()) {	// Load default vertex shader if none provided
-		v_source = DEFAULT_VERTEX_SHADER;
+		v_source = nullptr;
 		program_log("ERROR::Could not find vertex shader. Default used.");
 	}
 
 	if(ffile.empty()) {	// Load default fragment shader if none provided
-		f_source = DEFAULT_FRAGMENT_SHADER; 
+		f_source = nullptr; 
 		program_log("ERROR::Could not find fragment shader. Default used.");
 	}
 

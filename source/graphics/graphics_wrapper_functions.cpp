@@ -8,6 +8,8 @@
 
 namespace gwf {
 
+unsigned int *DEFAULT_SHADER_ID = nullptr;	// Default shader, null on start
+
 void draw (unsigned int ID, unsigned int VAO, unsigned int num_vertices, unsigned int num_instances) {
 	glBindVertexArray(VAO);// Set VAO as active vertex arrray
 	glDrawArraysInstanced(GL_TRIANGLES, 0, num_vertices, num_instances);  
@@ -44,27 +46,33 @@ void compile_shader (unsigned int &ID,
 					 const char* v_source, 
 					 const char* f_source, 
 					 const char* g_source = nullptr) {
-
+	if (DEFAULT_SHADER_ID == nullptr) {
+		DEFAULT_SHADER_ID = new unsigned int;
+		unsigned int temp_id;
+		compile_shader(temp_id, DEFAULT_VERTEX_SHADER, DEFAULT_FRAGMENT_SHADER);
+		*DEFAULT_SHADER_ID = temp_id;
+	}
+	
 	unsigned int v_id, f_id, g_id;	// OpenGL IDs
 
 	// vertex shader
 	v_id = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(v_id, 1, &v_source, NULL);
 	glCompileShader(v_id);
-	gwf::check_compile_errors(v_id, "VERTEX");
+	check_compile_errors(v_id, "VERTEX");
 
 	// fragment Shader
 	f_id = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(f_id, 1, &f_source, NULL);
 	glCompileShader(f_id);
-	gwf::check_compile_errors(f_id, "FRAGMENT");
+	check_compile_errors(f_id, "FRAGMENT");
 
 	// geometry shader
 	if(g_source != nullptr) {	// Only create geometry shader if provided with one
 		g_id = glCreateShader(GL_GEOMETRY_SHADER);
 		glShaderSource(g_id, 1, &g_source, NULL);
 		glCompileShader(g_id);
-		gwf::check_compile_errors(g_id, "GEOMETRY");
+		check_compile_errors(g_id, "GEOMETRY");
 	}
 
 	// Compile the shader program. Store its id in the ID variable
@@ -74,7 +82,8 @@ void compile_shader (unsigned int &ID,
 	if (g_source != nullptr)
 		glAttachShader(ID, g_id);
 	glLinkProgram(ID);
-	gwf::check_compile_errors(ID, "PROGRAM");
+	if (!check_compile_errors(ID, "PROGRAM"))
+		ID = *DEFAULT_SHADER_ID;
 	
 	// delete shaders as they're linked into the program and no longer necessery
 	glDeleteShader(v_id);
@@ -404,7 +413,7 @@ void setMat4(unsigned int ID, const std::string& name, const glm::mat4& mat) {
  *		type	- A string describing the type of shader being checked
  *				  (Must be "VERTEX", "FRAGMENT", "GEOMETRY", or "PROGRAM")
  *****************************************************************************/
-void check_compile_errors(unsigned int shader, std::string type) {
+bool check_compile_errors(unsigned int shader, std::string type) {
 	GLint success;
 	GLchar infoLog[1024];
 	if (type != "PROGRAM")
@@ -414,11 +423,10 @@ void check_compile_errors(unsigned int shader, std::string type) {
 		{
 			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
 			std::string message = "ERROR::SHADER_COMPILATION_ERROR of type: ";
-			message.append(type);
-			message.append("\n");
-			message.append(infoLog);
+			message.append(type).append("\n").append(infoLog);
 			message.append("\n-------------------------------------------\n");
 			program_log(message.c_str());
+			return false;
 		}
 	}
 	else
@@ -429,13 +437,13 @@ void check_compile_errors(unsigned int shader, std::string type) {
 			glGetProgramInfoLog(shader, 1024, NULL, infoLog);
 			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
 			std::string message = "ERROR::SHADER_COMPILATION_ERROR of type: ";
-			message.append(type);
-			message.append("\n");
-			message.append(infoLog);
+			message.append(type).append("\n").append(infoLog);
 			message.append("\n-------------------------------------------\n");
 			program_log(message.c_str());
+			return false;
 		}
 	}
+	return true; // No errors
 }
 
 }// Namespace gwf
