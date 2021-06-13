@@ -1,0 +1,5 @@
+notes:
+items need for identification
+	String itemTypeName ("Small Rock","Big Rock","Fireball")
+	Long unique ID - assign by manager
+use chunk loader in another thread

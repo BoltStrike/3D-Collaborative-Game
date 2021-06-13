@@ -5,13 +5,13 @@ MeshCollider::~MeshCollider(){
 	free(triangleList);
 }
 
-MeshCollider::MeshCollider(glm::vec3* pointList,int numPoints, int* triangleList, int numTriangles, float rad):Collider(ColliderType::mesh,rad){
+MeshCollider::MeshCollider(glm::vec3* pointList,int numPoints, int* triangleList, int numTriangles, float rad,glm::vec3 pos, glm::vec3 rot):Collider(ColliderType::mesh,rad,pos,rot){
 	this->pointList=pointList;
 	this->numPoints=numPoints;
 	this->triangleList=triangleList;
 	this->numTriangles=numTriangles;
 }
-MeshCollider::MeshCollider(std::stringstream* stream1,float rad):Collider(ColliderType::mesh,rad){
+MeshCollider::MeshCollider(std::stringstream* stream1,float rad,glm::vec3 pos, glm::vec3 rot):Collider(ColliderType::mesh,rad,pos,rot){
 	//this will refrence a mesh file for easy blender export
 	char* path;
 	(*stream1)>>path;
@@ -48,6 +48,9 @@ MeshCollider::MeshCollider(std::stringstream* stream1,float rad):Collider(Collid
 	triangleList = new int[numTriangles*3];		// 3 vertex indices per face
 	for(int i = 0; i < 3*numTriangles; i++) 	// Store indices
 		stream >> triangleList[i];
+	
+	this->setRotation(rot);
+	this->setPosition(pos);
 }
 MeshCollider::MeshCollider(const MeshCollider &other){
 	this->numPoints=other.numPoints;//getNumPoints();
@@ -132,12 +135,86 @@ bool MeshCollider::checkPoint(glm::vec3 point,float rad){ //spheare
 	}
 	return false;
 }
-void MeshCollider::applyPosRot(glm::vec3 pos,glm::vec3 rot){
-	//TODO rotation
-	for(int a=0;a<8;a++){
-		this->pointList[a]+=pos;
+
+
+//resolving functions
+float MeshCollider::resolveVertPillVert(glm::vec3 P1,glm::vec3 P2,float rad,float maxLineParam){
+	//max Line param is the adjusted step up distance
+	//variable for the current amount of vertical shift
+	float currentLineParam=0.0;
+	//intermediate variables
+	//capital is vector, lowercase is scalar
+	glm::vec3 A,B,C,D,E,N;
+	glm::vec3 P2mP1=P2-P1;
+	float a,b,c,a1,a2;
+	float tmpResualt;
+	//resolve points
+	a=glm::dot(P2mP1,P2mP1);
+	float determinate;
+	//go throught the points
+	for(int i=0;i<this->numPoints;i++){
+		//determine the value
+		b=2*glm::dot(P2mP1,P1-this->pointList[i]);
+		c=glm::dot(this->pointList[i],this->pointList[i])+glm::dot(P1,P2mP1-this->pointList[i])-(rad*rad);
+		determinate=b*b-(4*a*c);
+		if(determinate>0){
+			//there will be two resualts
+			//always use the larger one
+			tmpResualt=(-b+sqrt(determinate))/(2*a);
+			if(currentLineParam<tmpResualt)currentLineParam=tmpResualt;
+		}
 	}
+	
+	
+	//resolve lines
+	//resolve planes
+	//go thourgh the planes
+	for(int i=0;i<numTriangles;i++){
+		//go thourgh the lines first
+		currentLineParam=this->resolveLineVertPillVert(P1,P2,rad,this->getPoint(i,0),this->getPoint(i,1),currentLineParam);
+		currentLineParam=this->resolveLineVertPillVert(P1,P2,rad,this->getPoint(i,1),this->getPoint(i,2),currentLineParam);
+		currentLineParam=this->resolveLineVertPillVert(P1,P2,rad,this->getPoint(i,2),this->getPoint(i,0),currentLineParam);
+		//now deal with the plane
+		//get the distance
+		//A=P1-this->getPoint(i,0);
+		N=this->getNormal(i);
+		b=glm::dot(N,this->getPoint(i,0)-P1);
+		a1=(b+(rad*glm::length(N)))/N.y;
+		a2=(b+(rad*glm::length(N)))/N.y;
+		a=(a1>a2)?a1:a2;
+		if(a>0){
+			//check if in the plane
+			//find P1 prime (C)
+			C=P1+glm::vec3(0.0f,a*(P2.y-P1.y),0.0f);
+			//find Q prime (D)
+			D=P1+((N.y>0)?(-rad*N/glm::length(N)):(rad*N/glm::length(N)));
+			if(this->areaCheck(D,i,glm::length(N))){
+				//the point is on the plane
+				currentLineParam=a;
+			}
+		}
+	}
+	if(maxLineParam<currentLineParam) return -1.0;
+	else return currentLineParam;	
 }
+float MeshCollider::resolveLineVertPillVert(glm::vec3 P1, glm::vec3 P2, float rad, glm::vec3 Q1, glm::vec3 Q2, float maxLineParam){
+	glm::vec3 A,B,C,D,E;
+	float f;
+	A=P1-Q1;
+	B=Q2-Q1;
+	C=P2-P1;
+	D=glm::cross(A,B);
+	E=glm::cross(C,B);
+	f=glm::dot(E,D);
+	float determinate=(f*f)-(glm::dot(E,E)*(glm::dot(D,D))-(rad*rad*glm::dot(B,B)));
+	if(determinate<=0)return maxLineParam;
+	float resualt=(-f+sqrt(determinate))/glm::dot(E,E);
+	//check if the point on the msehc line falls in the segment
+	if(isBetween0and1(2*glm::dot(resualt*C+A,B)/glm::dot(B,B))) return (resualt>maxLineParam)?resualt:maxLineParam;
+	else return maxLineParam;
+}
+
+
 bool MeshCollider::secondaryEdgeCheck(Collider* oCol){
 	//this is the same as the main check, though can leave out one edge per triangle
 	//this sometimes ends up checking lines twice
@@ -156,11 +233,34 @@ inline bool MeshCollider::areaCheck(glm::vec3 point,int tri,float area2){
 inline bool MeshCollider::pointLineCheck(glm::vec3 point,float rad,int tri,int a,int b){
 	float dist=getPointToLineDistance(point,getPoint(tri,a),getPoint(tri,b));
 	if(dist<=rad){
-		if(between0and1(glm::length(glm::dot(getPoint(tri,b)-getPoint(tri,a),point-getPoint(tri,a)))/
+		if(isBetween0and1(glm::length(glm::dot(getPoint(tri,b)-getPoint(tri,a),point-getPoint(tri,a)))/
 				glm::length(getPoint(tri,b)-getPoint(tri,a))))return true;
 	}
 	return false;
 }
 inline glm::vec3 MeshCollider::getPoint(int a,int b){
 	return this->pointList[this->triangleList[(3*a)+b]];
+}
+inline glm::vec3 MeshCollider::getNormal(int n){
+	return glm::cross(getPoint(n,1)-getPoint(n,0),getPoint(n,2)-getPoint(n,0));
+}
+
+void MeshCollider::setPosition(glm::vec3 pos){
+	//shift everypoint in the mesh
+	for(int a=0;a<numPoints;a++){
+		this->pointList[a]=this->pointList[a]+pos;
+	}
+	this->position=pos;
+}
+glm::vec3 MeshCollider::getPosition(){
+	return this->position;
+}
+void MeshCollider::setRotation(glm::vec3 rot){
+	//Big TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+	//account for a non zero position
+	//sill want to rotate arround obj center
+	this->rotation=rot;
+}
+glm::vec3 MeshCollider::getRotation(){
+	return this->rotation;
 }

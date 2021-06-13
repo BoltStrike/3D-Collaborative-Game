@@ -10,8 +10,3 @@ bool checkLineSegmentPlane(glm::vec3 linePointA,glm::vec3 linePointB,glm::vec3 p
 	
 	return true;
 }
-
-//This needs to be fixed to alow for some calculation error
-bool floatsAreEqual(float a, float b){
-	return a==b;
-}

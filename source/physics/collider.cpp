@@ -6,26 +6,17 @@ Collider::Collider(){
 Collider::~Collider(){
 	
 }
-Collider::Collider(ColliderType type,float boundingRad){
+Collider::Collider(ColliderType type,float boundingRad,glm::vec3 pos, glm::vec3 rot){
 	this->boundingRad=boundingRad;
 	this->type=type;
+	this->setRotation(rot);
+	this->setPosition(pos);
 }
 float Collider::getBoundingRad(){
 	return this->boundingRad;
 }
 ColliderType Collider::getType(){
 	return this->type;
-}
-//always put its own pos&rot then the other's pos&rot;
-bool Collider::checkCollision(glm::vec3 pos,glm::vec3 rot,Collider* otherCol,glm::vec3 otherPos,glm::vec3 otherRot){
-	//check bounding spears
-	if(glm::length(pos-otherPos)>(this->getBoundingRad()+otherCol->getBoundingRad())) return false;
-	//apply pos and rot
-	Collider oCol=*otherCol;
-	oCol.applyPosRot(otherPos,otherRot);
-	Collider t=*this;
-	t.applyPosRot(pos,rot);
-	return t.checkCollision(&oCol);
 }
 bool Collider::checkCollision(Collider* oCol){
 	return false;
@@ -43,10 +34,23 @@ bool Collider::checkPoint(glm::vec3 point){
 bool Collider::checkPoint(glm::vec3 point,float rad){ //spheare
 	return false;
 }
-void Collider::applyPosRot(glm::vec3 pos,glm::vec3 rot){
-	return;
-}
 bool Collider::secondaryEdgeCheck(Collider* oCol){
 	return false;
+}
+float Collider::resolveVertPillVert(glm::vec3 point1,glm::vec3 point2,float rad,float maxLineParam){
+	return 0.0;
+}
+
+void Collider::setPosition(glm::vec3 pos){
+	this->position=pos;
+}
+glm::vec3 Collider::getPosition(){
+	return this->position;
+}
+void Collider::setRotation(glm::vec3 rot){
+	this->rotation=rot;
+}
+glm::vec3 Collider::getRotation(){
+	return this->rotation;
 }
 	
