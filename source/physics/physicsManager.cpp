@@ -1,8 +1,8 @@
 #include "physicsManager.h"
 PhysicsManager::PhysicsManager(){}
 void PhysicsManager::startUp(){
-	//staticColliders=new std::vector<Collider*>();
-	//dynamicColliders=new std::vector<ResovableCollider*>();
+	staticColliders=std::vector<Collider*>();
+	dynamicColliders=std::vector<ResolvableCollider*>();
 }
 void PhysicsManager::shutdown(){
 	if(staticColliders.size()!=0){
@@ -25,7 +25,13 @@ void PhysicsManager::update(double deltaTime){
 	for(int a=0;a<dynamicColliders.size();a++){
 		//go through each dynamic collider for tit to update and reslove its position
 		//everything is haddeled internaly to the collider
+		program_log("\t\tUpdating dynamic collider: ");
+		program_log(std::to_string(a).c_str());
+		program_log("...\n");
 		this->dynamicColliders.at(a)->timeUpdate(deltaTime,&staticColliders,&dynamicColliders,a);
+		program_log("\t\tUpdated dynamic collider: ");
+		program_log(std::to_string(a).c_str());
+		program_log("\n");
 	}
 }
 	

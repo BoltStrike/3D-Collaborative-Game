@@ -9,6 +9,8 @@
 
 #include <vector>
 
+#include "../generic/program_log.h"
+
 class ResolvableCollider:public Collider{
 	protected:
 		float boundingRad;
@@ -32,6 +34,7 @@ class ResolvableCollider:public Collider{
 		glm::vec3 acceleration;
 		//no angular items
 	public:
+		ResolvableCollider();
 		~ResolvableCollider();
 		ResolvableCollider(ColliderType,float,glm::vec3);
 		ResolvableCollider(float rad, float pillRad, float lineLength, float stepup, float gravity, glm::vec3 position);

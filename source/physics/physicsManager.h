@@ -4,6 +4,7 @@
 #include "collider.h"
 #include "resolvableCollider.h"
 #include <vector>
+#include "../generic/program_log.h"
 
 class PhysicsManager{
 	//need list to store colliders

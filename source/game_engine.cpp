@@ -16,6 +16,15 @@ GameEngine::GameEngine () {
 	pitch = 0.0f;
 	
 	scene = new Scene;
+	
+	program_log("Creating physics manager...\n");
+	physicsManager=PhysicsManager();
+	physicsManager.startUp();
+	program_log("Created physics manager\n");
+	program_log("Creating player collider...\n");
+	playerCollider=ResolvableCollider(2.0f,0.5f,1.0f,1.0f,10.0f,glm::vec3(0.0f,1.0f,0.0f));
+	physicsManager.registerCollider((Collider*)&playerCollider);
+	program_log("Created player collider\n");
 }
 
 /******************************************************************************
@@ -23,7 +32,9 @@ GameEngine::GameEngine () {
 ******************************************************************************/
 GameEngine::~GameEngine () {
 	program_log("Deleting engine...\n");
-
+	
+	physicsManager.shutdown();
+	
 	delete scene;
 	//delete window;
 	program_log("Deleted engine\n");
@@ -52,6 +63,44 @@ int GameEngine::initialize () {
 
 	const char *default_scene = "assets/scenes/floating_island.scene";
 	scene->load(default_scene);	// Load default scene
+	
+	//load the colliders:
+	//these are staticly listed. waiting on ubJSON for loading from file
+	/*
+		MeshCollider mc_cave;
+		MeshCollider mc_main_grass;
+		MeshCollider mc_rock;
+		MeshCollider mc_tree;
+		MeshCollider mc_trim_grass;
+		MeshCollider mc_underside;
+		MeshCollider mc_water;*/
+	program_log("loading physics mesh colliders...\n");
+	std::stringstream ss=file_tosstream("assets/objects/floating_island/meshes_materials/cave.object");
+	program_log("\tCreating cave collider...\n");
+	mc_cave=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	program_log("\tCreated cave Collider\n");
+	program_log("\tRegistering cave collider...\n");
+	physicsManager.registerCollider((Collider*) &mc_cave);
+	program_log("\tRegistered cave collider\n");
+	ss=file_tosstream("assets/objects/floating_island/meshes_materials/main_grass.object");
+	mc_main_grass=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) &mc_main_grass);
+	ss=file_tosstream("assets/objects/floating_island/meshes_materials/rock.object");
+	mc_rock=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) &mc_rock);
+	ss=file_tosstream("assets/objects/floating_island/meshes_materials/tree.object");
+	mc_tree=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) &mc_tree);
+	ss=file_tosstream("assets/objects/floating_island/meshes_materials/trim_grass.object");
+	mc_trim_grass=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) &mc_trim_grass);
+	ss=file_tosstream("assets/objects/floating_island/meshes_materials/underside.object");
+	mc_underside=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) &mc_underside);
+	ss=file_tosstream("assets/objects/floating_island/meshes_materials/water.object");
+	mc_water=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) &mc_water);
+	program_log("loaded physics mesh colliders\n");
 
 	program_log("Initalized engine\n\n");
 	return 0;
@@ -62,6 +111,7 @@ int GameEngine::initialize () {
 ******************************************************************************/
 void GameEngine::game_loop () {
 	program_log("Begin Game Loop\n");
+	bool debugLoop=true;
 	while (!gwf::should_close()) {
 		// Time logic
 		float currentFrame = in::get_time();
@@ -115,18 +165,35 @@ void GameEngine::game_loop () {
 //*********************************/
 	if (in::btn(in::ESCAPE))	// ESC 
 		gwf::close();
-
+	
+	if(debugLoop)program_log("\tParsing Keypresses\n");
 	float cameraSpeed = 2.5 * deltaTime * 5.0;
+	//get the direction in the xz plane
+	glm::vec3 movementDir = glm::vec3(0.0f,0.0f,0.0f);
 	if (in::btn(in::W))		// W
-		cameraPos += cameraSpeed * cameraFront;
+		movementDir+=cameraFront;
+		//cameraPos += cameraSpeed * cameraFront;
 	if (in::btn(in::S))		// S
-		cameraPos -= cameraSpeed * cameraFront;
+		movementDir-=cameraFront;
+		//cameraPos -= cameraSpeed * cameraFront;
 	if (in::btn(in::A))		// A
-		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+		movementDir-=glm::normalize(glm::cross(cameraFront, cameraUp));
+		//cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 	if (in::btn(in::D))		// D
-		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-
-
+		movementDir+=glm::normalize(glm::cross(cameraFront, cameraUp));
+		//cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+		
+		if(debugLoop)program_log("\tdetermining velocity\n");
+		float movementSpeed=1.4f;
+		movementDir.y=playerCollider.getVelocity().y+(in::btn(in::SPACE))?6.0f:0.0f;
+		movementDir=glm::normalize(movementDir)*movementSpeed*deltaTime;
+		playerCollider.setVelocity(movementDir);
+		
+		if(debugLoop)program_log("\tStaring physics update...\n");
+		//hook in the physics engine update here
+		physicsManager.update(deltaTime);
+		cameraPos=playerCollider.getPosition();
+		if(debugLoop)program_log("\tDone with physics update\n");
 
 		int width, height;
 		gwf::get_dimensions(width, height);

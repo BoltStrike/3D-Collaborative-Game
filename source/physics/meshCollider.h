@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include "../generic/file_tosstream.h"
+#include "../generic/program_log.h"
 
 class MeshCollider:public Collider{
 	private:
@@ -16,7 +17,7 @@ class MeshCollider:public Collider{
 		//have list of edges
 		//have list of triangle areas?
 	public:
-		//MeshCollider();
+		MeshCollider();
 		~MeshCollider();
 		MeshCollider(glm::vec3*,int, int* triangleList,int,float,glm::vec3 pos, glm::vec3 rot);
 		MeshCollider(const MeshCollider &other);

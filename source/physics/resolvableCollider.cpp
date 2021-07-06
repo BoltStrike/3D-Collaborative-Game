@@ -1,4 +1,11 @@
 #include "resolvableCollider.h"
+ResolvableCollider::ResolvableCollider():Collider(ColliderType::resVertPill,0.0f,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f)){
+	this->pillRad=0.5f;
+	this->lineLength=1;
+	this->stepup=1;
+	this->gravity=10;
+	this->setPosition(glm::vec3(0.0f,0.0f,0.0f));
+}
 ResolvableCollider::~ResolvableCollider(){}
 ResolvableCollider::ResolvableCollider(ColliderType type,float rad,glm::vec3 pos):Collider(type,rad,pos,glm::vec3(0.0f,0.0f,0.0f)){
 	this->pillRad=0.5f;
@@ -7,7 +14,7 @@ ResolvableCollider::ResolvableCollider(ColliderType type,float rad,glm::vec3 pos
 	this->gravity=10;
 	this->setPosition(pos);
 }
-ResolvableCollider::ResolvableCollider(float rad, float pillRad, float lineLength, float stepup, float gravity, glm::vec3 position):Collider(ColliderType::mesh,rad,position,glm::vec3(0.0f,0.0f,0.0f)){
+ResolvableCollider::ResolvableCollider(float rad, float pillRad, float lineLength, float stepup, float gravity, glm::vec3 position):Collider(ColliderType::resVertPill,rad,position,glm::vec3(0.0f,0.0f,0.0f)){
 	this->pillRad=pillRad;
 	this->lineLength=lineLength;
 	this->stepup=stepup;
@@ -118,6 +125,7 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 	//store the original deltaT
 	float totalDeltaT=deltaT;
 	
+	program_log("\t\t\tCalculated initial test position\n");
 	
 	//loop overview
 	//check for collision
@@ -132,11 +140,16 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 	bool collision=false;
 	float tmpLineParam;
 	for(int a=0;a<staticColliders->size();a++){
+		program_log("    Starting Static collider check number: ");
+		program_log(std::to_string(a).c_str());
+		program_log("...\n");
 		if(staticColliders->at(a)->checkCollision(this)){
+			program_log("      Collision detected\n");
 			collision=true;
 			//atemp resalution
 			tmpLineParam=staticColliders->at(a)->resolveVertPillVert(this->P1,this->P2,this->pillRad,stepupRemainingLineParam);
 			if(tmpLineParam<0.0f){
+				program_log("      Vertical resolution failed\n");
 				//vertical resilution failed;
 				//devide deltaT by 2
 				deltaT/=2;
@@ -157,7 +170,8 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 			continue;
 		}
 	}
-	//figure out wat to do with velocity
+	program_log("    done with collisions\n");
+	//figure out what to do with velocity
 	glm::vec3 targetVelocity=deltaT*(this->acceleration+glm::vec3(0.0f,-gravity,0.0f))+this->velocity;
 	if(didSearch)this->velocity=glm::vec3(0.0f,0.0f,0.0f);
 	else if(collision)this->velocity=glm::vec3(targetVelocity.x,0.0f,targetVelocity.z);

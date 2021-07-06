@@ -1,5 +1,11 @@
 #include "meshCollider.h"
 
+MeshCollider::MeshCollider():Collider(ColliderType::mesh,0.0f,glm::vec3(),glm::vec3()){
+	this->pointList=NULL;
+	this->numPoints=0;
+	this->triangleList=NULL;
+	this->numTriangles=0;
+}
 MeshCollider::~MeshCollider(){
 	free(pointList);
 	free(triangleList);
@@ -13,11 +19,19 @@ MeshCollider::MeshCollider(glm::vec3* pointList,int numPoints, int* triangleList
 }
 MeshCollider::MeshCollider(std::stringstream* stream1,float rad,glm::vec3 pos, glm::vec3 rot):Collider(ColliderType::mesh,rad,pos,rot){
 	//this will refrence a mesh file for easy blender export
-	char* path;
-	(*stream1)>>path;
+	std::string materialPath;
+	(*stream1)>>materialPath;
+	program_log("\t\tSkiping material file: ");
+	program_log(materialPath);
+	program_log("\n");
+	std::string meshPath;
+	(*stream1)>>meshPath;
+	program_log("\t\tReading mesh file: ");
+	program_log(meshPath);
+	program_log("\n");
 	//taken form the graphics/mesh class
 	//std::stringstream stream = file_tosstream(filepath);// Read file as stream
-	std::stringstream stream = file_tosstream(path);// Store file as stream
+	std::stringstream stream = file_tosstream(meshPath.c_str());// Store file as stream
 	int name_length;
 	stream >> name_length;					// Get the length of the name
 	std::string name = new char[name_length + 1]; 		// +1 for terminating char '\0'
@@ -28,15 +42,19 @@ MeshCollider::MeshCollider(std::stringstream* stream1,float rad,glm::vec3 pos, g
 	stream >> numPoints;	// Get the number of vertices
 	
 	float x,y,z;
-	pointList = new glm::vec3[numPoints];		// Allocate position storage
+	this->pointList = new glm::vec3[numPoints];		// Allocate position storage
 	for(int i = 0; i < numPoints; i++){	// Store position data
 		stream >> x>>y>>z;
 		pointList[i]=glm::vec3(x,y,z);
 	}
-
+	
+	program_log("\t\t\tRecordered Point Data");
+	
 	float normal;
 	for(int i = 0; i < numPoints * 3; i++)	// Store normal data
 		stream >> normal;
+	
+	program_log("\t\t\tRecordered Normal Data");
 	
 	int num_uvs;
 	stream >> num_uvs;						// Get the number of UV coordinates
@@ -44,11 +62,23 @@ MeshCollider::MeshCollider(std::stringstream* stream1,float rad,glm::vec3 pos, g
 	for(int i = 0; i < num_uvs * 2; i++)	// Store all UV coordinates
 		stream >> uv;
 
+	program_log("\t\t\tRecordered UV Data");
+
 	stream >> numTriangles;					// Get the number of faces
-	triangleList = new int[numTriangles*3];		// 3 vertex indices per face
-	for(int i = 0; i < 3*numTriangles; i++) 	// Store indices
+	this->triangleList = new int[numTriangles*3];		// 3 vertex indices per face
+	for(int i = 0; i < 3*numTriangles; i++){ 	// Store indices
 		stream >> triangleList[i];
+	}
+	if(numPoints==343){
+		for(int i = 0; i < 3*numTriangles; i++){ 	// Store indices
+			program_log("("+std::to_string(i)+","+std::to_string(triangleList[i])+") ");
+		}
+	}
 	
+	program_log("\t\t\tRecordered triangle Data");
+	char buffer[50];
+	sprintf(buffer,"\t\t\ttriange list address %p\n",triangleList);
+	program_log(buffer);
 	this->setRotation(rot);
 	this->setPosition(pos);
 }
@@ -74,7 +104,9 @@ int MeshCollider::getNumTriangles(){return this->numTriangles;}
 bool MeshCollider::checkCollision(Collider* oCol){
 	//this ends up checking every line twice
 	//maybe fix so there is a list of edges
+	program_log("        number of points in mesh: "+std::to_string(this->numPoints)+"\n");
 	for(int i=0;i<numTriangles;i++){
+		program_log("        checking triange: "+std::to_string(i)+"\n");
 		if(oCol->checkLine(getPoint(i,0),getPoint(i,1)))return true;
 		if(oCol->checkLine(getPoint(i,1),getPoint(i,2)))return true;
 		if(oCol->checkLine(getPoint(i,2),getPoint(i,0)))return true;
@@ -239,16 +271,24 @@ inline bool MeshCollider::pointLineCheck(glm::vec3 point,float rad,int tri,int a
 	return false;
 }
 inline glm::vec3 MeshCollider::getPoint(int a,int b){
-	return this->pointList[this->triangleList[(3*a)+b]];
+	char buffer[50];
+	sprintf(buffer,"\t\t\ttriange list address %p\n",triangleList);
+	program_log(buffer);
+	program_log("          Retrived triangle point number: ("+std::to_string(a)+","+std::to_string(b)+")="+std::to_string((3*a)+b));
+	int pointNumber=this->triangleList[(3*a)+b];
+	program_log(" point number: "+std::to_string(pointNumber));
+	glm::vec3 point =this->pointList[pointNumber];
+	program_log(" value: ("+std::to_string(point.x)+", "+std::to_string(point.y)+", "+std::to_string(point.z)+")\n");
+	return point;
 }
 inline glm::vec3 MeshCollider::getNormal(int n){
 	return glm::cross(getPoint(n,1)-getPoint(n,0),getPoint(n,2)-getPoint(n,0));
 }
 
 void MeshCollider::setPosition(glm::vec3 pos){
-	//shift everypoint in the mesh
+	//shift everypoint in the mesh back to the orgin then to the new location
 	for(int a=0;a<numPoints;a++){
-		this->pointList[a]=this->pointList[a]+pos;
+		this->pointList[a]=this->pointList[a]+pos-this->position;
 	}
 	this->position=pos;
 }
