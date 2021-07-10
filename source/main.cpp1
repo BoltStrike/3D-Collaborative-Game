@@ -1,0 +1,29 @@
+
+#define STB_IMAGE_IMPLEMENTATION // Required for stb_image.h (Only define once)
+
+#include "game_engine.h"
+#include "generic/program_log.h"
+#include "generic/json_parser.h"
+#include <string>
+#include <iostream>
+
+/******************************************************************************
+ * This is the main function. This starts the game engine, enters the game loop
+ * and terminates the game engine after it is finished. 
+******************************************************************************/
+int main (int argc, char **argv) 
+{
+	std::string filepath = "test_json.json";
+	std::string object = "glossary:GlossDiv:GlossList:popup:menuitem|value=Open,Close";
+	Json file;
+	if ( file.load(filepath, object) )
+		std::cout << file.get_string_representation();
+/*
+	Json pog;
+	pog = pog.get("glossary").get("title");
+	std::string S = pog.get_string();	// "example glossary"
+	*/
+	getchar();
+	return 0;
+}
+

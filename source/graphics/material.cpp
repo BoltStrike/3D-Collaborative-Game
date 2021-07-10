@@ -74,9 +74,7 @@ void Material::create_shaders (	const char* vpath = nullptr,
 								const char* fpath = nullptr, 
 								const char* gpath = nullptr) {
 	// Temporary strings
-	std::string vfile;
-	std::string ffile;
-	std::string gfile;
+	std::string vfile, ffile, gfile;
 
 	if(vpath != nullptr) // Attempt to load vertex shader
 		vfile = file_tosstream(vpath).str();
@@ -86,10 +84,11 @@ void Material::create_shaders (	const char* vpath = nullptr,
 
 	if(gpath != nullptr) // Attempt to load geometry shader
 		gfile = file_tosstream(gpath).str();
-
-	v_source = vfile.c_str();
-	f_source = ffile.c_str();
-	g_source = gfile.c_str();
+	
+	// Temporary source code storage
+	const char* v_source = vfile.c_str();
+	const char* f_source = ffile.c_str();
+	const char* g_source = gfile.c_str();
 
 	if(vfile.empty()) {	// Load default vertex shader if none provided
 		v_source = nullptr;
