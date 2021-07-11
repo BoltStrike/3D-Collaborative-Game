@@ -7,7 +7,7 @@
 ******************************************************************************/
 Ubj::Ubj () 
 {
-	f = nullptr;
+	//f = nullptr;
 }
 
 /******************************************************************************
@@ -26,7 +26,7 @@ Ubj::~Ubj ()
 bool Ubj::open (std::string filepath) 
 {
 	if (f == nullptr)
-		f = new std::ifstream();
+		f = new std::fstream();
 	if (not f->is_open())
 		f->open(filepath, std::ios::out | std::ios::in | std::ios::binary);
 	return f->is_open();
@@ -37,9 +37,11 @@ bool Ubj::open (std::string filepath)
 ******************************************************************************/
 void Ubj::close () 
 {
+	f->clear();
 	if (f->is_open())
 		f->close();
 	delete f;
+	f = nullptr;
 }
 
 /******************************************************************************
@@ -129,7 +131,13 @@ Ubj Ubj::at (unsigned int index)
 ******************************************************************************/
 int Ubj::search (std::string &name)
 {
-	if (f->eof() || f->fail())
+	if (f->eof())
+	{
+		std::cout << "End of File" << std::endl;
+		f->clear();
+		return -1;
+	}
+	else if (f->fail())
 	{
 		std::cout << "Something went wrong" << std::endl;
 		f->clear();
@@ -231,8 +239,8 @@ int64_t Ubj::get_L ()
 float Ubj::get_f ()
 {
 	float val;
-	f->read((char *) &next, sizeof(char));
-	f->read((char *) &val, sizeof(float));
+	f->read((char *) &next, sizeof(char));	// 'd'
+	f->read((char *) &val, sizeof(float)); // value
 	return val;
 }
 
@@ -266,7 +274,11 @@ std::string Ubj::get_S ()
 	std::string val;
 	f->read((char *) &next, sizeof(char));
 	uint8_t size = get_U();
-	f->read((char *) &val, size*sizeof(char));
+	char *cval = new char[size+1];
+	f->read((char *) cval, size*sizeof(char));
+	cval[size] = '\0';
+	val = cval;
+	delete cval;
 	return val;
 }
 
@@ -284,7 +296,9 @@ std::string Ubj::get_name ()
 	uint8_t size;
 	f->read((char *) &size, sizeof(uint8_t));
 	pos += sizeof(uint8_t);
-	cname = new char[size];
+	//std::string message = "Name Size: ";
+	//program_log(message.append(std::to_string(size)).append("\n"));
+	cname = new char[size+1];
 	f->read((char *) cname, size*sizeof(char));
 	pos += size*sizeof(char);
 	cname[size] = '\0';
@@ -292,6 +306,8 @@ std::string Ubj::get_name ()
 	name = cname;
 	delete cname;
 	f->seekg(pos);
+	//message = "Name: ";
+	//program_log(message.append(name).append("\n"));
 	return name;
 }
 

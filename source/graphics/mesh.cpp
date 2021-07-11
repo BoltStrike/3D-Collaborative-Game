@@ -4,12 +4,10 @@
  * This is the default constructor
  *****************************************************************************/
 Mesh::Mesh () {
-	name_length = 0;
 	num_vertices = 0;
 	num_faces = 0;
 	num_uvs = 0;
 	
-	name = nullptr;
 	coord = nullptr;
 	normal = nullptr;
 	uv = nullptr;
@@ -48,16 +46,9 @@ void Mesh::deallocate () {
 }
 
 /******************************************************************************
- * This function returns the length of the name
- *****************************************************************************/
-int Mesh::get_name_length() const{
-	return name_length;
-}
-
-/******************************************************************************
  * This function returns a pointer to the string holding the name of the object
  *****************************************************************************/
-char* Mesh::get_name() const{
+std::string Mesh::get_name() const{
 	return name;
 }
 
@@ -165,22 +156,56 @@ void Mesh::prepare () {
  *****************************************************************************/
 int Mesh::load (const char* filepath) {
 	std::string message = "    Loading mesh: ";
-	program_log(message.append(filepath).append("...\n").c_str());
+	program_log(message.append(filepath).append("...\n"));
 
+	Ubj f;
+	f.open(filepath);
+	f = f.at("name");
+	name = f.get_S();
+	
+	f = f.beginning().at("number of positions");
+	num_vertices = f.get_l();
+	f = f.beginning().at("positions");
+	coord = new float[num_vertices * 3];		// Allocate position storage
+	for(int i = 0; i < num_vertices * 3; i++)	// Store position data
+		coord[i] = f.get_f();
+	
+	f = f.beginning().at("number of normals");
+	num_normals = f.get_l();
+	f = f.beginning().at("normals");
+	normal = new float[num_normals * 3];		// Allocate position storage
+	for(int i = 0; i < num_normals * 3; i++)	// Store position data
+		normal[i] = f.get_f();
+	
+	f = f.beginning().at("number of uv coordinates");
+	num_uvs = f.get_l();
+	f = f.beginning().at("uv coordinates");
+	uv = new float[num_uvs * 2];			// Allocate enough UV storage
+	for(int i = 0; i < num_uvs * 2; i++)	// Store all UV coordinates
+		uv[i] = f.get_f();
+	
+	f = f.beginning().at("number of faces");
+	num_faces = f.get_l();
+	f = f.beginning().at("indices");
+	indices = new int[num_faces * 3];		// 3 vertex indices per face
+	for(int i = 0; i < num_faces * 3; i++) 	// Store indices
+		indices[i] = f.get_l();
+	
+	/*
 	std::stringstream stream = file_tosstream(filepath);// Read file as stream
-
+	
 	stream >> name_length;					// Get the length of the name
 	name = new char[name_length + 1]; 		// +1 for terminating char '\0'
 	name[name_length] = '\0';				// Set terminating char
 	for(int i = 0; i < name_length; i++)	// Store name
 		stream.get(name[i]);
-
+	
 	stream >> num_vertices;	// Get the number of vertices
 	
 	coord = new float[num_vertices * 3];		// Allocate position storage
 	for(int i = 0; i < num_vertices * 3; i++)	// Store position data
 		stream >> coord[i];
-
+	
 	normal = new float[num_vertices * 3];		// Allocate normal storage
 	for(int i = 0; i < num_vertices * 3; i++)	// Store normal data
 		stream >> normal[i];
@@ -194,8 +219,11 @@ int Mesh::load (const char* filepath) {
 	indices = new int[num_faces * 3];		// 3 vertex indices per face
 	for(int i = 0; i < num_faces * 3; i++) 	// Store indices
 		stream >> indices[i];
-
+	*/
+	f.close();
 	prepare();		// Fill faces and vertex_data
+	
+	
 	
 	message = "    Loaded mesh: ";
 	program_log(message.append(filepath).append("\n").c_str());

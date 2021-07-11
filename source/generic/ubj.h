@@ -8,10 +8,12 @@
 #include <string>
 #include <list>
 
+#include "../generic/program_log.h"
+
 class Ubj 
 {
 	private:
-		std::ifstream *f;
+		std::fstream *f = nullptr;
 		int pos = 0;
 		char next;
 		std::list<int> links;
