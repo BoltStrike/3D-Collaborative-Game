@@ -17,7 +17,7 @@ void program_log (const char *message, bool new_file) {
 	else f = fopen("program_log.txt", "a+");
 	fprintf(f, "%s", message);
 	fclose(f);
-	printf("%s", message);
+	//printf("%s", message);
 }
 
 /******************************************************************************
@@ -33,4 +33,11 @@ void program_log (const char *message, bool new_file) {
  *****************************************************************************/
 void program_log (std::string message, bool new_file) {
 	program_log(message.c_str(), new_file);
+}
+
+void program_log (glm::vec3 value, bool new_file) {
+	program_log("("+std::to_string(value.x)+","+std::to_string(value.y)+","+std::to_string(value.z)+")", new_file);
+}
+void program_log (std::string m1,glm::vec3 value,std::string m2, bool new_file) {
+	program_log(m1+"("+std::to_string(value.x)+","+std::to_string(value.y)+","+std::to_string(value.z)+")"+m2, new_file);
 }

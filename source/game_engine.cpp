@@ -22,8 +22,9 @@ GameEngine::GameEngine () {
 	physicsManager.startUp();
 	program_log("Created physics manager\n");
 	program_log("Creating player collider...\n");
-	playerCollider=ResolvableCollider(2.0f,0.5f,1.0f,1.0f,10.0f,glm::vec3(0.0f,1.0f,0.0f));
-	physicsManager.registerCollider((Collider*)&playerCollider);
+	playerCollider=new ResolvableCollider(2.0f,0.5f,1.0f,1.0f,20.0f,glm::vec3(0.0f,1.1f,0.0f));
+	physicsManager.registerCollider((Collider*)playerCollider);
+	program_log("\n");
 	program_log("Created player collider\n");
 }
 
@@ -34,6 +35,15 @@ GameEngine::~GameEngine () {
 	program_log("Deleting engine...\n");
 	
 	physicsManager.shutdown();
+	delete playerCollider;
+	//delete mesh;
+	delete mc_cave;
+	delete mc_main_grass;
+	delete mc_rock;
+	delete mc_tree;
+	delete mc_trim_grass;
+	delete mc_underside;
+	delete mc_water;
 	
 	delete scene;
 	//delete window;
@@ -75,34 +85,39 @@ int GameEngine::initialize () {
 		MeshCollider mc_underside;
 		MeshCollider mc_water;*/
 	program_log("loading physics mesh colliders...\n");
+	/*std::stringstream ss=file_tosstream("assets/objects/physics_testing_ground/meshes_materials/plane.object");
+	mesh=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) mesh);*/
 	std::stringstream ss=file_tosstream("assets/objects/floating_island/meshes_materials/cave.object");
-	program_log("\tCreating cave collider...\n");
-	mc_cave=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	program_log("\tCreated cave Collider\n");
-	program_log("\tRegistering cave collider...\n");
-	physicsManager.registerCollider((Collider*) &mc_cave);
-	program_log("\tRegistered cave collider\n");
+	//program_log("\tCreating cave collider...\n");
+	mc_cave= new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	//program_log("\tCreated cave Collider\n");
+	//program_log("\tRegistering cave collider...\n");
+	physicsManager.registerCollider((Collider*) mc_cave);
+	//program_log("\tRegistered cave collider\n");
+	//mc_cave->printTriangles();
 	ss=file_tosstream("assets/objects/floating_island/meshes_materials/main_grass.object");
-	mc_main_grass=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	physicsManager.registerCollider((Collider*) &mc_main_grass);
+	mc_main_grass=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) mc_main_grass);
 	ss=file_tosstream("assets/objects/floating_island/meshes_materials/rock.object");
-	mc_rock=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	physicsManager.registerCollider((Collider*) &mc_rock);
+	mc_rock=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) mc_rock);
 	ss=file_tosstream("assets/objects/floating_island/meshes_materials/tree.object");
-	mc_tree=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	physicsManager.registerCollider((Collider*) &mc_tree);
+	mc_tree=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) mc_tree);
 	ss=file_tosstream("assets/objects/floating_island/meshes_materials/trim_grass.object");
-	mc_trim_grass=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	physicsManager.registerCollider((Collider*) &mc_trim_grass);
+	mc_trim_grass=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) mc_trim_grass);
 	ss=file_tosstream("assets/objects/floating_island/meshes_materials/underside.object");
-	mc_underside=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	physicsManager.registerCollider((Collider*) &mc_underside);
+	mc_underside=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) mc_underside);
 	ss=file_tosstream("assets/objects/floating_island/meshes_materials/water.object");
-	mc_water=MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	physicsManager.registerCollider((Collider*) &mc_water);
+	mc_water=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	physicsManager.registerCollider((Collider*) mc_water);
 	program_log("loaded physics mesh colliders\n");
 
 	program_log("Initalized engine\n\n");
+	
 	return 0;
 }
 
@@ -111,12 +126,22 @@ int GameEngine::initialize () {
 ******************************************************************************/
 void GameEngine::game_loop () {
 	program_log("Begin Game Loop\n");
-	bool debugLoop=true;
+	//mc_cave->printTriangles();
+	bool debugLoop=false;
+	clock_t currentFrame=clock();
+	lastFrame=currentFrame;
+	clock_t startTime=currentFrame;
+	bool timeOn=false;
+	unsigned long long loopNumber=0;
 	while (!gwf::should_close()) {
 		// Time logic
-		float currentFrame = in::get_time();
-		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
+		if(timeOn){
+			currentFrame = clock();
+			deltaTime = float(currentFrame - lastFrame)/float(CLOCKS_PER_SEC);
+			lastFrame = currentFrame;
+		}
+		timeOn=true;
+		//program_log("delta time: "+std::to_string(deltaTime)+"\n");
 		gwf::clear_viewport(0.2f, 0.3f, 0.3f);
 
 //*********************************/
@@ -184,16 +209,20 @@ void GameEngine::game_loop () {
 		//cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 		
 		if(debugLoop)program_log("\tdetermining velocity\n");
-		float movementSpeed=1.4f;
-		movementDir.y=playerCollider.getVelocity().y+(in::btn(in::SPACE))?6.0f:0.0f;
+		float movementSpeed=100.0f;
+		movementDir.y=playerCollider->getVelocity().y+(in::btn(in::SPACE))?40.0f:0.0f;
 		movementDir=glm::normalize(movementDir)*movementSpeed*deltaTime;
-		playerCollider.setVelocity(movementDir);
+		if(!isnan(movementDir.x))playerCollider->setVelocity(movementDir);
+		else playerCollider->setVelocity(glm::vec3());
+		
+		//mc_cave->printTriangles();
 		
 		if(debugLoop)program_log("\tStaring physics update...\n");
 		//hook in the physics engine update here
 		physicsManager.update(deltaTime);
-		cameraPos=playerCollider.getPosition();
+		cameraPos=playerCollider->getPosition()+glm::vec3(0.0f,1.0f,0.0f);
 		if(debugLoop)program_log("\tDone with physics update\n");
+		//program_log("\tCamera Position: ",cameraPos,"\n");
 
 		int width, height;
 		gwf::get_dimensions(width, height);
@@ -204,8 +233,11 @@ void GameEngine::game_loop () {
 		in::poll_events();
 		//message = "After: X:";
 		//program_log(message.append(std::to_string(in::cursor_x)).append(" Y:").append(std::to_string(in::cursor_y)).append("\n"));
+		loopNumber++;
 	}
+	float avrageFPS=float(CLOCKS_PER_SEC)*float(loopNumber)/float(clock() - startTime);
 	gwf::terminate_glfw();	// Deallocate GLFW resources
+	program_log("Avrage FPS: "+std::to_string(avrageFPS)+"\n"); 
 	program_log("Game Loop Stopped\n");
 }
 

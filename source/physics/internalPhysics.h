@@ -8,13 +8,16 @@
 */
 
 #include "../../glm/glm.hpp"
+#include "../generic/program_log.h"
 #include <Math.h>
+
+#define TINNY_FLOAT_DELTA 0.000001f
 
 	bool checkLineSegmentPlane(glm::vec3,glm::vec3,glm::vec3,glm::vec3,glm::vec3*);
 	
 //need to fix to allow for a tiny bit of error
 inline bool floatsAreEqual(float a, float b){
-	return a==b;
+	return (b>(a-TINNY_FLOAT_DELTA))&&(b<(a+TINNY_FLOAT_DELTA));
 }
 inline bool isZero(float a){
 	return a==0;
@@ -103,28 +106,64 @@ inline float pointToLineDistance(glm::vec3 P,glm::vec3 Q1,glm::vec3 Q2){
 }
 //distance between point and line with the closest point on the line
 inline float pointToLineDistance(glm::vec3 P,glm::vec3 Q1,glm::vec3 Q2,glm::vec3* Q3){
-	glm::vec3 N1=glm::cross(P-Q1,Q2-Q1);
+	/*glm::vec3 N1=glm::cross(P-Q1,Q2-Q1);
 	glm::vec3 N2=glm::cross(Q2-Q1,N1);
 	float d=glm::length(N1)/glm::length(Q2-Q1);
 	*Q3=P-d*glm::normalize(N2);
+	return d;*/
+	glm::vec3 A=P-Q1;
+	glm::vec3 B=Q2-Q1;
+	float d=glm::length(A-(glm::dot(A,B)*B));
+	*Q3=Q1-(glm::dot(A,B)*B);
 	return d;
 }
 //distance between point and line segment
 inline float pointToLineDistance(glm::vec3 P,glm::vec3 Q1,glm::vec3 Q2,bool* valid){
-	glm::vec3 N1=glm::cross(P-Q1,Q2-Q1);
+	/*glm::vec3 N1=glm::cross(P-Q1,Q2-Q1);
 	glm::vec3 N2=glm::cross(Q2-Q1,N1);
 	float d=glm::length(N1)/glm::length(Q2-Q1);
 	glm::vec3 Q3=P-d*glm::normalize(N2);
 	*valid=isBetween0and1(glm::length(Q3-Q1)/glm::length(Q2-Q1));
+	program_log("    P=");
+	program_log(P);
+	program_log("\n");
+	program_log("    Q1=");
+	program_log(Q1);
+	program_log("\n");
+	program_log("    Q2=");
+	program_log(Q2);
+	program_log("\n");
+	program_log("    N1=");
+	program_log(N1);
+	program_log("\n");
+	program_log("    N2=");
+	program_log(N2);
+	program_log("\n");
+	program_log("    d="+std::to_string(d)+"\n");
+	program_log("    Q3=");
+	program_log(Q3);
+	program_log("\n");
+	return d;*/
+	glm::vec3 A=P-Q1;
+	glm::vec3 B=Q2-Q1;
+	float d=glm::length(A-(glm::dot(A,B)*B));
+	*valid=isBetween0and1(glm::dot(A,B));
 	return d;
 }
 //distance between point and line segment and the closest point on the line
 inline float pointToLineDistance(glm::vec3 P,glm::vec3 Q1,glm::vec3 Q2,glm::vec3* Q3,bool* valid){
-	glm::vec3 N1=glm::cross(P-Q1,Q2-Q1);
+	/*glm::vec3 N1=glm::cross(P-Q1,Q2-Q1);
 	glm::vec3 N2=glm::cross(Q2-Q1,N1);
 	float d=glm::length(N1)/glm::length(Q2-Q1);
 	*Q3=P-d*glm::normalize(N2);
 	*valid=isBetween0and1(glm::length((*Q3)-Q1)/glm::length(Q2-Q1));
+	return d;*/
+	glm::vec3 A=P-Q1;
+	glm::vec3 B=Q2-Q1;
+	float c=glm::dot(A,B);
+	float d=glm::length(A-(c*B));
+	*valid=isBetween0and1(c);
+	*Q3=Q1-(c*B);
 	return d;
 }
 
@@ -142,6 +181,12 @@ inline float pointToPlaneDistance(glm::vec3 P,glm::vec3 Q1,glm::vec3 Qn,glm::vec
 //point of intersection between line and plane
 inline glm::vec3 lineAndPlaneIntersection(glm::vec3 P1, glm::vec3 P2, glm::vec3 Q1, glm::vec3 Qn){
 	return P1+(P2-P1)*glm::dot(Q1-P1,Qn)/glm::dot(P2-P1,Qn);
+}
+//point of intersection between line segment and plane
+inline glm::vec3 lineAndPlaneIntersection(glm::vec3 P1, glm::vec3 P2, glm::vec3 Q1, glm::vec3 Qn,bool* valid){
+	float param=glm::dot(Q1-P1,Qn)/glm::dot(P2-P1,Qn);
+	*valid=isBetween0and1(param);
+	return P1+(P2-P1)*param;;
 }
 
 #endif

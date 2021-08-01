@@ -46,7 +46,7 @@ class MeshCollider:public Collider{
 	public:
 		virtual float resolveVertPillVert(glm::vec3,glm::vec3,float,float);
 	//internal suport functions
-	private:
+	public:
 		inline bool areaCheck(glm::vec3,int,float);
 		inline bool pointLineCheck(glm::vec3,float,int,int,int);
 		inline glm::vec3 getPoint(int,int);
@@ -56,6 +56,9 @@ class MeshCollider:public Collider{
 		glm::vec3 getPosition();
 		void setRotation(glm::vec3);
 		glm::vec3 getRotation();
+		
+	public:
+		void printTriangles();
 	
 };
 
