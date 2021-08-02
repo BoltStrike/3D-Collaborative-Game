@@ -169,6 +169,7 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 			collision=true;
 			//atemp resalution
 			tmpLineParam=staticColliders->at(a)->resolveVertPillVert(this->P1,this->P2,this->pillRad,stepupRemainingLineParam);//+TINNY_FLOAT_DELTA;
+			//program_log("Recived tmpLineParam: "+std::to_string(tmpLineParam)+"\n");
 			//program_log("        tmpLineParam: "+std::to_string(tmpLineParam)+"\n");
 			if(tmpLineParam<=0.0f){
 				//program_log("      Vertical resolution failed\n      Search Splits: "+std::to_string(searchSplits)+"\n");
@@ -180,14 +181,14 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 				searchSplits--;
 				didSearch=true;
 				if(searchSplits<=0){
-					program_log("\nCollision with: "+std::to_string(a)+"\n\ttmpLineParam: "+std::to_string(tmpLineParam)+" going back to original position\n");
+					//program_log("\nCollision with: "+std::to_string(a)+"\n\ttmpLineParam: "+std::to_string(tmpLineParam)+" going back to original position\n");
 					this->setPosition(oldPosition);
 					this->setVelocity(glm::vec3(oldVelocity.x,0.0f,oldVelocity.z));
 					this->setAcceleration(glm::vec3());
 					return;
 				}
 				else{
-					program_log("\nCollision with: "+std::to_string(a)+"\n\ttmpLineParam: "+std::to_string(tmpLineParam)+" halved deltaT\n");
+					//program_log("\nCollision with: "+std::to_string(a)+"\n\ttmpLineParam: "+std::to_string(tmpLineParam)+" halved deltaT\n");
 					a=-1;
 					continue;
 				}
@@ -197,7 +198,7 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 				this->setPosition(this->position+glm::vec3(0.0f,tmpLineParam*this->lineLength,0.0f));
 			}
 			//program_log("        New Position to Try: ",this->position,"\n");
-			a=-1;
+			//a=-1;
 			//continue;
 		}
 	}
@@ -206,7 +207,7 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 	glm::vec3 targetVelocity=deltaT*(this->acceleration+glm::vec3(0.0f,-gravity,0.0f))+this->velocity;
 	if(didSearch)this->velocity=targetVelocity+deltaT*glm::vec3(0.0f,gravity,0.0f);
 	else if(!collision)this->velocity=targetVelocity;
-	if(this->velocity.y < -1.0f)this->velocity.y=-1.0f;
+	if(this->velocity.y < -10.0f)this->velocity.y=-10.0f;
 }
 
 

@@ -22,7 +22,7 @@ GameEngine::GameEngine () {
 	physicsManager.startUp();
 	program_log("Created physics manager\n");
 	program_log("Creating player collider...\n");
-	playerCollider=new ResolvableCollider(2.0f,0.5f,1.0f,1.0f,20.0f,glm::vec3(0.0f,4.0f,0.0f));
+	playerCollider=new ResolvableCollider(2.0f,0.5f,1.0f,1.0f,50.0f,glm::vec3(0.0f,4.0f,0.0f));
 	physicsManager.registerCollider((Collider*)playerCollider);
 	program_log("\n");
 	program_log("Created player collider\n");
@@ -143,7 +143,7 @@ void GameEngine::game_loop () {
 		timeOn=true;
 		//program_log("delta time: "+std::to_string(deltaTime)+"\n");
 		gwf::clear_viewport(0.2f, 0.3f, 0.3f);
-		program_log("DeltaT: "+std::to_string(deltaTime)+"\n");
+		program_log("DeltaT: "+std::to_string(deltaTime)+" ("+std::to_string(1.0f/deltaTime)+")\n");
 
 //*********************************/
 	
@@ -210,11 +210,12 @@ void GameEngine::game_loop () {
 		//cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 		
 		if(debugLoop)program_log("\tdetermining velocity\n");
-		float movementSpeed=10.0f;
-		movementDir=glm::normalize(movementDir)*movementSpeed*deltaTime;
+		float movementSpeed=3.0f;
+		movementDir=glm::normalize(movementDir)*movementSpeed;
 		movementDir.y=playerCollider->getVelocity().y;
 		if(!isnan(movementDir.x))playerCollider->setVelocity(movementDir);
-		if(in::btn(in::SPACE)) playerCollider->setAcceleration(glm::vec3(0.0f,15.0f,0.0f));
+		if(in::btn(in::SPACE)) playerCollider->setAcceleration(glm::vec3(0.0f,65.0f,0.0f));
+		else playerCollider->setAcceleration(glm::vec3(0.0f,0.0f,0.0f));
 		
 		//mc_cave->printTriangles();
 		
@@ -225,7 +226,7 @@ void GameEngine::game_loop () {
 		if(debugLoop)program_log("\tDone with physics update\n");
 		//program_log("\tCamera Position: ",cameraPos,"\n");
 		
-		program_log("\tPlayer Position: ",playerCollider->getPosition(),"\n");
+		//program_log("\tPlayer Position: ",playerCollider->getPosition(),"\n");
 		
 		int width, height;
 		gwf::get_dimensions(width, height);

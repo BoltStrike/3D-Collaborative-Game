@@ -107,27 +107,27 @@ bool MeshCollider::checkCollision(Collider* oCol){
 	for(int i=0;i<numTriangles;i++){
 		//program_log("        checking triange: "+std::to_string(i)+"\n");
 		if(oCol->checkLine(getPoint(i,0),getPoint(i,1))){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 0&1: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 0&1: ");
 			program_log(getPoint(i,0));
 			program_log("&");
 			program_log(getPoint(i,1));
-			program_log("\n");
+			program_log("\n");*/
 			return true;//returnVal=true;
 		}
 		if(oCol->checkLine(getPoint(i,1),getPoint(i,2))){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 1&2: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 1&2: ");
 			program_log(getPoint(i,1));
 			program_log("&");
 			program_log(getPoint(i,2));
-			program_log("\n");
+			program_log("\n");*/
 			return true;//returnVal=true;
 		}
 		if(oCol->checkLine(getPoint(i,2),getPoint(i,0))){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 2&0: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 2&0: ");
 			program_log(getPoint(i,2));
 			program_log("&");
 			program_log(getPoint(i,0));
-			program_log("\n");
+			program_log("\n");*/
 			return true;//returnVal=true;
 		}
 	}
@@ -162,51 +162,51 @@ bool MeshCollider::checkLine(glm::vec3 q1,glm::vec3 q2,float rad){
 		totalArea2=glm::length(normal);
 		collisionPoint=lineAndPlaneIntersection(q1,q2,getPoint(i,0),normal/totalArea2,&valid);
 		if(valid&&areaCheck(collisionPoint,i,totalArea2)){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Plane Points 1&2&3: ",getPoint(i,0),"");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Plane Points 1&2&3: ",getPoint(i,0),"");
 			program_log("&",getPoint(i,1),"");
-			program_log("&",getPoint(i,2),"\n");
+			program_log("&",getPoint(i,2),"\n");*
 			return true;
 		}
 		//check line
 		if((lineToLineDistance(getPoint(i,0),getPoint(i,1),q1,q2,&valid)<=rad)&& valid){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 0&1: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 0&1: ");
 			program_log(getPoint(i,0));
 			program_log("&");
 			program_log(getPoint(i,1));
-			program_log("\n");
+			program_log("\n");*/
 			return true;
 		}
 		if((lineToLineDistance(getPoint(i,1),getPoint(i,2),q1,q2,&valid)<=rad)&& valid){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 1&2: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 1&2: ");
 			program_log(getPoint(i,1));
 			program_log("&");
 			program_log(getPoint(i,2));
-			program_log("\n");
+			program_log("\n");*/
 			return true;
 		}
 		if((lineToLineDistance(getPoint(i,2),getPoint(i,0),q1,q2,&valid)<=rad)&& valid){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 2&0: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 2&0: ");
 			program_log(getPoint(i,2));
 			program_log("&");
 			program_log(getPoint(i,0));
-			program_log("\n");
+			program_log("\n");*/
 			return true;
 		}
 	}
 	//check point
 	for(int i=0;i<numPoints;i++){
 		if((pointToLineDistance(pointList[i],q1,q2,&valid)<=rad)&&valid){
-			program_log("        Collision, Point: "+std::to_string(i)+": ",pointList[i],"\n");
+			//program_log("        Collision, Point: "+std::to_string(i)+": ",pointList[i],"\n");
 			return true;
 		}
 	}
 	//check both sphears
 	if(this->checkPoint(q1,rad)){
-		program_log("/t/tPoint with problem: Q1: ",q1,"/n");
+		//program_log("/t/tPoint with problem: Q1: ",q1,"/n");
 		return true;
 	}
 	if(this->checkPoint(q2,rad)){
-		program_log("/t/tPoint with problem: Q2: ",q2,"/n");
+		//program_log("/t/tPoint with problem: Q2: ",q2,"/n");
 		return true;
 	}
 	return false;
@@ -233,9 +233,9 @@ bool MeshCollider::checkPoint(glm::vec3 point,float rad){ //spheare
 			//find projected point
 			//check area
 			if(areaCheck(point-(dist*normal/area2),i,area2)){
-				program_log("        Collision, Triangle: "+std::to_string(i)+"Plane Points 1&2&3: ",getPoint(i,0),"");
+				/*program_log("        Collision, Triangle: "+std::to_string(i)+"Plane Points 1&2&3: ",getPoint(i,0),"");
 				program_log("&",getPoint(i,1),"");
-				program_log("&",getPoint(i,2),"\n");
+				program_log("&",getPoint(i,2),"\n");*/
 				return true;
 			}
 		}
@@ -243,27 +243,27 @@ bool MeshCollider::checkPoint(glm::vec3 point,float rad){ //spheare
 		//check distance
 		//check if on line segment
 		if(pointLineCheck(point,rad,i,0,1)){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 0&1: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 0&1: ");
 			program_log(getPoint(i,0));
 			program_log("&");
 			program_log(getPoint(i,1));
-			program_log("\n");
+			program_log("\n");*/
 			return true;
 		}
 		if(pointLineCheck(point,rad,i,1,2)){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 1&2: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 1&2: ");
 			program_log(getPoint(i,1));
 			program_log("&");
 			program_log(getPoint(i,2));
-			program_log("\n");
+			program_log("\n");*/
 			return true;
 		}
 		if(pointLineCheck(point,rad,i,2,0)){
-			program_log("        Collision, Triangle: "+std::to_string(i)+"Points 2&0: ");
+			/*program_log("        Collision, Triangle: "+std::to_string(i)+"Points 2&0: ");
 			program_log(getPoint(i,2));
 			program_log("&");
 			program_log(getPoint(i,0));
-			program_log("\n");
+			program_log("\n");*/
 			return true;
 		}
 	}
@@ -271,7 +271,7 @@ bool MeshCollider::checkPoint(glm::vec3 point,float rad){ //spheare
 	//check against points
 	for(int b=0;b<numPoints;b++){
 		if(glm::length(point-pointList[b])<=rad){
-			program_log("        Collision, Point: "+std::to_string(b)+": ",pointList[b],"\n");
+			//program_log("        Collision, Point: "+std::to_string(b)+": ",pointList[b],"\n");
 			return true;
 		}
 	}
@@ -305,7 +305,7 @@ float MeshCollider::resolveVertPillVert(glm::vec3 P1,glm::vec3 P2,float rad,floa
 			tmpResualt=(-b+sqrt(determinate))/(2*a);
 			if(currentLineParam<tmpResualt){
 				currentLineParam=tmpResualt;
-				program_log("        New line param: "+std::to_string(currentLineParam)+"\n"+"          Using point number "+std::to_string(i)+" = ",this->pointList[i],"\n");
+				//program_log("        New line param: "+std::to_string(currentLineParam)+"\n"+"          Using point number "+std::to_string(i)+" = ",this->pointList[i],"\n");
 			}
 		}
 	}
@@ -341,9 +341,9 @@ float MeshCollider::resolveVertPillVert(glm::vec3 P1,glm::vec3 P2,float rad,floa
 			//program_log("          cleared area check\n");
 			if(a>currentLineParam){
 				currentLineParam=a;
-				program_log("        New line param: "+std::to_string(currentLineParam)+"\n"+"          Using plane (triangle) number "+std::to_string(i)+" = ",this->getPoint(i,0)," , ");
-				program_log("",this->getPoint(i,1)," , ");
-				program_log("",this->getPoint(i,2),"\n");
+				//program_log("        New line param: "+std::to_string(currentLineParam)+"\n"+"          Using plane (triangle) number "+std::to_string(i)+" = ",this->getPoint(i,0)," , ");
+				//program_log("",this->getPoint(i,1)," , ");
+				//program_log("",this->getPoint(i,2),"\n");
 			}
 		}
 		/*b=glm::dot(N,this->getPoint(i,0)-P1);
@@ -406,7 +406,7 @@ float MeshCollider::resolveLineVertPillVert(glm::vec3 P1, glm::vec3 P2, float ra
 			
 		}
 		if(isBetween0and1(d)){
-			program_log("        New line param: "+std::to_string(resualt)+"\n          Using line = ");
+			/*program_log("        New line param: "+std::to_string(resualt)+"\n          Using line = ");
 			program_log(Q1);
 			program_log(" , ",Q2,"\n");
 			program_log("          A: ",A,"\n");
@@ -418,7 +418,7 @@ float MeshCollider::resolveLineVertPillVert(glm::vec3 P1, glm::vec3 P2, float ra
 			program_log("          c: "+std::to_string(c)+"\n");
 			program_log("          de: "+std::to_string(de)+"\n");
 			program_log("          d: "+std::to_string(d)+"\n");
-			program_log("          determ: "+std::to_string(determ)+"\n");
+			program_log("          determ: "+std::to_string(determ)+"\n");*/
 			return resualt;
 		}
 	}
