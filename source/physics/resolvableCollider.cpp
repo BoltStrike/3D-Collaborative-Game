@@ -120,6 +120,8 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 	//		if vertical resalution fails this will be moved back as part of the bianary search
 	//3: current position this is where the pill is being tested. It is stored in this->position for collision checking to work
 	glm::vec3 oldPosition=this->position;
+	glm::vec3 oldVelocity=this->velocity;
+	glm::vec3 oldAcceleration=this->acceleration;
 	//x_new=0.5*at^2 + vt + x_oldprogram_log("\t\t\tOld position: ");
 	glm::vec3 acc=this->acceleration+glm::vec3(0.0f,-gravity,0.0f);
 	glm::vec3 accComp=0.5f*deltaT*deltaT*(acc);
@@ -131,7 +133,7 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 	//determine the effective step up
 	//if the pill is moved up the vertical displacement will be subtracted off to maintain the proper cap
 	// the distance the pill can stepup and the heigth loss due to gravity
-	float stepupRemainingLineParam=(this->stepup+(0.5f*deltaT*deltaT*gravity))/this->lineLength;
+	float stepupRemainingLineParam=this->stepup+(0.5f*deltaT*deltaT*gravity);
 	
 	//store the original deltaT
 	float totalDeltaT=deltaT;
@@ -166,7 +168,7 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 			//program_log("      Collision detected with: "+std::to_string(a)+"\n");
 			collision=true;
 			//atemp resalution
-			tmpLineParam=staticColliders->at(a)->resolveVertPillVert(this->P1,this->P2,this->pillRad,stepupRemainingLineParam)+TINNY_FLOAT_DELTA;
+			tmpLineParam=staticColliders->at(a)->resolveVertPillVert(this->P1,this->P2,this->pillRad,stepupRemainingLineParam);//+TINNY_FLOAT_DELTA;
 			//program_log("        tmpLineParam: "+std::to_string(tmpLineParam)+"\n");
 			if(tmpLineParam<=0.0f){
 				//program_log("      Vertical resolution failed\n      Search Splits: "+std::to_string(searchSplits)+"\n");
@@ -174,10 +176,18 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 				//devide deltaT by 2
 				deltaT=deltaT/2;
 				this->setPosition(0.5f*deltaT*deltaT*(this->acceleration+glm::vec3(0.0f,-gravity,0.0f))+deltaT*this->velocity+oldPosition);
+				stepupRemainingLineParam=this->stepup+(0.5f*deltaT*deltaT*gravity);
 				searchSplits--;
 				didSearch=true;
-				if(searchSplits<=0)break;
+				if(searchSplits<=0){
+					program_log("\nCollision with: "+std::to_string(a)+"\n\ttmpLineParam: "+std::to_string(tmpLineParam)+" going back to original position\n");
+					this->setPosition(oldPosition);
+					this->setVelocity(glm::vec3(oldVelocity.x,0.0f,oldVelocity.z));
+					this->setAcceleration(glm::vec3());
+					return;
+				}
 				else{
+					program_log("\nCollision with: "+std::to_string(a)+"\n\ttmpLineParam: "+std::to_string(tmpLineParam)+" halved deltaT\n");
 					a=-1;
 					continue;
 				}
@@ -188,14 +198,15 @@ void ResolvableCollider::timeUpdate(float deltaT,std::vector<Collider*>* staticC
 			}
 			//program_log("        New Position to Try: ",this->position,"\n");
 			a=-1;
-			continue;
+			//continue;
 		}
 	}
 	//program_log("    done with collisions\n");
 	//figure out what to do with velocity
 	glm::vec3 targetVelocity=deltaT*(this->acceleration+glm::vec3(0.0f,-gravity,0.0f))+this->velocity;
-	if(didSearch)this->velocity=glm::vec3(0.0f,0.0f,0.0f);
-	else if(collision)this->velocity=glm::vec3(targetVelocity.x,0.0f,targetVelocity.z);
+	if(didSearch)this->velocity=targetVelocity+deltaT*glm::vec3(0.0f,gravity,0.0f);
+	else if(!collision)this->velocity=targetVelocity;
+	if(this->velocity.y < -1.0f)this->velocity.y=-1.0f;
 }
 
 
