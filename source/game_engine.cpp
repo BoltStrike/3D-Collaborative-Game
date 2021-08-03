@@ -133,6 +133,8 @@ void GameEngine::game_loop () {
 	clock_t startTime=currentFrame;
 	bool timeOn=false;
 	unsigned long long loopNumber=0;
+	float maxDeltaT=0.0f;
+	float minDeltaT=INFINITY;
 	while (!gwf::should_close()) {
 		// Time logic
 		if(timeOn){
@@ -143,7 +145,10 @@ void GameEngine::game_loop () {
 		timeOn=true;
 		//program_log("delta time: "+std::to_string(deltaTime)+"\n");
 		gwf::clear_viewport(0.2f, 0.3f, 0.3f);
-		program_log("DeltaT: "+std::to_string(deltaTime)+" ("+std::to_string(1.0f/deltaTime)+")\n");
+		//hadnle some statisitics
+		if(deltaTime>maxDeltaT)maxDeltaT=deltaTime;
+		if(deltaTime<minDeltaT&&deltaTime!=0.0f)minDeltaT=deltaTime;
+		//program_log("DeltaT: "+std::to_string(deltaTime)+" ("+std::to_string(1.0f/deltaTime)+")\n");
 
 //*********************************/
 	
@@ -214,6 +219,11 @@ void GameEngine::game_loop () {
 		movementDir=glm::normalize(movementDir)*movementSpeed;
 		movementDir.y=playerCollider->getVelocity().y;
 		if(!isnan(movementDir.x))playerCollider->setVelocity(movementDir);
+		else{
+			movementDir.x=0.0f;
+			movementDir.z=0.0f;
+			playerCollider->setVelocity(movementDir);
+		}
 		if(in::btn(in::SPACE)) playerCollider->setAcceleration(glm::vec3(0.0f,65.0f,0.0f));
 		else playerCollider->setAcceleration(glm::vec3(0.0f,0.0f,0.0f));
 		
@@ -241,7 +251,9 @@ void GameEngine::game_loop () {
 	}
 	float avrageFPS=float(CLOCKS_PER_SEC)*float(loopNumber)/float(clock() - startTime);
 	gwf::terminate_glfw();	// Deallocate GLFW resources
-	program_log("Avrage FPS: "+std::to_string(avrageFPS)+"\n"); 
+	program_log("Avrage FPS: "+std::to_string(avrageFPS)+" ("+std::to_string(1/avrageFPS)+"s per frame)\n");
+	program_log("Max FPS: "+std::to_string(1/minDeltaT)+" ("+std::to_string(minDeltaT)+"s per frame)\n"); 
+	program_log("Min FPS: "+std::to_string(1/maxDeltaT)+" ("+std::to_string(maxDeltaT)+"s per frame)\n"); 
 	program_log("Game Loop Stopped\n");
 }
 
