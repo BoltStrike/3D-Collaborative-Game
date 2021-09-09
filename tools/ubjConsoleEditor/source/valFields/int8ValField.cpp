@@ -10,3 +10,5 @@ std::string Int8ValField::value(){
 char Int8ValField::typeLetter(){ 	 return 'i'; }
 std::string Int8ValField::typeAbr(){ return "i8 "; }
 std::string Int8ValField::typeFull(){return "int8"; }
+unsigned char Int8ValField::typeSize(){ return 1; }
+unsigned char* Int8ValField::rawData(){ return (unsigned char*)&val; }

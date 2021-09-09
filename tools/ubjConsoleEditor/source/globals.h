@@ -17,6 +17,10 @@ namespace Globals{
 	extern int displayFloatNumber;
 	extern int displayDoubleNumber;
 	
+	//determines if cursor wraps or does not change
+	extern bool displayLRWrap;
+	extern bool displayUDWrap;
+	
 }
 
 //error list

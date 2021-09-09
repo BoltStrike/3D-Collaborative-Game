@@ -11,6 +11,7 @@
 #include "bottomBarType.h"
 #include "field.h"
 #include "objField.h"
+#include "inputMode.h"
 
 //basic sequences
 #define ESC "\x1b"
@@ -34,12 +35,22 @@ class DisplayManager{
 		ObjField* fields;
 		
 		//document based line number
-		int currentLineNum;
 		int maxLineNum;
 		
-		//the current currsor position
+		//the current cursor position
 		int currentRowNum;
 		int currentColNum;
+		
+		//the current field
+		Field* currentField;
+		int currentNumTabs;
+		
+		//current status of underline cursor
+		bool cursorVisable;
+		
+		//for stroing how to handle input
+		InputMode inputMode;
+		//string inputTextBuffer;
 		
 		//console dimentions
 		int numCols;
@@ -60,6 +71,10 @@ class DisplayManager{
 		int getCurrentRowNum();
 		void setCurrentColNum(int);
 		int getCurrentColNum();
+		
+		void togleCurrsor();
+		void turnOnCurrsor();
+		void turnOffCurrsor();
 	
 	//alt setters
 	public:
@@ -67,14 +82,22 @@ class DisplayManager{
 		void cursorDown();
 		void cursorLeft();
 		void cursorRight();
+		void enter();
 	
 	
 	//display functions
 	public:
-		void updateDisplay();
+		void fullDisplayUpdate();
+		void displayLoop();
 	//helper functions
 	private:
-		int displayObj(ObjField* obj,int numLinesLeft,int numTabs);
+		Field* getPreviosLine(ObjField* obj,int lineNum);
+		Field* getNextLine(ObjField* obj,int lineNum);
+		
+		int displayObj(ObjField* obj,int numLinesLeft,int numTabs, bool displayHeader);
+		void displayObj(ObjField* obj,int rowNum,int numTabs);
+		void displayVal(ValField* val,int rowNum,int numTabs);
+		void displayCurrentLine();
 		void printLineNumAndTabs(int lineNum,int numTabs);
 		bool EnableVTMode();
 		void getCurrsorPos(int*,int*);

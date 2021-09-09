@@ -17,6 +17,10 @@ class StrValField:public ValField{
 	virtual char typeLetter();
 	virtual std::string typeAbr();
 	virtual std::string typeFull();
+	virtual unsigned char typeSize();	//return number of bytes
+	virtual unsigned char* rawData();	//return the bytes
+	
+	void writeData(FILE*);
 };
 
 #endif

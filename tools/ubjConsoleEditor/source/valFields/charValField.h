@@ -1,15 +1,15 @@
-#ifndef INT8_VAL_FEILD_H
-#define INT8_VAL_FEILD_H
+#ifndef CHAR_VAL_FEILD_H
+#define CHAR_VAL_FEILD_H
 
 #include "../valField.h"
 #include <string.h>
 
-class Int8ValField:public ValField{
+class CharValField:public ValField{
 	private:
-	int8_t val;
+	char val;
 	
 	public:
-	Int8ValField(int,std::string,FILE*);
+	CharValField(int,std::string,FILE*);
 	
 	public:
 	virtual std::string value();

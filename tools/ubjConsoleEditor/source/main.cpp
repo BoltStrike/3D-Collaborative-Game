@@ -14,39 +14,58 @@ namespace Globals{
 	int displayDecimalType=0;
 	int displayFloatNumber=4;
 	int displayDoubleNumber=6;
-	
+	bool displayLRWrap=false;
+	bool displayUDWrap=false;
 }
 
 using namespace std;
 ObjField* loadFile(std::string fileName);
+string getInput();
 
 int main(int argc, char** argv){
-	std::string fileName="testFile1.txt";
+	std::string fileName="test_cube.ubj";
 	ObjField* content=loadFile(fileName);//(Field*) new objField(0,"NULL");
 	content->expand();
-	/*content->addField((Field*) new ObjField(1,"Obj 1"));
-	content->addField((Field*) new ObjField(4,"Obj 2"));
-	content->addField((Field*) new ObjField(5,"Obj 3"));
-	content->addField((Field*) new ObjField(6,"Obj 4"));
-	content->addField((Field*) new ObjField(9,"Obj 5"));
-	content->addField((Field*) new ObjField(10,"Obj 6"));
-	content->addField((Field*) new ObjField(11,"Obj 7"));
-	content->addField((Field*) new ObjField(12,"Obj 8"));
-	content->addField((Field*) new ObjField(13,"Obj 9"));
-	//printf("size: %d%s\n",fields->size(),fields->at(2).getName().c_str());
-	//add some lower objects
-	((ObjField*)fields->getField(0))->expand();
-	((ObjField*)fields->getField(0))->addField((Field*) new ObjField(2,"Obj 1-1"));
-	((ObjField*)fields->getField(0))->addField((Field*) new ObjField(3,"Obj 1-2"));
-	((ObjField*)fields->getField(3))->expand();
-	((ObjField*)fields->getField(3))->addField((Field*) new ObjField(7,"Obj 4-1"));
-	((ObjField*)fields->getField(3))->addField((Field*) new ObjField(8,"Obj 4-2"));*/
 	
 	DisplayManager* dm=new DisplayManager(content,fileName);
-	dm->updateDisplay();
-	char* in= new char[50];
-	cin>>in;
-	delete in;
+	dm->fullDisplayUpdate();
+	dm->displayLoop();
+	string in;
+	int sleepCount=0;
+	while(true){
+		/*in=getInput();
+		if(in.equals("")){
+			Sleep(5);
+			sleepCount++;
+			if(sleepCount>=100){
+				dm->togleCurrsor();
+				sleepCount=0;
+			}
+		}else{
+			switch(in){
+				//cursor movement
+				case "Up":
+					dm->cursorUp();
+					break;
+				case "Down":
+					dm->cursorDown();
+					break;
+				case "Left":
+					dm->cursorLeft();
+					break;
+				case "Right":
+					dm->cursorRight();
+					break;
+				//expand/contract
+				case "\n":
+					
+			}
+		}*/
+		Sleep(500);
+	}
+	//char* in= new char[50];
+	//cin>>in;
+	//delete in;
 	delete content;
 	return 0;
 }
@@ -60,15 +79,134 @@ ObjField* loadFile(std::string fileName){
 		printf("Please close this window");
 	}
 	//read the first chritor
-	if(getc(f)!='{'){
+	/*if(getc(f)!='{'){
 		printf("ERROR in file: %s : missing '{' at start of file",fileName);
 		printf("Please close this window");
-	}
+	}*/
 	printf("File oppened\n");
 	//load the data in
 	int lineNum=0;
-	return new ObjField(&lineNum,"NULL",f);
 	
-	
+	ObjField* r=new ObjField(&lineNum,"",f,false);
+	fclose(f);
+	return r;
 	
 }
+
+/*string getInput(){
+	//check if there is input to take in
+	if(cin.peek()==EOF) return "";
+	char c=cin.getc();
+	char a;
+	if(c==ESC){
+		if(cin.peek()==EOF) return string(ESC);
+		switch(cin.getc()){
+			case '[':
+				switch(cin.getc()){
+					case 'A':
+						return "Up";
+						break;
+					case 'B':
+						return "Down";
+						break;
+					case 'C':
+						return "Right";
+						break;
+					case 'D':
+						return "Left";
+						break;
+					case 'H':
+						return "Home";
+						break;
+					case 'F':
+						return "End";
+						break;
+					case 'P':
+						return "F1";
+						break;
+					case 'Q':
+						return "F2";
+						break;
+					case 'R':
+						return "F3";
+						break;
+					case 'S':
+						return "F4";
+						break;
+					case '1':
+						cin.getc();
+						cin.getc();
+						cin.getc();
+				}
+				break;
+			case 'O':
+				switch(cin.getc()){
+					case 'A':
+						return "Up";
+						break;
+					case 'B':
+						return "Down";
+						break;
+					case 'C':
+						return "Right";
+						break;
+					case 'D':
+						return "Left";
+						break;
+					case '1':
+						switch(cin.getc()){
+							case '5':
+								if(cin.getc()=='~')return "F5";
+								break;
+							case '7':
+								if(cin.getc()=='~')return "F6";
+								break;
+							case '8':
+								if(cin.getc()=='~')return "F7";
+								break;
+							case '9':
+								if(cin.getc()=='~')return "F8";
+								break;
+						}
+						return "";
+						break;
+					case '2':
+						switch(cin.getc()){
+							case '0':
+								if(cin.getc()=='~')return "F9";
+								break;
+							case '1':
+								if(cin.getc()=='~')return "F10";
+								break;
+							case '3':
+								if(cin.getc()=='~')return "F11";
+								break;
+							case '4':
+								if(cin.getc()=='~')return "F12";
+								break;
+							case '~':
+								return "Insert";
+								break;
+						}
+						return "";
+						break;
+					case '3':
+						if(cin.getc()=='~')return "Delete";
+						break;
+					case '5':
+						if(cin.getc()=='~')return "Page Up";
+						break;
+					case '6':
+						if(cin.getc()=='~')return "Page Down";
+						break;
+				}
+				break;
+			default:
+				return "Ctrl+"+cin.getc();
+		}
+	}else{
+		return string(c);
+	}
+	
+	
+}*/

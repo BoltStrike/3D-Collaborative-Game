@@ -8,13 +8,16 @@
 #include "allValFields.h"
 
 class ObjField: public Field{
+	private:
 	bool isExpanded;
-	std::vector<Field*>* fields;
+	bool isArray;
+	Field** fields;
+	int numFields;
 	
 	public:
 	//constructor
-	ObjField(int,std::string);	//for testing
-	ObjField(int*,std::string,FILE*);//for reading files
+	ObjField(int,std::string,bool);	//for testing
+	ObjField(int*,std::string,FILE*,bool);//for reading files
 	~ObjField();
 	
 	//getter setters
@@ -27,12 +30,18 @@ class ObjField: public Field{
 	Field* getFistField();
 	Field* getLastField();
 	int getNumFields();
+	bool getIsArray();
 	
 	void writeData(FILE*);
 	int readData(FILE*);
 	
 	//functions
 	void addField(Field*);
+	
+	public:
+		//search functions
+		Field* findPrevious(int lineNumber);
+		Field* findNext(int lineNumber);
 	
 };
 

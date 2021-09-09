@@ -27,29 +27,29 @@ class Field{
 	void setName();
 	
 	//functions
-	std::vector<std::string> getText();
+	virtual std::vector<std::string> getText();
 	
 	//function empty must be implimented by child
-	void writeData(FILE*);
+	virtual void writeData(FILE*);
 	void writeName(FILE*);
 	static std::string readString(FILE* f){
 		//get the length type
 		fgetc(f);
 		//get the string length
 		int8_t len=fgetc(f);
-		printf("Str len: %d\n",len);
+		//printf("Str len: %d\n",len);
 		char cStr[256];
 		fgets(cStr,len+1,f);
-		printf("Got String: \"%s\"\n",cStr);
+		//printf("Got String: \"%s\"\n",cStr);
 		return std::string(cStr);
 	}
 	static std::string readString(char type,FILE* f){
 		//get the string length
 		int8_t len=fgetc(f);
-		printf("Str len: %d\n",len);
+		//printf("Str len: %d\n",len);
 		char cStr[256];
 		fgets(cStr,len+1,f);
-		printf("Got String: \"%s\"\n",cStr);
+		//printf("Got String: \"%s\"\n",cStr);
 		return std::string(cStr);
 	}
 	
