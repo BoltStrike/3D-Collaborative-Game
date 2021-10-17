@@ -4,6 +4,7 @@
 #include "field.h"
 #include "objField.h"
 #include "displayManager.h"
+#include "console.h"
 #include <vector>
 #include <string>
 
@@ -26,12 +27,19 @@ int main(int argc, char** argv){
 	std::string fileName="test_cube.ubj";
 	ObjField* content=loadFile(fileName);//(Field*) new objField(0,"NULL");
 	content->expand();
-	
-	DisplayManager* dm=new DisplayManager(content,fileName);
+	ObjField* templates=new ObjField(0,"NULL",false);
+	DisplayManager* dm=new DisplayManager(content,fileName,templates);
 	dm->fullDisplayUpdate();
 	dm->displayLoop();
 	string in;
 	int sleepCount=0;
+	/*Console* console=new Console("Testing");
+	console->setCursor(1,1);
+	printf("Line 1\nLine 2\nLine 3\nLine 4\nLine 5\n");
+	console->setCursor(1,1);
+	console->deleteLines(1);
+	console->setCursor(1,2);
+	console->insertLineAbove(1);*/
 	while(true){
 		/*in=getInput();
 		if(in.equals("")){
@@ -66,7 +74,7 @@ int main(int argc, char** argv){
 	//char* in= new char[50];
 	//cin>>in;
 	//delete in;
-	delete content;
+	//delete content;
 	return 0;
 }
 

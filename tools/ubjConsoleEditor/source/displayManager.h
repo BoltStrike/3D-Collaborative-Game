@@ -8,60 +8,59 @@
 #include <wchar.h>
 #include <iostream>
 
+#include "console.h"
 #include "bottomBarType.h"
+#include "bottomBarManager.h"
+#include "bottomBarText.h"
 #include "field.h"
 #include "objField.h"
-#include "inputMode.h"
-
-//basic sequences
-#define ESC "\x1b"
-#define CSI "\x1b["
-#define OSI "\x1b]"
-#define BELL "\x07"
+#include "menu.h"
+#include "inputCmd.h"
 
 //common commands
 #define BEGIN_UNDERLINE "\x1b[4m"
 #define END_UNDERLINE "\x1b[24m"
 #define NEGATIVE "\x1b[7m"
 #define POSITIVE "\x1b[27m"
-#define NEGATIVE_PLUS "\x1b[7m+\x1b[27m"
-#define NEGATIVE_MINUS "\x1b[7m-\x1b[27m"
 
 #define LOTS_OF_TABS "\t\t\t\t\t\t\t\t\t\t\t\t"
 #define LOTS_OF_SPACE "                                                "
 
 class DisplayManager{
 	private:
+		Console* console;
 		ObjField* fields;
+		ObjField* formatTemplates;
 		
 		//document based line number
 		int maxLineNum;
 		
-		//the current cursor position
-		int currentRowNum;
+		//the current underline cursor position
+		int currentRowNum; //starts at 1
 		int currentColNum;
+		int currentLineNum;
 		
 		//the current field
 		Field* currentField;
 		int currentNumTabs;
 		
 		//current status of underline cursor
-		bool cursorVisable;
+		bool underlineCursorVisable;
 		
-		//for stroing how to handle input
-		InputMode inputMode;
+		//for storing which menue the user is acessing
+		Menu currentMenu;
 		//string inputTextBuffer;
 		
-		//console dimentions
-		int numCols;
-		int numRows;
-		
 		//current bottom bar type
-		BottomBarType bottomBar;
+		BottomBarManager* currentBotBar;
+		BottomBarText testText;
+		bool bottomBarIsVisable;
+		bool bottomBarVisabilityChanged;
+		
 	
 	//constructor
 	public:
-		DisplayManager(ObjField*,std::string);
+		DisplayManager(ObjField*,std::string,ObjField* formatTemplates);
 	
 	//getters and setters
 	public:
@@ -72,16 +71,16 @@ class DisplayManager{
 		void setCurrentColNum(int);
 		int getCurrentColNum();
 		
-		void togleCurrsor();
-		void turnOnCurrsor();
-		void turnOffCurrsor();
+		void togleUnderlineCursor();
+		void turnOnUnderlineCursor();
+		void turnOffUnderlineCursor();
 	
 	//alt setters
 	public:
-		void cursorUp();
-		void cursorDown();
-		void cursorLeft();
-		void cursorRight();
+		void underlineCursorUp();
+		void underlineCursorDown();
+		void underlineCursorLeft();
+		void underlineCursorRight();
 		void enter();
 	
 	
@@ -99,9 +98,9 @@ class DisplayManager{
 		void displayVal(ValField* val,int rowNum,int numTabs);
 		void displayCurrentLine();
 		void printLineNumAndTabs(int lineNum,int numTabs);
-		bool EnableVTMode();
-		void getCurrsorPos(int*,int*);
-		void updateScreenSize();
+		
+		void scrolUpMainSection(bool newCurrent);
+		void scrolDownMainSection(bool newCurrent);
 	
 };
 

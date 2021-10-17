@@ -151,7 +151,7 @@ Field* ObjField::findPrevious(int lineNumber){
 	if(this->getLineNumber()>lineNumber)return NULL;	//something has broke
 	if(!this->isExpanded)return (Field*) this;
 	//check the end first to save time on large items
-	if(this->getLastField()->getLineNumber()<lineNumber)return this->getLastField();
+	//if(this->getLastField()->getLineNumber()<lineNumber)return this->getLastField();
 	Field* closest=this;
 	//go through the sub fields
 	for(int i=0;i<this->numFields;i++){
@@ -166,20 +166,52 @@ Field* ObjField::findPrevious(int lineNumber){
 	return closest;
 }
 Field* ObjField::findNext(int lineNumber){
-	if(this->getLineNumber()>lineNumber)return (Field*) this;
+	//go backwards
+	if(this->getLineNumber()>lineNumber) return this;
+	//if(this->getLastField()->getLineNumber()<=lineNumber) return NULL;
+	//begin the search fhough the sub feilds
+	Field* closest=this->getLastField();
+	Field* tmp=NULL;
+	if(this->isExpanded){
+		for(int i=this->numFields-1;i>=0;i--){
+			if(this->fields[i]->getLineNumber()>lineNumber){
+				closest=this->fields[i];
+			}else if(this->fields[i]->getIsObj() && (tmp=((ObjField*)this->fields[i])->findNext(lineNumber)) && tmp!=NULL){
+				closest=tmp;
+			}
+		}
+		return closest;
+	}
+	else return NULL;
+}
+int ObjField::findLevel(int lineNumber, int currentLevel){
+	currentLevel++;
+	if(this->getLineNumber()>lineNumber)return -1; //went too far
+	//if(this->getLastField()->getLineNumber()<lineNumber) return -2; //skip this item
+	//go through each item
+	int tmp=-1;
+	for(int i=0;i<this->numFields;i++){
+		if(this->fields[i]->getLineNumber()==lineNumber) return currentLevel;
+		if(this->fields[i]->getIsObj()){
+			tmp=((ObjField*)this->fields[i])->findLevel(lineNumber,currentLevel);
+			if(tmp>=0) return tmp;
+		}
+	}
+	return -2;
+}
+	/*//if(this->getLineNumber()>lineNumber)return (Field*) this;
 	if(!this->isExpanded)return (Field*) this;
 	//check the end first to save time on large items
-	if(this->getLastField()->getLineNumber()<lineNumber)return this->getLastField();
+	if(this->getLastField()->getLineNumber()<=lineNumber+1)return this->getLastField();
 	Field* closest=this;
 	Field* tmp=NULL;
 	//go through the sub fields
 	for(int i=0;i<this->numFields;i++){
-		if(this->fields[i]->getLineNumber()<lineNumber){
+		if(this->fields[i]->getLineNumber()<=lineNumber+1){
 			if(this->fields[i]->getIsObj()){
 				closest=((ObjField*)this->fields[i])->findPrevious(lineNumber);
 			}
 		}
 		else if(this->fields[i]->getLineNumber()>lineNumber)return this->fields[i];
 	}
-	return NULL; //if it gets here something is broke
-}
+	return NULL; //if it gets here something is broke*/

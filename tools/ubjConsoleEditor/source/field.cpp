@@ -4,13 +4,13 @@ Field::Field(int lineNum,bool isObj,std::string name){
 	this->lineNum=lineNum;
 	this->isObj=isObj;
 	this->name=name;
-	printf("Loaded line: %d name: %s\n",lineNum,name.c_str());
+	//printf("Loaded line: %d name: %s\n",lineNum,name.c_str());
 }
 Field::Field(int* lineNum,std::string name,FILE* f){
 	this->lineNum=*lineNum;
 	this->isObj=false;
 	this->name=name;
-	printf("Loaded line: %d name: %s\n",lineNum,name.c_str());
+	//printf("Loaded line: %d name: %s\n",lineNum,name.c_str());
 }
 
 //getters and setters

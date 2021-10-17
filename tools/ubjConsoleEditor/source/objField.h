@@ -42,6 +42,7 @@ class ObjField: public Field{
 		//search functions
 		Field* findPrevious(int lineNumber);
 		Field* findNext(int lineNumber);
+		int findLevel(int lineNumber, int currentLevel);
 	
 };
 
