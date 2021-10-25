@@ -27,7 +27,7 @@ int main(int argc, char** argv){
 	std::string fileName="test_cube.ubj";
 	ObjField* content=loadFile(fileName);//(Field*) new objField(0,"NULL");
 	content->expand();
-	ObjField* templates=new ObjField(0,"NULL",false);
+	ObjField* templates=new ObjField(1,"NULL",false);
 	DisplayManager* dm=new DisplayManager(content,fileName,templates);
 	dm->fullDisplayUpdate();
 	dm->displayLoop();

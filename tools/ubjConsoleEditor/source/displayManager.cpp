@@ -266,7 +266,7 @@ void DisplayManager::displayCurrentLine(){
 }
 void DisplayManager::scrolUpMainSection(bool newCurrent){
 	//remove line aboave bottom bar
-	console->setCursor(1,console->getNumRows()-this->currentBotBar->getBottomBarHeigth());
+	console->setCursor(1,console->getNumRows()-this->currentBotBar->getBottomBarHeigth()-1);
 	console->deleteLines(1);
 	//inset line at top
 	console->setCursor(1,1);
@@ -289,7 +289,7 @@ void DisplayManager::scrolDownMainSection(bool newCurrent){
 	console->setCursor(1,1);
 	console->deleteLines(1);
 	//inset line aboave bottom bar
-	console->setCursor(1,console->getNumRows()-this->currentBotBar->getBottomBarHeigth()+1);
+	console->setCursor(1,console->getNumRows()-this->currentBotBar->getBottomBarHeigth());
 	console->insertLineAbove(1);
 	//display the new line
 	if(newCurrent){

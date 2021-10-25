@@ -17,9 +17,9 @@ ObjField::ObjField(int* lineNumber,std::string name,FILE* f,bool isArray):Field(
 	std::string currentName="";
 	this->isExpanded=true;//!isArray;
 	this->isArray=isArray;
-	(*lineNumber)++;
 	//printf("Right before while loop\n");
 	while(((c=fgetc(f))!='}'&&(!this->isArray)) || (c!=']'&&this->isArray)){
+		(*lineNumber)++;
 		//printf("in c=%c\n",c);
 		if(!this->isArray)currentName=Field::readString(c,f);
 		//printf("Reading: %s\n",currentName.c_str());
@@ -82,7 +82,6 @@ ObjField::ObjField(int* lineNumber,std::string name,FILE* f,bool isArray):Field(
 				printf("ERROR: Unexpeced Charitor: %c\n",c2);
 				return;
 		}
-		(*lineNumber)++;
 		//printf("bot while\n");
 	}
 	//printf("out c=%c\n",c);
@@ -166,23 +165,22 @@ Field* ObjField::findPrevious(int lineNumber){
 	return closest;
 }
 Field* ObjField::findNext(int lineNumber){
-	//go backwards
+	//go forwards
 	if(this->getLineNumber()>lineNumber) return this;
 	//if(this->getLastField()->getLineNumber()<=lineNumber) return NULL;
 	//begin the search fhough the sub feilds
-	Field* closest=this->getLastField();
+	//Field* closest=this->getLastField();
 	Field* tmp=NULL;
 	if(this->isExpanded){
-		for(int i=this->numFields-1;i>=0;i--){
+		for(int i=0;i<this->numFields;i++){
 			if(this->fields[i]->getLineNumber()>lineNumber){
-				closest=this->fields[i];
+				return this->fields[i];
 			}else if(this->fields[i]->getIsObj() && (tmp=((ObjField*)this->fields[i])->findNext(lineNumber)) && tmp!=NULL){
-				closest=tmp;
+				return tmp;
 			}
 		}
-		return closest;
 	}
-	else return NULL;
+	return NULL;
 }
 int ObjField::findLevel(int lineNumber, int currentLevel){
 	currentLevel++;
