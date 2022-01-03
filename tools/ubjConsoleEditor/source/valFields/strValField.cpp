@@ -21,7 +21,7 @@ void StrValField::writeData(FILE* f){
 	
 	//write the data
 	fputc('S',f);
-	fputc('i',f);
+	fputc('U',f);
 	fputc((char)this->val.length(),f);
 	//make sure the null charitor does not get printed
 	fputs(this->val.c_str(),f);

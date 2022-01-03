@@ -1,6 +1,7 @@
 #include "bottomBarManager.h"
 
-BottomBarManager::BottomBarManager(BottomBarType type,int bottomBarHeigth){
+BottomBarManager::BottomBarManager(Console* console,BottomBarType type,int bottomBarHeigth){
+	this->console=console;
 	this->type=type;
 	this->bottomBarHeigth=bottomBarHeigth;
 }
@@ -12,6 +13,10 @@ bool BottomBarManager::setBottomBarHeigth(int heigth){
 		this->bottomBarHeigth=heigth;
 		return true;
 	}
+	return false;
+}
+
+virtual bool BottomBarManager::keypress(char c, InputCmd cmd){
 	return false;
 }
 

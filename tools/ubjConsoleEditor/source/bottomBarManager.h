@@ -5,19 +5,29 @@
 
 #include "console.h"
 #include "bottomBarType.h"
+#include "inputCmd.h"
 
 class BottomBarManager{
 	private:
 		BottomBarType type;
 		int bottomBarHeigth;
+		Console* console;
 	public:
 		static const int bottomBarMaxHeigth=8;
 	public:
-		BottomBarManager(BottomBarType type,int bottomBarHeigth);
+		BottomBarManager(Console* console,BottomBarType type,int bottomBarHeigth);
 		
+		//returns the current heigth of the bar
 		int getBottomBarHeigth();
 		
-		virtual void display(Console* console,bool drawEverything);
+		//takes in keypress and displays the bar
+		//returns true if bar function is done
+		virtual bool keypress(char c, InputCmd cmd);
+		
+		//displays the bottom bar
+		virtual void display(bool drawEverything);
+		
+		//utility function
 		static int numLinesInString(std::string s);
 		
 	protected:

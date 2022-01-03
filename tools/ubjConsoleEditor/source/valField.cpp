@@ -13,7 +13,7 @@ unsigned char* ValField::rawData(){ return NULL; }
 //function for writing data for all valFeild types except string
 void ValField::writeData(FILE* f){
 	//write the name
-	this->writeName(f);
+	if(!this->name.empty())this->writeName(f);
 	
 	//write the data
 	fputc(this->typeLetter(),f);
@@ -21,8 +21,8 @@ void ValField::writeData(FILE* f){
 	for(int a=0;a<this->typeSize();a++){
 		fputc(data[a],f);
 	}
-	char typesThatNeedFree[5]={'I','l','L','d','D'};
-	for(int i=0;i<5;i++){
+	char typesThatNeedFree[3]={'I','l','L'};//,'d','D'};
+	for(int i=0;i<3;i++){
 		if(this->typeLetter()==typesThatNeedFree[i])delete data;
 	}
 }

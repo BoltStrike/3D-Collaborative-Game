@@ -107,8 +107,11 @@ bool ObjField::getIsArray(){ return this->isArray; }
 	
 void ObjField::writeData(FILE* f){
 	//do obj header
-	writeName(f);
-	fputc('{',f);
+	if(this->lineNum!=0){
+		writeName(f);
+		if(this->isArray)fputc('[',f);
+		else fputc('{',f);
+	}
 	
 	//do the data
 	for(int i=0;i<this->numFields;i++){
@@ -116,7 +119,8 @@ void ObjField::writeData(FILE* f){
 	}
 	
 	//do obj end
-	fputc('}',f);
+	if(this->isArray)fputc(']',f);
+	else fputc('}',f);
 }
 
 //functions

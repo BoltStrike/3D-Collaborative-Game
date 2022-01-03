@@ -9,7 +9,7 @@ F32ValField::F32ValField(int lineNum,std::string name,FILE* f):ValField(lineNum,
 std::string F32ValField::value(){
 	return std::to_string(val);
 }
-char F32ValField::typeLetter(){ 	 return 'f'; }
+char F32ValField::typeLetter(){ 	 return 'd'; }
 std::string F32ValField::typeAbr(){ return "f32"; }
 std::string F32ValField::typeFull(){return "float32"; }
 unsigned char F32ValField::typeSize(){ return 4; }

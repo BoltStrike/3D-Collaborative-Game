@@ -28,7 +28,7 @@ int main(int argc, char** argv){
 	ObjField* content=loadFile(fileName);//(Field*) new objField(0,"NULL");
 	content->expand();
 	ObjField* templates=new ObjField(1,"NULL",false);
-	DisplayManager* dm=new DisplayManager(content,fileName,templates);
+	/*DisplayManager* dm=new DisplayManager(content,fileName,templates);
 	dm->fullDisplayUpdate();
 	dm->displayLoop();
 	string in;
@@ -39,42 +39,23 @@ int main(int argc, char** argv){
 	console->setCursor(1,1);
 	console->deleteLines(1);
 	console->setCursor(1,2);
-	console->insertLineAbove(1);*/
+	console->insertLineAbove(1);
 	while(true){
-		/*in=getInput();
-		if(in.equals("")){
-			Sleep(5);
-			sleepCount++;
-			if(sleepCount>=100){
-				dm->togleCurrsor();
-				sleepCount=0;
-			}
-		}else{
-			switch(in){
-				//cursor movement
-				case "Up":
-					dm->cursorUp();
-					break;
-				case "Down":
-					dm->cursorDown();
-					break;
-				case "Left":
-					dm->cursorLeft();
-					break;
-				case "Right":
-					dm->cursorRight();
-					break;
-				//expand/contract
-				case "\n":
-					
-			}
-		}*/
 		Sleep(500);
 	}
 	//char* in= new char[50];
-	//cin>>in;
-	//delete in;
-	//delete content;
+	//cin>>in;*/
+	FILE* fOut=fopen("testOutput.ubj","w");
+	if(fOut==NULL){
+		printf("Null file pointer");
+		while(true){
+			Sleep(500);
+		}
+	}
+	content->writeData(fOut);
+	fclose(fOut);
+	delete content;
+	printf("Done with everything");
 	return 0;
 }
 

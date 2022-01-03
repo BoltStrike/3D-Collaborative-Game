@@ -31,7 +31,7 @@ void Field::writeData(FILE* f){
 	return;
 }
 void Field::writeName(FILE* f){
-	fputc('i',f);
+	fputc('U',f);
 	fputc((char)this->name.length(),f);
 	//make sure the null charitor does not get printed
 	fputs(this->name.c_str(),f);
