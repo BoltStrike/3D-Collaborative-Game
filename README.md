@@ -1,3 +1,4 @@
+![collaborative_game_image](https://user-images.githubusercontent.com/106950101/199331502-167a9854-de0c-418b-ad6c-3b14c2e564fc.PNG)
 # 3D-Collaborative-Game
 A 3D videogame and videogame engine created in C++ using OpenGL v3.3 and GLFW v3.3.2 libraries.
 <!--## Table of Contents
