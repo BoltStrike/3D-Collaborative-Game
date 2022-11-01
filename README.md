@@ -10,6 +10,8 @@ A 3D videogame and videogame engine created in C++ using OpenGL v3.3 and GLFW v3
     * Game Save
     * Assets
 -->
+This project is now archieved. We have created a functioning game engine with basic features, but we are moving onto greater projects.
+
 ## Managers
 The manages all control diffrent parts of the game. The interface of each of the managers shoul be kept simple, so that future changes to the internals of the manager do not change the interface.
 
