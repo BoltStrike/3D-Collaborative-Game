@@ -13,11 +13,11 @@
 class Material {
 	private:
 		const char *name;							// Name of material
-		const char *v_source, *f_source, *g_source;	// Raw source code
+		//const char *v_source, *f_source, *g_source;	// Raw source code
 
 		void load(const char*);				// Loads material from file
 		void create_shaders(const char*, 	// Compiles shader program
-							const char*, 
+							const char*, 	
 							const char*);
 	public:
 		unsigned int ID;	// Shader ID

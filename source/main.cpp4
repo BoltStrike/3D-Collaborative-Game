@@ -1,0 +1,57 @@
+
+#define STB_IMAGE_IMPLEMENTATION // Required for stb_image.h (Only define once)
+
+#include "game_engine.h"
+#include "generic/program_log.h"
+#include "generic/json_parser.h"
+#include <string>
+#include <iostream>
+
+#include <fstream>
+#include <iterator>
+#include <algorithm>
+
+/******************************************************************************
+ * This is the main function. This starts the game engine, enters the game loop
+ * and terminates the game engine after it is finished. 
+******************************************************************************/
+int main (int argc, char **argv) 
+{	
+	unsigned int x = 1;
+	if ( (int) (((char *)&(x))[0]) == 1)
+		std::cout << "Currently using little-endian format" << std::endl;
+	else
+		std::cout << "Currently using big-endian format" << std::endl;
+
+	std::ifstream rf("assets/json_binary_testing/binfile.bson", std::ios::out | std::ios::binary);
+	if(!rf) {
+		std::cout << "Cannot open file!" << std::endl;
+		getchar();
+		return 1;
+	}
+	float rstu[5];
+	int ints[5];
+	for (int i = 0; i < 5; i++)
+		rf.read((char *) &rstu[i], sizeof(float));
+	for (int i = 0; i < 5; i++)
+		rf.read((char *) &ints[i], sizeof(float));
+	rf.close();
+	if(!rf.good()) {
+		std::cout << "Error occurred at reading time!" << std::endl;
+		getchar();
+		return 1;
+	}
+	std::cout<<"Floats:"<<std::endl;
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << rstu[i] << std::endl;
+	}
+	std::cout<<"Ints:"<<std::endl;
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << ints[i] << std::endl;
+	}
+	getchar();
+	return 0;
+}
+

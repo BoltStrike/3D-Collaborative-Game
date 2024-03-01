@@ -1,0 +1,34 @@
+
+#define STB_IMAGE_IMPLEMENTATION // Required for stb_image.h (Only define once)
+
+#include "game_engine.h"
+#include "generic/program_log.h"
+#include "generic/json_parser.h"
+#include <string>
+#include <iostream>
+
+#include <vector>
+#include <unordered_map>
+
+struct Value {
+    std::string s;
+    std::vector<struct Value*> a;
+    std::unordered_map<std::string, struct Value*> o;
+};
+
+
+int main ()
+{
+    struct Value mine;
+    mine.o["title"] = new struct Value({.s = "no"});
+    
+	std::cout << mine.o["title"]->s << std::endl;
+    
+    for (auto x : mine.o)
+        std::cout << x.first << " AND " << x.second->s << std::endl;
+    delete mine.o["title"];
+    getchar();
+  return 0;
+}
+
+

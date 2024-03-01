@@ -1,6 +1,9 @@
 CC = g++ -std=c++11 -pthread
 exe_file = 3dcollaborativegame
 
+# Use unicode UTF-8
+UFLAG := -fextended-identifiers
+
 # Handle debug case
 DEBUG ?= 1
 ifeq ($(DEBUG), 1)
@@ -44,9 +47,9 @@ OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 #Compile each file and the whole EXE
 $(exe_file): $(OBJ_FILES) $(OBJ_DIR)/glad.o
-	$(CC) -o $@ $^ $(STDFLAGS) $(CFLAGS) $(MATHFLAG) $(GLFWFLAG) $(GLFLAG) $(LIBFLAG)
+	$(CC) -o $@ $^ $(STDFLAGS) $(CFLAGS) $(MATHFLAG) $(GLFWFLAG) $(GLFLAG) $(LIBFLAG) $(UFLAG)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(UFLAG) -c -o $@ $<
 $(OBJ_DIR)/glad.o: glad/glad.c
 	$(CC) $(CFLAGS) -c -o $(OBJ_DIR)/glad.o glad/glad.c
 

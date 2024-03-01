@@ -9,11 +9,11 @@
 
 #include "../generic/program_log.h"
 #include "../generic/file_tosstream.h"
+#include "../generic/ubj.h"
 
 class Mesh {
 	private:
-		int name_length; 			// Length of the name string
-		char* name;					// The name string
+		std::string name;			// The name string
 		float* coord, *normal, *uv;	// Vertex position, normal, and UV storage
 		int* indices;				// Indicies to create faces
 		float* vertex_data;			// OpenGL ready vertex data
@@ -22,7 +22,7 @@ class Mesh {
 		GLint posAttrib, texAttrib, norAttrib;	// Vertex attribute pointer IDs
 		
 		// Number of vertices, faces, and UV coordinates the object has
-		int num_vertices, num_faces, num_uvs;
+		int num_vertices, num_normals, num_faces, num_uvs;
 			
 		// This struct defines the face struct. It holds indicies for the
 		// position, normal, and UV arrays. All equal 0 by default;
@@ -40,8 +40,7 @@ class Mesh {
 		Mesh();								// Default constructor
 		~Mesh();							// Default destructor
 		void deallocate();					// Frees object data
-		int get_name_length() const;		// Returns name_length
-		char* get_name() const;				// Returns name char pointer
+		std::string get_name() const;		// Returns name
 		int get_num_vertices() const;		// Returns num_vertices
 		int get_num_faces() const;			// Returns num_faces
 		struct Face get_face(int) const;	// Return face at given index

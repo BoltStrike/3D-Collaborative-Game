@@ -1,0 +1,50 @@
+
+#define STB_IMAGE_IMPLEMENTATION // Required for stb_image.h (Only define once)
+
+#include "game_engine.h"
+#include "generic/program_log.h"
+#include "generic/json_parser.h"
+#include "generic/ubj.h"
+#include <string>
+#include <iostream>
+
+#include <fstream>
+#include <iterator>
+#include <algorithm>
+
+/******************************************************************************
+ * This is the main function. This starts the game engine, enters the game loop
+ * and terminates the game engine after it is finished. 
+******************************************************************************/
+int main (int argc, char **argv) 
+{	
+	Ubj f;
+	f.open("assets/json_binary_testing/ubjtest.ubj");
+	f = f.at("floats").at("one");
+	float num = f.get_f();
+	std::cout << num << std::endl;
+	f = f.back();
+	f = f.at("three");
+	num = f.get_f();
+	std::cout << num << std::endl;
+	f = f.beginning();
+	f = f.at("floats").at("two");
+	num = f.get_f();
+	std::cout << num << std::endl;
+	f = f.beginning();
+	f = f.at("floats").at("array").at(0);
+	float nums[10];
+	for (int i = 0; i < 10; i++)
+		nums[i] = f.get_f();
+	for (int i = 0; i < 10; i++)
+		std::cout << nums[i] << std::endl;
+	f = f.beginning();
+	f = f.at("floats").at("four");
+	int num2 = f.get_l();
+	std::cout << num2 << std::endl;
+	
+	f.close();
+	getchar();
+	return 0;
+}
+
