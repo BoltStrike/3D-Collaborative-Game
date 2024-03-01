@@ -1,0 +1,2785 @@
+
+
+Begin Program
+Creating physics manager...
+Created physics manager
+Creating player collider...
+Test: (5.000000,5.000000,5.000000)
+Created player collider
+Initializing engine...
+Creating window...
+Created window
+Set V-Sync: On
+Loading scene: assets/scenes/floating_island.scene...
+  Loading object: assets/objects/floating_island/meshes_materials/cave.object...
+    Loading material: assets/objects/floating_island/meshes_materials/cave.material...
+      Loaded image: assets/objects/floating_island/textures/cave.png
+    Loaded material: assets/objects/floating_island/meshes_materials/cave.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/cave.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/cave.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/cave.object
+  Loading object: assets/objects/floating_island/meshes_materials/main_grass.object...
+    Loading material: assets/objects/floating_island/meshes_materials/main_grass.material...
+    Loaded material: assets/objects/floating_island/meshes_materials/main_grass.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/main_grass.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/main_grass.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/main_grass.object
+  Loading object: assets/objects/floating_island/meshes_materials/rock.object...
+    Loading material: assets/objects/floating_island/meshes_materials/rock.material...
+      Loaded image: assets/objects/floating_island/textures/rock.png
+    Loaded material: assets/objects/floating_island/meshes_materials/rock.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/rock.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/rock.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/rock.object
+  Loading object: assets/objects/floating_island/meshes_materials/tree.object...
+    Loading material: assets/objects/floating_island/meshes_materials/tree.material...
+      Loaded image: assets/objects/floating_island/textures/tree.png
+    Loaded material: assets/objects/floating_island/meshes_materials/tree.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/tree.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/tree.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/tree.object
+  Loading object: assets/objects/floating_island/meshes_materials/trim_grass.object...
+    Loading material: assets/objects/floating_island/meshes_materials/trim_grass.material...
+    Loaded material: assets/objects/floating_island/meshes_materials/trim_grass.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/trim_grass.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/trim_grass.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/trim_grass.object
+  Loading object: assets/objects/floating_island/meshes_materials/underside.object...
+    Loading material: assets/objects/floating_island/meshes_materials/underside.material...
+      Loaded image: assets/objects/floating_island/textures/underside.png
+    Loaded material: assets/objects/floating_island/meshes_materials/underside.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/underside.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/underside.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/underside.object
+  Loading object: assets/objects/floating_island/meshes_materials/water.object...
+    Loading material: assets/objects/floating_island/meshes_materials/water.material...
+    Loaded material: assets/objects/floating_island/meshes_materials/water.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/water.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/water.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/water.object
+  Loading object: assets/objects/floating_island/meshes_materials/test_cube.object...
+    Loading material: assets/objects/floating_island/meshes_materials/test_cube.material...
+      Loaded image: assets/objects/floating_island/textures/test_cube.png
+    Loaded material: assets/objects/floating_island/meshes_materials/test_cube.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/test_cube.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/test_cube.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/test_cube.object
+  Loading object: assets/objects/floating_island/meshes_materials/test_cube.object...
+    Loading material: assets/objects/floating_island/meshes_materials/test_cube.material...
+      Loaded image: assets/objects/floating_island/textures/test_cube.png
+    Loaded material: assets/objects/floating_island/meshes_materials/test_cube.material
+    Loading mesh: assets/objects/floating_island/meshes_materials/test_cube.mesh...
+    Loaded mesh: assets/objects/floating_island/meshes_materials/test_cube.mesh
+  Loaded object: assets/objects/floating_island/meshes_materials/test_cube.object
+Loaded scene: assets/scenes/floating_island.scene...
+loading physics mesh colliders...
+	Creating cave collider...
+	Created cave Collider
+	Registering cave collider...
+	Registered cave collider
+loaded physics mesh colliders
+Initalized engine
+
+Begin Game Loop
+delta time: 0.000000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,2.000000,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,2.000000,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,3.000000,0.000000)
+delta time: 0.057000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,2.000000,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.967510,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.967510,0.000000)
+delta time: 0.046000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.967510,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.946350,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.946350,0.000000)
+delta time: 0.113000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.946350,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.818660,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.818660,0.000000)
+delta time: 0.100000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.818660,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.718660,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.718660,0.000000)
+delta time: 0.054000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.718660,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.689500,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.689500,0.000000)
+delta time: 0.066000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.689500,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.645940,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.645940,0.000000)
+delta time: 0.064000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.645940,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.604980,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.604980,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.604980,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.580970,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.580970,0.000000)
+delta time: 0.053000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.580970,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.552880,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.552880,0.000000)
+delta time: 0.097000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.552880,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.458790,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.458790,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.458790,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.432780,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.432780,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.432780,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.406770,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.406770,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.406770,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.382760,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.382760,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.382760,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.357760,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.357760,0.000000)
+delta time: 0.052000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.357760,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.330720,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.330720,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.330720,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.306710,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.306710,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.306710,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.282700,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.282700,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.282700,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.257700,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.257700,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.257700,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.231690,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.231690,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.231690,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.206690,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.206690,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.206690,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.182680,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.182680,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.182680,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.157680,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.157680,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.157680,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.132680,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.132680,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.132680,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.108670,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.108670,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.108670,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.083670,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.083670,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.083670,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.057660,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.057660,0.000000)
+delta time: 0.065000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.057660,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,1.015410,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,2.015410,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,1.015410,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.989400,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.989400,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.989400,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.963390,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.963390,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.963390,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.937380,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.937380,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.937380,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.912380,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.912380,0.000000)
+delta time: 0.048000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.912380,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.889340,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.889340,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.889340,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.863330,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.863330,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.863330,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.838330,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.838331,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.838330,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.813330,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.813330,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.813330,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.789320,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.789320,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.789320,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.763310,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.763310,0.000000)
+delta time: 0.048000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.763310,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.740270,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.740270,0.000000)
+delta time: 0.052000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.740270,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.713230,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.713230,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.713230,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.689220,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.689220,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.689220,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.663211,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.663211,0.000000)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.663211,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.638211,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.638211,0.000000)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.638211,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.614201,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.614201,0.000000)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.614201,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.588191,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.588191,0.000000)
+delta time: 0.052000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.588191,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.561151,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.561151,0.000000)
+delta time: 0.062000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.561151,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.522711,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.522711,0.000000)
+delta time: 0.053000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.522711,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.494621,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.082644
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.082644
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.080000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.513265,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.064000
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.064000
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.084000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.506705,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.070560
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.070560
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.084000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.506705,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.070560
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.070560
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.508375,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.068890
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.068890
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.084000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.506705,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.070560
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.070560
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.508375,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.068890
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.068890
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.082000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.510025,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.067240
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.067240
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.508375,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.068890
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.068890
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.508375,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.068890
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.068890
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.084000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.506705,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.070560
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.070560
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.508375,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.068890
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.068890
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.508375,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.068890
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.068890
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.000000,0.508375,0.000000)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.068890
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.068890
+        New Position to Try: (0.000000,0.577265,0.000000)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.000000,1.577265,0.000000)
+delta time: 0.085000
+		Updating dynamic collider: 0...
+			Old position: (0.000000,0.577265,0.000000)
+			Velocity: (0.836828,0.000000,-0.149062)
+			Calculated initial test position: (0.071130,0.505015,-0.012670)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.066811
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.066811
+        New Position to Try: (0.071130,0.571826,-0.012670)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.071130,1.571826,-0.012670)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.071130,0.571826,-0.012670)
+			Velocity: (0.817138,0.000000,-0.145554)
+			Calculated initial test position: (0.138953,0.502936,-0.024751)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.138953,1.502936,-0.024751)
+delta time: 0.065000
+		Updating dynamic collider: 0...
+			Old position: (0.138953,0.502936,-0.024751)
+			Velocity: (0.639927,0.000000,-0.113988)
+			Calculated initial test position: (0.180548,0.460686,-0.032160)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.093712
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.093712
+        New Position to Try: (0.180548,0.554398,-0.032160)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.180548,1.554398,-0.032160)
+delta time: 0.067000
+		Updating dynamic collider: 0...
+			Old position: (0.180548,0.554398,-0.032160)
+			Velocity: (0.659617,0.000000,-0.117496)
+			Calculated initial test position: (0.224742,0.509508,-0.040033)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.224742,1.509508,-0.040033)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.224742,0.509508,-0.040033)
+			Velocity: (0.502097,0.000000,-0.089437)
+			Calculated initial test position: (0.250349,0.483498,-0.044594)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.250349,1.483498,-0.044594)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.250349,0.483498,-0.044594)
+			Velocity: (0.492252,0.000000,-0.087683)
+			Calculated initial test position: (0.274962,0.458498,-0.048978)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.274962,1.458498,-0.048978)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.274962,0.458498,-0.048978)
+			Velocity: (0.492252,0.000000,-0.087683)
+			Calculated initial test position: (0.299574,0.433498,-0.053362)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.299574,1.433498,-0.053362)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.299574,0.433498,-0.053362)
+			Velocity: (0.502252,0.000000,-0.088561)
+			Calculated initial test position: (0.325189,0.407488,-0.057879)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.325189,1.407488,-0.057879)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.325189,0.407488,-0.057879)
+			Velocity: (0.492404,0.000000,-0.086824)
+			Calculated initial test position: (0.349810,0.382488,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.382488,-0.062220)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.382488,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.357488,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.357488,-0.062220)
+delta time: 0.048000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.357488,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.334448,-0.062220)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.168912
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.168912
+        New Position to Try: (0.349810,0.503360,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.503360,-0.062220)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.503360,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.434470,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.434470,-0.062220)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.434470,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.409470,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.409470,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.409470,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.383460,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.383460,-0.062220)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.383460,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.359450,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.359450,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.359450,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.333440,-0.062220)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.169920
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.169920
+        New Position to Try: (0.349810,0.503360,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.503360,-0.062220)
+delta time: 0.082000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.503360,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.436120,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.436120,-0.062220)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.436120,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.411120,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.411120,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.411120,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.385110,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.385110,-0.062220)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.385110,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.361100,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.361100,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.361100,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.335090,-0.062220)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.168270
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.168270
+        New Position to Try: (0.349810,0.503360,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.503360,-0.062220)
+delta time: 0.082000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.503360,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.436120,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.436120,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.436120,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.410110,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.410110,-0.062220)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.410110,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.385110,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.385110,-0.062220)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.385110,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.361100,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.361100,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.361100,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.335090,-0.062220)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.168270
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.168270
+        New Position to Try: (0.349810,0.503360,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.503360,-0.062220)
+delta time: 0.082000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.503360,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.436120,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.436120,-0.062220)
+delta time: 0.067000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.436120,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.391230,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.391230,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.391230,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.365220,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.365220,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.365220,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.339210,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.339210,-0.062220)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.339210,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.315200,-0.062220)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.188160
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.188160
+        New Position to Try: (0.349810,0.503360,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.503360,-0.062220)
+delta time: 0.082000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.503360,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.436120,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.436120,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.436120,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.410110,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.410110,-0.062220)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.410110,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.385110,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.385110,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.385110,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.359100,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.359100,-0.062220)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.359100,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.335090,-0.062220)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.168270
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.168270
+        New Position to Try: (0.349810,0.503360,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.503360,-0.062220)
+delta time: 0.082000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.503360,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.436120,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.436120,-0.062220)
+delta time: 0.085000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.436120,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.363870,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.363870,-0.062220)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.363870,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.337860,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.337860,-0.062220)
+delta time: 0.048000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.337860,-0.062220)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (0.349810,0.314820,-0.062220)
+        Collision, Triangle: 73Points 0&1: (0.181942,-0.727675,0.352630)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.188540
+          Using line = (0.181942,-0.727675,0.352630) , (-0.221171,-0.797470,-0.074414)
+        tmpLineParam: 0.188540
+        New Position to Try: (0.349810,0.503360,-0.062220)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.349810,1.503360,-0.062220)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (0.349810,0.503360,-0.062220)
+			Velocity: (0.700015,0.000000,0.445959)
+			Calculated initial test position: (0.407911,0.434470,-0.025206)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.407911,1.434470,-0.025206)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.407911,0.434470,-0.025206)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (0.428996,0.409470,-0.011773)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.428996,1.409470,-0.011773)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.428996,0.409470,-0.011773)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (0.450080,0.384470,0.001659)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.450080,1.384470,0.001659)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.450080,0.384470,0.001659)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (0.471165,0.359470,0.015092)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.471165,1.359470,0.015092)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.471165,0.359470,0.015092)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (0.492250,0.334470,0.028524)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.492250,1.334470,0.028524)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.492250,0.334470,0.028524)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (0.513335,0.309470,0.041957)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.513335,1.309470,0.041957)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (0.513335,0.309470,0.041957)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (0.534419,0.284470,0.055389)
+        Collision, Triangle: 70Points 2&0: (0.181942,-0.727675,0.352630)&(1.330410,-0.650018,-0.980044)
+        Collision, Triangle: 76Points 2&0: (1.330410,-0.650018,-0.980044)&(0.181942,-0.727675,0.352630)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 3
+        Collision, Triangle: 70Points 2&0: (0.181942,-0.727675,0.352630)&(1.330410,-0.650018,-0.980044)
+        Collision, Triangle: 76Points 2&0: (1.330410,-0.650018,-0.980044)&(0.181942,-0.727675,0.352630)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 2
+        Collision, Triangle: 70Points 2&0: (0.181942,-0.727675,0.352630)&(1.330410,-0.650018,-0.980044)
+        Collision, Triangle: 76Points 2&0: (1.330410,-0.650018,-0.980044)&(0.181942,-0.727675,0.352630)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 1
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.552869,1.276267,0.067143)
+delta time: 0.116000
+		Updating dynamic collider: 0...
+			Old position: (0.552869,0.276267,0.067143)
+			Velocity: (0.978334,0.000000,0.623268)
+			Calculated initial test position: (0.666355,0.141707,0.139442)
+        Collision, Triangle: 70Points 2&0: (0.181942,-0.727675,0.352630)&(1.330410,-0.650018,-0.980044)
+        Collision, Triangle: 73Points 2&0: (1.494438,-0.891471,0.057166)&(0.181942,-0.727675,0.352630)
+        Collision, Triangle: 76Points 0&1: (0.181942,-0.727675,0.352630)&(1.494438,-0.891471,0.057166)
+        Collision, Triangle: 76Points 2&0: (1.330410,-0.650018,-0.980044)&(0.181942,-0.727675,0.352630)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 3
+        Collision, Triangle: 70Points 2&0: (0.181942,-0.727675,0.352630)&(1.330410,-0.650018,-0.980044)
+        Collision, Triangle: 73Points 2&0: (1.494438,-0.891471,0.057166)&(0.181942,-0.727675,0.352630)
+        Collision, Triangle: 76Points 0&1: (0.181942,-0.727675,0.352630)&(1.494438,-0.891471,0.057166)
+        Collision, Triangle: 76Points 2&0: (1.330410,-0.650018,-0.980044)&(0.181942,-0.727675,0.352630)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 2
+        Collision, Triangle: 70Points 2&0: (0.181942,-0.727675,0.352630)&(1.330410,-0.650018,-0.980044)
+        Collision, Triangle: 73Points 2&0: (1.494438,-0.891471,0.057166)&(0.181942,-0.727675,0.352630)
+        Collision, Triangle: 76Points 0&1: (0.181942,-0.727675,0.352630)&(1.494438,-0.891471,0.057166)
+        Collision, Triangle: 76Points 2&0: (1.330410,-0.650018,-0.980044)&(0.181942,-0.727675,0.352630)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 1
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (0.765656,1.097554,0.202704)
+delta time: 0.167000
+		Updating dynamic collider: 0...
+			Old position: (0.765656,0.097554,0.202704)
+			Velocity: (1.408463,0.000000,0.897290)
+			Calculated initial test position: (1.000870,-0.181336,0.352551)
+        Collision, Triangle: 72Points 2&0: (1.494438,-0.891471,0.057166)&(1.946615,-0.982643,-0.545172)
+        Collision, Triangle: 73Points 1&2: (0.620376,-1.219717,1.258721)&(1.494438,-0.891471,0.057166)
+        Collision, Triangle: 73Points 2&0: (1.494438,-0.891471,0.057166)&(0.181942,-0.727675,0.352630)
+        Collision, Triangle: 76Points 0&1: (0.181942,-0.727675,0.352630)&(1.494438,-0.891471,0.057166)
+        Collision, Triangle: 77Points 1&2: (1.494438,-0.891471,0.057166)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.184069
+          Using line = (1.494438,-0.891471,0.057166) , (0.181942,-0.727675,0.352630)
+        tmpLineParam: 0.184069
+        New Position to Try: (1.000870,0.002733,0.352551)
+        Collision, Triangle: 72Points 2&0: (1.494438,-0.891471,0.057166)&(1.946615,-0.982643,-0.545172)
+        Collision, Triangle: 73Points 2&0: (1.494438,-0.891471,0.057166)&(0.181942,-0.727675,0.352630)
+        Collision, Triangle: 76Points 0&1: (0.181942,-0.727675,0.352630)&(1.494438,-0.891471,0.057166)
+      Collision detected with: 2
+        New line param: 0.000000
+          Using line = (1.494438,-0.891471,0.057166) , (0.181942,-0.727675,0.352630)
+        tmpLineParam: 0.000000
+        New Position to Try: (1.000870,0.002733,0.352551)
+        Collision, Triangle: 72Points 2&0: (1.494438,-0.891471,0.057166)&(1.946615,-0.982643,-0.545172)
+        Collision, Triangle: 73Points 2&0: (1.494438,-0.891471,0.057166)&(0.181942,-0.727675,0.352630)
+        Collision, Triangle: 76Points 0&1: (0.181942,-0.727675,0.352630)&(1.494438,-0.891471,0.057166)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 3
+        Collision, Triangle: 72Points 2&0: (1.494438,-0.891471,0.057166)&(1.946615,-0.982643,-0.545172)
+        Collision, Triangle: 73Points 1&2: (0.620376,-1.219717,1.258721)&(1.494438,-0.891471,0.057166)
+        Collision, Triangle: 73Points 2&0: (1.494438,-0.891471,0.057166)&(0.181942,-0.727675,0.352630)
+        Collision, Triangle: 76Points 0&1: (0.181942,-0.727675,0.352630)&(1.494438,-0.891471,0.057166)
+        Collision, Triangle: 77Points 1&2: (1.494438,-0.891471,0.057166)&(0.620376,-1.219717,1.258721)
+      Collision detected with: 2
+        New line param: 0.216193
+          Using line = (-0.917052,-1.181680,-0.985345) , (-0.785791,-1.667687,-0.845894)
+        tmpLineParam: 0.216193
+        New Position to Try: (1.118476,0.149204,0.427475)
+        Collision, Triangle: 72Points 2&0: (1.494438,-0.891471,0.057166)&(1.946615,-0.982643,-0.545172)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 2
+        Collision, Triangle: 72Points 2&0: (1.494438,-0.891471,0.057166)&(1.946615,-0.982643,-0.545172)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 1
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (1.206681,1.127416,0.483668)
+delta time: 0.249000
+		Updating dynamic collider: 0...
+			Old position: (1.206681,0.127416,0.483668)
+			Velocity: (2.100044,0.000000,1.337876)
+			Calculated initial test position: (1.729592,-0.492594,0.816799)
+        Collision, Triangle: 18Points 1&2: (1.726945,-1.582717,0.762032)&(1.556766,-2.128210,0.553564)
+        Collision, Triangle: 45Points 1&2: (1.534497,-1.463902,0.919125)&(0.782680,-1.642635,1.374683)
+        Collision, Triangle: 76Points 1&2: (1.494438,-0.891471,0.057166)&(1.330410,-0.650018,-0.980044)
+        Collision, Triangle: 77Points 0&1: (1.534497,-1.463902,0.919125)&(1.494438,-0.891471,0.057166)
+        Collision, Triangle: 78Points 0&1: (1.534497,-1.463902,0.919125)&(2.035862,-1.556617,0.402710)
+        Collision, Triangle: 78Points 2&0: (1.494438,-0.891471,0.057166)&(1.534497,-1.463902,0.919125)
+        Collision, Triangle: 79Points 2&0: (2.035862,-1.556617,0.402710)&(1.534497,-1.463902,0.919125)
+      Collision detected with: 2
+        New line param: 0.243279
+          Using line = (1.534497,-1.463902,0.919125) , (1.494438,-0.891471,0.057166)
+        New line param: 0.463776
+          Using line = (1.726945,-1.582717,0.762032) , (2.035862,-1.556617,0.402710)
+        tmpLineParam: 0.463776
+        New Position to Try: (1.729592,-0.028818,0.816799)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (1.729592,0.971182,0.816799)
+delta time: 0.134000
+		Updating dynamic collider: 0...
+			Old position: (1.729592,-0.028818,0.816799)
+			Velocity: (1.130144,0.000000,0.719982)
+			Calculated initial test position: (1.881032,-0.208378,0.913276)
+        Collision, Triangle: 76Points 1&2: (1.494438,-0.891471,0.057166)&(1.330410,-0.650018,-0.980044)
+      Collision detected with: 2
+        New line param: 0.159381
+          Using line = (1.726945,-1.582717,0.762032) , (2.035862,-1.556617,0.402710)
+        tmpLineParam: 0.159381
+        New Position to Try: (1.881032,-0.048997,0.913276)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (1.881032,0.951003,0.913276)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (1.881032,-0.048997,0.913276)
+			Velocity: (0.700015,0.000000,0.445959)
+			Calculated initial test position: (1.939133,-0.117887,0.950291)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (1.939133,0.882113,0.950291)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (1.939133,-0.117887,0.950291)
+			Velocity: (0.430130,0.000000,0.274023)
+			Calculated initial test position: (1.961070,-0.143897,0.964266)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (1.961070,0.856103,0.964266)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (1.961070,-0.143897,0.964266)
+			Velocity: (0.413262,0.000000,0.263277)
+			Calculated initial test position: (1.981319,-0.167907,0.977167)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (1.981319,0.832093,0.977167)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (1.981319,-0.167907,0.977167)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (2.002404,-0.192907,0.990599)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.002404,0.807093,0.990599)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (2.002404,-0.192907,0.990599)
+			Velocity: (0.430130,0.000000,0.274023)
+			Calculated initial test position: (2.024341,-0.218917,1.004574)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.024341,0.781083,1.004574)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.024341,-0.218917,1.004574)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (2.045426,-0.243917,1.018007)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.045426,0.756083,1.018007)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.045426,-0.243917,1.018007)
+			Velocity: (0.421696,0.000000,0.268650)
+			Calculated initial test position: (2.066510,-0.268917,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.731083,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.268917,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.293917,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.706083,1.031439)
+delta time: 0.048000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.293917,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.316957,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.683043,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.316957,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.341957,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.658043,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.341957,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.366957,1.031439)
+        Collision, Triangle: 76Points 1&2: (1.494438,-0.891471,0.057166)&(1.330410,-0.650018,-0.980044)
+      Collision detected with: 2
+        New line param: 0.248816
+          Using line = (1.726945,-1.582717,0.762032) , (2.035862,-1.556617,0.402710)
+        tmpLineParam: 0.248816
+        New Position to Try: (2.066510,-0.118141,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.881859,1.031439)
+delta time: 0.083000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.118141,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.187031,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.812969,1.031439)
+delta time: 0.051000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.187031,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.213041,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.786959,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.213041,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.238041,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.761959,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.238041,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.263041,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.736959,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.263041,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.288041,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.711959,1.031439)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.288041,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.312051,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.687949,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.312051,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.337051,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.662949,1.031439)
+delta time: 0.053000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.337051,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.365141,1.031439)
+        Collision, Triangle: 76Points 1&2: (1.494438,-0.891471,0.057166)&(1.330410,-0.650018,-0.980044)
+      Collision detected with: 2
+        New line param: 0.247000
+          Using line = (1.726945,-1.582717,0.762032) , (2.035862,-1.556617,0.402710)
+        tmpLineParam: 0.247000
+        New Position to Try: (2.066510,-0.118141,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.881859,1.031439)
+delta time: 0.097000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.118141,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.212231,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.787769,1.031439)
+delta time: 0.052000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.212231,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.239271,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.760729,1.031439)
+delta time: 0.049000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.239271,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.263281,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.736719,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.263281,1.031439)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.066510,-0.288281,1.031439)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.066510,0.711719,1.031439)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.066510,-0.288281,1.031439)
+			Velocity: (0.130252,0.000000,0.482736)
+			Calculated initial test position: (2.073023,-0.313281,1.055576)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.073023,0.686719,1.055576)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.073023,-0.313281,1.055576)
+			Velocity: (0.012216,0.000000,0.499851)
+			Calculated initial test position: (2.073634,-0.338281,1.080569)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.073634,0.661719,1.080569)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.073634,-0.338281,1.080569)
+			Velocity: (-0.011344,0.000000,0.499871)
+			Calculated initial test position: (2.073067,-0.363281,1.105562)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.073067,0.636719,1.105562)
+delta time: 0.050000
+		Updating dynamic collider: 0...
+			Old position: (2.073067,-0.363281,1.105562)
+			Velocity: (-0.011344,0.000000,0.499871)
+			Calculated initial test position: (2.072500,-0.388281,1.130556)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.072500,0.611719,1.130556)
+delta time: 0.065000
+		Updating dynamic collider: 0...
+			Old position: (2.072500,-0.388281,1.130556)
+			Velocity: (-0.014747,0.000000,0.649833)
+			Calculated initial test position: (2.071541,-0.430531,1.172795)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.071541,0.569469,1.172795)
+delta time: 0.052000
+		Updating dynamic collider: 0...
+			Old position: (2.071541,-0.430531,1.172795)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.071541,-0.457571,1.172795)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.071541,0.542429,1.172795)
+delta time: 0.052000
+		Updating dynamic collider: 0...
+			Old position: (2.071541,-0.457571,1.172795)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.071541,-0.484611,1.172795)
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.071541,0.515389,1.172795)
+delta time: 0.063000
+		Updating dynamic collider: 0...
+			Old position: (2.071541,-0.484611,1.172795)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.071541,-0.524301,1.172795)
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 3
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 2
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 1
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.071541,0.462676,1.172795)
+delta time: 0.084000
+		Updating dynamic collider: 0...
+			Old position: (2.071541,-0.537324,1.172795)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.071541,-0.607884,1.172795)
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        New line param: 0.030914
+          Using line = (1.534497,-1.463902,0.919125) , (2.035862,-1.556617,0.402710)
+        tmpLineParam: 0.030914
+        New Position to Try: (2.071541,-0.576970,1.172795)
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 3
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        New line param: 0.017640
+          Using line = (1.534497,-1.463902,0.919125) , (2.035862,-1.556617,0.402710)
+        tmpLineParam: 0.017640
+        New Position to Try: (2.071541,-0.576970,1.172795)
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 2
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        New line param: 0.004410
+          Using line = (1.534497,-1.463902,0.919125) , (2.035862,-1.556617,0.402710)
+        tmpLineParam: 0.004410
+        New Position to Try: (2.071541,-0.576970,1.172795)
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        New line param: 0.000000
+          Using line = (1.534497,-1.463902,0.919125) , (2.035862,-1.556617,0.402710)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.576970,1.172795)
+        Collision, Triangle: 16Points 1&2: (2.089997,-1.804213,-0.047457)&(1.741153,-2.263191,-1.411457)
+      Collision detected with: 2
+        tmpLineParam: 0.000000
+      Vertical resolution failed
+      Search Splits: 1
+    done with collisions
+		Updated dynamic collider: 0
+	Camera Position: (2.071541,0.421928,1.172795)
+delta time: 0.188000
+		Updating dynamic collider: 0...
+			Old position: (2.071541,-0.578072,1.172795)
+			Velocity: (0.000000,0.000000,0.000000)
+			Calculated initial test position: (2.071541,-0.931512,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 111Points 1&2: (2.174519,-1.798853,0.088894)&(2.577257,-1.694356,-1.911973)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.170336
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.170336
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)
+        tmpLineParam: 0.000000
+        New Position to Try: (2.071541,-0.761177,1.172795)
+        Collision, Triangle: 25Points 1&2: (1.599044,-1.648793,2.255306)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 25Points 2&0: (2.330826,-1.685797,1.222484)&(1.218534,-1.821242,1.568544)
+        Collision, Triangle: 35Points 1&2: (2.174519,-1.798853,0.088894)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 35Points 2&0: (2.330826,-1.685797,1.222484)&(3.369822,-1.525793,0.553053)
+        Collision, Triangle: 65Points 0&1: (2.330826,-1.685797,1.222484)&(2.945098,-1.439942,1.778612)
+        Collision, Triangle: 132Points 0&1: (1.218534,-1.821242,1.568544)&(2.330826,-1.685797,1.222484)
+        Collision, Triangle: 132Points 1&2: (2.330826,-1.685797,1.222484)&(2.174519,-1.798853,0.088894)
+        Collision, Triangle: 278Points 1&2: (2.330826,-1.685797,1.222484)&(1.599044,-1.648793,2.255306)
+      Collision detected with: 1
+        New line param: 0.000000
+          Using point number 19 = (2.330826,-1.685797,1.222484)

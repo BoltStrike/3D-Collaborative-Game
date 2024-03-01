@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include "../generic/file_tosstream.h"
+#include "../generic/program_log.h"
 
 class MeshCollider:public Collider{
 	private:
@@ -16,7 +17,7 @@ class MeshCollider:public Collider{
 		//have list of edges
 		//have list of triangle areas?
 	public:
-		//MeshCollider();
+		MeshCollider();
 		~MeshCollider();
 		MeshCollider(glm::vec3*,int, int* triangleList,int,float,glm::vec3 pos, glm::vec3 rot);
 		MeshCollider(const MeshCollider &other);
@@ -45,7 +46,7 @@ class MeshCollider:public Collider{
 	public:
 		virtual float resolveVertPillVert(glm::vec3,glm::vec3,float,float);
 	//internal suport functions
-	private:
+	public:
 		inline bool areaCheck(glm::vec3,int,float);
 		inline bool pointLineCheck(glm::vec3,float,int,int,int);
 		inline glm::vec3 getPoint(int,int);
@@ -55,6 +56,9 @@ class MeshCollider:public Collider{
 		glm::vec3 getPosition();
 		void setRotation(glm::vec3);
 		glm::vec3 getRotation();
+		
+	public:
+		void printTriangles();
 	
 };
 

@@ -15,6 +15,13 @@
 
 #include "graphics/graphics_wrapper_functions.h"
 
+#include "physics/physicsManager.h"
+#include "physics/allColliders.h"
+#include "physics/internalPhysics.h"
+#include "generic/file_tosstream.h"
+
+#include <time.h>
+
 class GameEngine {
 	private:
 		Scene *scene;		// Holds current scene data
@@ -31,8 +38,19 @@ class GameEngine {
 		float fov;			// Field Of View
 
 		float deltaTime;	// Time between current frame and last frame
-		float lastFrame;	// Time last frame was finished
+		clock_t lastFrame;	// Time last frame was finished
 		unsigned int fps;// Frames per second of the program
+		
+		PhysicsManager physicsManager;
+		ResolvableCollider* playerCollider;
+		//MeshCollider* mesh;
+		MeshCollider* mc_cave;
+		MeshCollider* mc_main_grass;
+		MeshCollider* mc_rock;
+		MeshCollider* mc_tree;
+		MeshCollider* mc_trim_grass;
+		MeshCollider* mc_underside;
+		MeshCollider* mc_water;
 		
 	public:
 		GameEngine();		// Default constructor
