@@ -11,7 +11,6 @@ GameEngine::GameEngine () {
 	cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 	cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 	fov = 45.0f;
-	firstMouse = true;
 	yaw = -90.0f;
 	pitch = 0.0f;
 	
@@ -66,13 +65,15 @@ int GameEngine::initialize () {
 	gwf::set_cursor(false);
 
 	if (!gwf::load_opengl())	return -1;
-	gwf::set_depth_test(true);			// Sets depth testing to given Boolean
-	gwf::set_backface_culling(true);	// Sets backface culling to given Boolean
-	gwf::set_blending(true);			// Sets blending functionality to Boolean
-	gwf::set_vsync(true);
+	gwf::set_depth_test(true);			// Helps ensure that only closest of overlapping object render
+	gwf::set_backface_culling(true);	// Makes only outside of object render
+	gwf::set_blending(true);			// Allows for transparency
+	gwf::set_vsync(true);				// Match framerate with game refresh rate
 
+
+	// Load default scene
 	const char *default_scene = "assets/scenes/floating_island.scene";
-	scene->load(default_scene);	// Load default scene
+	scene->load(default_scene);	
 	
 	//load the colliders:
 	//these are staticly listed. waiting on ubJSON for loading from file
@@ -84,10 +85,11 @@ int GameEngine::initialize () {
 		MeshCollider mc_trim_grass;
 		MeshCollider mc_underside;
 		MeshCollider mc_water;*/
-	program_log("loading physics mesh colliders...\n");
+	//program_log("loading physics mesh colliders...\n");
 	/*std::stringstream ss=file_tosstream("assets/objects/physics_testing_ground/meshes_materials/plane.object");
 	mesh=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
 	physicsManager.registerCollider((Collider*) mesh);*/
+
 	program_log("\tCreating cave collider...\n");
 	mc_cave= new MeshCollider("assets/objects/floating_island/meshes_materials/cave.ubj",100.0f,glm::vec3(),glm::vec3());
 	program_log("\tCreated cave Collider\n");
@@ -103,11 +105,16 @@ int GameEngine::initialize () {
 	physicsManager.registerCollider((Collider*) mc_tree);
 	mc_trim_grass=new MeshCollider("assets/objects/floating_island/meshes_materials/trim_grass.ubj",100.0f,glm::vec3(),glm::vec3());
 	physicsManager.registerCollider((Collider*) mc_trim_grass);
+
 	//mc_underside=new MeshCollider("assets/objects/floating_island/meshes_materials/underside.ubj",100.0f,glm::vec3(),glm::vec3());
 	//physicsManager.registerCollider((Collider*) mc_underside);
 	//mc_water=new MeshCollider("assets/objects/floating_island/meshes_materials/water.ubj",100.0f,glm::vec3(),glm::vec3());
 	//physicsManager.registerCollider((Collider*) mc_water);
 	program_log("loaded physics mesh colliders\n");
+
+	//Must initialize prev mouse pos to current mouse pos on game start
+	lastX = in::cursor_x;
+	lastY = in::cursor_y;
 
 	program_log("Initalized engine\n\n");
 	
@@ -117,6 +124,8 @@ int GameEngine::initialize () {
 /******************************************************************************
  * This function is the main game loop. 
 ******************************************************************************/
+//TODO: This should ideally be 3 separate phases every loop. process input, update, output
+
 void GameEngine::game_loop () {
 	program_log("Begin Game Loop\n");
 	//mc_cave->printTriangles();
@@ -144,24 +153,15 @@ void GameEngine::game_loop () {
 		//program_log("DeltaT: "+std::to_string(deltaTime)+" ("+std::to_string(1.0f/deltaTime)+")\n");
 
 //*********************************/
-	
-		//glfwGetCursorPos(glfwGetCurrentContext(), &in::cursor_x, &in::cursor_y);
 
-		if (firstMouse) {	// Only for the first time, set the previous location
-			lastX = in::cursor_x;
-			lastY = in::cursor_y;
-			firstMouse = false;
-		}
-
-		//std::string message = "X: ";
-		//program_log(message.append(std::to_string(in::cursor_x)).append(" Y: ").append(std::to_string(in::cursor_y)).append("\n"));
+		//handle mouse position, move to a sep polling function
 
 		float xoffset = in::cursor_x - lastX;	// x-coordinates go from left to right
 		float yoffset = lastY - in::cursor_y; 	// y-coordinates go from bottom to top
 		lastX = in::cursor_x;
 		lastY = in::cursor_y;
 
-		float sensitivity = 0.1f; // change this value to your liking
+		float sensitivity = 0.1f; // change this value to your liking, can add option
 		xoffset *= sensitivity;
 		yoffset *= sensitivity;
 
@@ -187,25 +187,28 @@ void GameEngine::game_loop () {
 
 		fov = 45.0f;
 //*********************************/
-	if (in::btn(in::ESCAPE))	// ESC 
+
+
+	if (in::btn(in::ESCAPE))	// ESC - exit game
 		gwf::close();
 	
 	if(debugLoop)program_log("\tParsing Keypresses\n");
-	float cameraSpeed = 2.5 * deltaTime * 5.0;
+
+
 	//get the direction in the xz plane
 	glm::vec3 movementDir = glm::vec3(0.0f,0.0f,0.0f);
-	if (in::btn(in::W))		// W
+	if (in::btn(in::W))		// Forward
 		movementDir+=cameraFront;
-		//cameraPos += cameraSpeed * cameraFront;
-	if (in::btn(in::S))		// S
+
+	if (in::btn(in::S))		// Backward
 		movementDir-=cameraFront;
-		//cameraPos -= cameraSpeed * cameraFront;
-	if (in::btn(in::A))		// A
+;
+	if (in::btn(in::A))		// Left
 		movementDir-=glm::normalize(glm::cross(cameraFront, cameraUp));
-		//cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-	if (in::btn(in::D))		// D
+
+	if (in::btn(in::D))		// Right
 		movementDir+=glm::normalize(glm::cross(cameraFront, cameraUp));
-		//cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+
 		
 		if(debugLoop)program_log("\tdetermining velocity\n");
 		float movementSpeed=3.0f;
@@ -220,9 +223,9 @@ void GameEngine::game_loop () {
 		if(in::btn(in::SPACE)) playerCollider->setAcceleration(glm::vec3(0.0f,45.0f,0.0f));
 		else playerCollider->setAcceleration(glm::vec3(0.0f,0.0f,0.0f));
 		
-		//mc_cave->printTriangles();
+
 		
-		if(debugLoop)program_log("\tStaring physics update...\n");
+		if(debugLoop)program_log("\tStarting physics update...\n");
 		//hook in the physics engine update here
 		physicsManager.update(deltaTime);
 		cameraPos=playerCollider->getPosition()+glm::vec3(0.0f,1.0f,0.0f);
