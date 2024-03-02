@@ -17,66 +17,33 @@ MeshCollider::MeshCollider(glm::vec3* pointList,int numPoints, int* triangleList
 	this->triangleList=triangleList;
 	this->numTriangles=numTriangles;
 }
-MeshCollider::MeshCollider(std::stringstream* stream1,float rad,glm::vec3 pos, glm::vec3 rot):Collider(ColliderType::mesh,rad,pos,rot){
-	//this will refrence a mesh file for easy blender export
-	std::string materialPath;
-	(*stream1)>>materialPath;
-	/*program_log("\t\tSkiping material file: ");
-	program_log(materialPath);
-	program_log("\n");*/
-	std::string meshPath;
-	(*stream1)>>meshPath;
-	/*program_log("\t\tReading mesh file: ");
-	program_log(meshPath);
-	program_log("\n");*/
-	//taken form the graphics/mesh class
-	//std::stringstream stream = file_tosstream(filepath);// Read file as stream
-	std::stringstream stream = file_tosstream(meshPath.c_str());// Store file as stream
-	int name_length;
-	stream >> name_length;					// Get the length of the name
-	std::string name = new char[name_length + 1]; 		// +1 for terminating char '\0'
-	name[name_length] = '\0';				// Set terminating char
-	for(int i = 0; i < name_length; i++)	// Store name
-		stream.get(name[i]);
+MeshCollider::MeshCollider(const char* filepath,float rad,glm::vec3 pos, glm::vec3 rot):Collider(ColliderType::mesh,rad,pos,rot){
+	Ubj f;
+	f.open(filepath);
 
-	stream >> numPoints;	// Get the number of vertices
-	
-	float x,y,z;
-	this->pointList = new glm::vec3[numPoints];		// Allocate position storage
-	for(int i = 0; i < numPoints; i++){	// Store position data
-		stream >> x>>y>>z;
-		pointList[i]=glm::vec3(x,y,z);
+	//get the points/vertxes
+	f = f.beginning().at("number of positions");
+	numPoints = f.get_l();
+	f = f.beginning().at("positions");
+	pointList = new glm::vec3[numPoints];		// Allocate position storage
+	float x, y, z;
+	for (int i = 0; i < numPoints; i++) {	// Store position data
+		x = f.get_f();
+		y = f.get_f();
+		z = f.get_f();
+		pointList[i] = glm::vec3(x,y,z);
 	}
-	
-	//program_log("\t\t\tRecordered Point Data");
-	
-	float normal;
-	for(int i = 0; i < numPoints * 3; i++)	// Store normal data
-		stream >> normal;
-	
-	//program_log("\t\t\tRecordered Normal Data");
-	
-	int num_uvs;
-	stream >> num_uvs;						// Get the number of UV coordinates
-	float uv;			// Allocate enough UV storage
-	for(int i = 0; i < num_uvs * 2; i++)	// Store all UV coordinates
-		stream >> uv;
 
-	//program_log("\t\t\tRecordered UV Data");
-
-	stream >> numTriangles;					// Get the number of faces
-	this->triangleList = new int[numTriangles*3];		// 3 vertex indices per face
-	for(int i = 0; i < 3*numTriangles; i++){ 	// Store indices
-		stream >> triangleList[i];
+	f = f.beginning().at("number of faces");
+	numTriangles = f.get_l();
+	f = f.beginning().at("indices");
+	triangleList = new int[numTriangles * 3];		// 3 vertex indices (points) per face (triangle)
+	for (int i = 0; i < numTriangles * 3; i++) { 	// Store indices
+		triangleList[i] = f.get_l();
 	}
-	/*if(numPoints==343){
-		this->printTriangles();
-	}*/
-	
-	//program_log("\t\t\tRecordered triangle Data");
-	//char buffer[50];
-	//sprintf(buffer,"\t\t\ttriange list address %p\n",triangleList);
-	//program_log(buffer);
+
+	f.close();
+
 	this->setRotation(rot);
 	this->setPosition(pos);
 }

@@ -21,7 +21,7 @@ GameEngine::GameEngine () {
 	physicsManager.startUp();
 	program_log("Created physics manager\n");
 	program_log("Creating player collider...\n");
-	playerCollider=new ResolvableCollider(2.0f,0.5f,1.0f,1.0f,50.0f,glm::vec3(0.0f,4.0f,0.0f));
+	playerCollider=new ResolvableCollider(2.0f,0.5f,1.0f,1.0f,10.0f,glm::vec3(0.0f,4.0f,0.0f));
 	physicsManager.registerCollider((Collider*)playerCollider);
 	program_log("\n");
 	program_log("Created player collider\n");
@@ -89,33 +89,28 @@ int GameEngine::initialize () {
 	/*std::stringstream ss=file_tosstream("assets/objects/physics_testing_ground/meshes_materials/plane.object");
 	mesh=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
 	physicsManager.registerCollider((Collider*) mesh);*/
-	/*std::stringstream ss=file_tosstream("assets/objects/floating_island/meshes_materials/cave.object");
+
 	program_log("\tCreating cave collider...\n");
-	mc_cave= new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	mc_cave= new MeshCollider("assets/objects/floating_island/meshes_materials/cave.ubj",100.0f,glm::vec3(),glm::vec3());
 	program_log("\tCreated cave Collider\n");
 	//program_log("\tRegistering cave collider...\n");
 	physicsManager.registerCollider((Collider*) mc_cave);
 	program_log("\tRegistered cave collider\n");
 	//mc_cave->printTriangles();
-	ss=file_tosstream("assets/objects/floating_island/meshes_materials/main_grass.object");
-	mc_main_grass=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	mc_main_grass=new MeshCollider("assets/objects/floating_island/meshes_materials/main_grass.ubj",100.0f,glm::vec3(),glm::vec3());
 	physicsManager.registerCollider((Collider*) mc_main_grass);
-	ss=file_tosstream("assets/objects/floating_island/meshes_materials/rock.object");
-	mc_rock=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	mc_rock=new MeshCollider("assets/objects/floating_island/meshes_materials/rock.ubj",100.0f,glm::vec3(),glm::vec3());
 	physicsManager.registerCollider((Collider*) mc_rock);
-	ss=file_tosstream("assets/objects/floating_island/meshes_materials/tree.object");
-	mc_tree=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	mc_tree=new MeshCollider("assets/objects/floating_island/meshes_materials/tree.ubj",100.0f,glm::vec3(),glm::vec3());
 	physicsManager.registerCollider((Collider*) mc_tree);
-	ss=file_tosstream("assets/objects/floating_island/meshes_materials/trim_grass.object");
-	mc_trim_grass=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
+	mc_trim_grass=new MeshCollider("assets/objects/floating_island/meshes_materials/trim_grass.ubj",100.0f,glm::vec3(),glm::vec3());
 	physicsManager.registerCollider((Collider*) mc_trim_grass);
-	ss=file_tosstream("assets/objects/floating_island/meshes_materials/underside.object");
-	mc_underside=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	physicsManager.registerCollider((Collider*) mc_underside);
-	ss=file_tosstream("assets/objects/floating_island/meshes_materials/water.object");
-	mc_water=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	physicsManager.registerCollider((Collider*) mc_water);
-	program_log("loaded physics mesh colliders\n");*/
+
+	//mc_underside=new MeshCollider("assets/objects/floating_island/meshes_materials/underside.ubj",100.0f,glm::vec3(),glm::vec3());
+	//physicsManager.registerCollider((Collider*) mc_underside);
+	//mc_water=new MeshCollider("assets/objects/floating_island/meshes_materials/water.ubj",100.0f,glm::vec3(),glm::vec3());
+	//physicsManager.registerCollider((Collider*) mc_water);
+	program_log("loaded physics mesh colliders\n");
 
 	//Must initialize prev mouse pos to current mouse pos on game start
 	lastX = in::cursor_x;
@@ -225,7 +220,7 @@ void GameEngine::game_loop () {
 			movementDir.z=0.0f;
 			playerCollider->setVelocity(movementDir);
 		}
-		if(in::btn(in::SPACE)) playerCollider->setAcceleration(glm::vec3(0.0f,65.0f,0.0f));
+		if(in::btn(in::SPACE)) playerCollider->setAcceleration(glm::vec3(0.0f,45.0f,0.0f));
 		else playerCollider->setAcceleration(glm::vec3(0.0f,0.0f,0.0f));
 		
 
