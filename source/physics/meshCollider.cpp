@@ -26,8 +26,12 @@ MeshCollider::MeshCollider(const char* filepath,float rad,glm::vec3 pos, glm::ve
 	numPoints = f.get_l();
 	f = f.beginning().at("positions");
 	pointList = new glm::vec3[numPoints];		// Allocate position storage
+	float x, y, z;
 	for (int i = 0; i < numPoints; i++) {	// Store position data
-		pointList[i] = glm::vec3(f.get_f(), f.get_f(), f.get_f());
+		x = f.get_f();
+		y = f.get_f();
+		z = f.get_f();
+		pointList[i] = glm::vec3(x,y,z);
 	}
 
 	f = f.beginning().at("number of faces");
