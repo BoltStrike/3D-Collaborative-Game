@@ -212,6 +212,7 @@ void GameEngine::game_loop () {
 		
 		if(debugLoop)program_log("\tdetermining velocity\n");
 		float movementSpeed=3.0f;
+		movementDir.y=0;
 		movementDir=glm::normalize(movementDir)*movementSpeed;
 		movementDir.y=playerCollider->getVelocity().y;
 		if(!isnan(movementDir.x))playerCollider->setVelocity(movementDir);
