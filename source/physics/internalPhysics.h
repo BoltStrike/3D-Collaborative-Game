@@ -10,6 +10,7 @@
 #include "../../glm/glm.hpp"
 #include "../generic/program_log.h"
 #include <Math.h>
+#include "../generic/ubj.h"
 
 #define TINNY_FLOAT_DELTA 0.000001f
 

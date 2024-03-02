@@ -21,7 +21,7 @@ class MeshCollider:public Collider{
 		~MeshCollider();
 		MeshCollider(glm::vec3*,int, int* triangleList,int,float,glm::vec3 pos, glm::vec3 rot);
 		MeshCollider(const MeshCollider &other);
-		MeshCollider(std::stringstream*,float,glm::vec3 pos, glm::vec3 rot);
+		MeshCollider(const char* filepath,float,glm::vec3 pos, glm::vec3 rot);
 		
 		glm::vec3* getPointList();
 		int getNumPoints();
