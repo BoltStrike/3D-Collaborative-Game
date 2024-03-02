@@ -24,22 +24,21 @@
 
 class GameEngine {
 	private:
-		Scene *scene;		// Holds current scene data
+		Scene *scene;		    // Holds current scene data
 
-		glm::vec3 cameraPos;		// Camera location
+		glm::vec3 cameraPos;	// Camera location
 		glm::vec3 cameraFront;	// Camera direction
 		glm::vec3 cameraUp;		// Camera orientation
 
-		bool firstMouse;		// Initialize previous and current position
-		float yaw;			// Left-Right movement
+		float yaw;			    // Left-Right movement
 		float pitch;			// Up-Down movement
 		float lastX;			// Previous x-coordinate of cursor location
 		float lastY;			// Previous y-coordinate of cursor location
-		float fov;			// Field Of View
+		float fov;			    // Field Of View
 
-		float deltaTime;	// Time between current frame and last frame
-		clock_t lastFrame;	// Time last frame was finished
-		unsigned int fps;// Frames per second of the program
+		float deltaTime;	    // Time between current frame and last frame
+		clock_t lastFrame;	    // Time last frame was finished
+		unsigned int fps;       // Frames per second of the program
 		
 		PhysicsManager physicsManager;
 		ResolvableCollider* playerCollider;
