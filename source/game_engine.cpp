@@ -89,12 +89,12 @@ int GameEngine::initialize () {
 	mesh=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
 	physicsManager.registerCollider((Collider*) mesh);*/
 	std::stringstream ss=file_tosstream("assets/objects/floating_island/meshes_materials/cave.object");
-	//program_log("\tCreating cave collider...\n");
+	program_log("\tCreating cave collider...\n");
 	mc_cave= new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
-	//program_log("\tCreated cave Collider\n");
+	program_log("\tCreated cave Collider\n");
 	//program_log("\tRegistering cave collider...\n");
 	physicsManager.registerCollider((Collider*) mc_cave);
-	//program_log("\tRegistered cave collider\n");
+	program_log("\tRegistered cave collider\n");
 	//mc_cave->printTriangles();
 	ss=file_tosstream("assets/objects/floating_island/meshes_materials/main_grass.object");
 	mc_main_grass=new MeshCollider(&ss,100.0f,glm::vec3(),glm::vec3());
