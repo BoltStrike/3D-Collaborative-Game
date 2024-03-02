@@ -1,0 +1,8 @@
+# ignore Program Log files
+program_log.txt
+
+# ignore all object files
+*.o
+
+# ignore all exe files
+*.exe
